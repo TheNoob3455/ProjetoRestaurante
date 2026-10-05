@@ -4,23 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="style-login.css">
+    <link rel="shortcut icon" href="img/Logo-Circular-Chapa-Quente.ico" type="image/x-icon">
+    
 </head>
 
 <body>
-
+    <div class="boxzinho">
+        <img src="img/Ícone de Usuário Neon em Vidro.png" alt="">
     <h1>Login</h1>
+    <p class="topo">Entre na sua conta para continuar</p>
 
-    <form onsubmit="event.preventDefault(); alert('Login realizado com sucesso!');">
-
-        <label for="email">E-mail:</label>
+    <form>
+<div class="email">
+        <img src="img/Ícone de Envelope Branco Minimalista.png" alt="">
         <input type="email" id="email" name="email" placeholder="Digite seu e-mail">
-
-        <br><br>
-
-        <label for="senha">Senha:</label>
+        
+</div>
+        <div class="senha">
+            <img src="img/Ícone de Cadeado Branco Minimalista.png" alt="">
         <input type="password" id="senha" name="senha" placeholder="Digite sua senha">
-
-        <br><br>
+</div>
+        
 
         <button type="submit">Entrar</button>
 
@@ -30,6 +35,6 @@
         Ainda não possui uma conta?
         <a href="index.html">Cadastre-se</a>
     </p>
-
+    </div>
 </body>
 </html>
