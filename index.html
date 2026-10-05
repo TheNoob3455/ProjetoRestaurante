@@ -4,42 +4,147 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
+    <link rel="shortcut icon" href="img/Logo-Circular-Chapa-Quente.ico">
+    <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
-
+    <div class="boxzinho">
+<img src="img/Ícone Glossy de Adicionar Usuário.png" alt="">
     <h1>Cadastro</h1>
+    <p class="topo">
+        Crie sua conta para começar
+    </p>
 
-    <form onsubmit="event.preventDefault(); alert('Cadastro realizado com sucesso!'); window.location.href='login.html';">
+    <form>
 
-        <label for="nome">Nome:</label>
+    <div class="nome">
+        <img src="img/Ícone_de_usuário_branco_brilhante-removebg-preview.png" alt="">
         <input type="text" id="nome" name="nome" placeholder="Digite seu nome">
+    </div>
 
-        <br><br>
+    <p id="erronome"></p>
 
-        <label for="email">E-mail:</label>
+    <div class="e-mail">
+        <img src="img/Ícone de Envelope Branco Minimalista.png" alt="">
         <input type="email" id="email" name="email" placeholder="Digite seu e-mail">
+    </div>
 
-        <br><br>
-
-        <label for="senha">Senha:</label>
+    <div class="senha">
+        
+        <img src="img/Ícone de Cadeado Branco Minimalista.png" alt="">
         <input type="password" id="senha" name="senha" placeholder="Digite sua senha">
+        <button type="button" id="mostrar" class="mostrarsenha"></button>
+        
 
-        <br><br>
+    </div>
 
-        <label for="confirmar-senha">Confirmar senha:</label>
+    <p id="errosenha"></p>
+
+    <div class="c-senha">
+        <img src="img/Ícone de Cadeado Branco Minimalista.png" alt="">
         <input type="password" id="confirmar-senha" name="confirmar-senha" placeholder="Digite sua senha novamente">
+        <button type="button" id="mostrar2" class="mostrarsenha-2"></button>
 
-        <br><br>
+    </div>
+    <p id="senhaigual"></p>
 
-        <button type="submit">Cadastrar</button>
+    <div>
+        <button type="button" id="cadastro">Cadastrar</button>
+    </div>
 
     </form>
 
     <p>
         Já possui uma conta?
-        <a href="login.html">Voltar para o login</a>
+        <a href="login.html">Faça login</a>
     </p>
-
+    </div>
+    <Script>
+        let mostrar = document.getElementById("mostrar")
+        let senhaOculta = document.getElementById("senha")
+        let confirmarOculta = document.getElementById("confirmar-senha")
+        let ocultar1 = 0;
+        let ocultar2 = 0;
+        mostrar.addEventListener("click", function(){
+            if(ocultar1 === 1){
+                mostrar.style.backgroundImage = "url('img/Ícone de olho oculto minimalista.png')";
+                senhaOculta.type = "password";
+                ocultar1 = 0;
+            }
+            else {
+                mostrar.style.backgroundImage = "url('img/Ícone de Olho Branco Minimalista.png')";
+                senhaOculta.type = "text";
+                ocultar1 = 1;
+            }
+            });
+            mostrar2.addEventListener("click", function(){
+            if(ocultar2 === 1){
+                mostrar2.style.backgroundImage = "url('img/Ícone de olho oculto minimalista.png')";
+                confirmarOculta.type = "password";
+                ocultar2 = 0;
+            }
+            else {
+                mostrar2.style.backgroundImage = "url('img/Ícone de Olho Branco Minimalista.png')";
+                confirmarOculta.type = "text";
+                ocultar2 = 1;
+            }
+        });
+         let botao = document.getElementById("cadastro")
+         botao.addEventListener("click", function(){
+            let nome = document.getElementById("nome").value
+            let senha = document.getElementById("senha").value
+            let email = document.getElementById("email").value
+            let csenha = document.getElementById("confirmar-senha").value
+            let erroSenha = document.getElementById("errosenha");
+            let erroNome = document.getElementById("erronome");
+            let senhaIgual = document.getElementById("senhaigual");
+            
+            if(nome.length >= 3){
+                erroNome.textContent = "";
+                if(nome.length > 20){
+                    erroNome.textContent = "Nome tem que ter no máximo 20 caracteres.";
+                    erroNome.style.color = "white";
+                }
+            }
+            else {
+                erroNome.textContent = "Nome tem que ter no mínimo 3 caracteres.";
+                erroNome.style.color = "white";
+            }
+            if(senha === csenha){
+                if(senha.length >= 8) {
+                    erroSenha.textContent = "";
+                    let dados = {
+                    Nome: nome,
+                    Senha: senha,
+                    Email: email
+                }
+                let texto = JSON.stringify(dados)
+                alert(texto)
+                    }
+                    else {
+                        erroSenha.textContent = "A senha tem que ter no mínimo 8 caracteres.";
+                        erroSenha.style.color = "white";
+                        if(senha === csenha){
+                            senhaIgual.textContent = "";
+                        }
+                        
+                    }
+                }
+                else {
+                    if(senha.length < 8){
+                        erroSenha.textContent = "A senha tem que ter no mínimo 8 caracteres.";
+                        erroSenha.style.color = "white";
+                    }else{
+                        erroSenha.textContent = "";
+                    }
+                    senhaIgual.textContent = "As senhas não coincidem";
+                    senhaIgual.style.color = "white";
+                    
+                }
+            }
+         );
+    </Script>
 </body>
 </html>
