@@ -1,0 +1,117 @@
+body{
+    margin: 0;
+    min-height: 100vh;
+    background-image: url(img/Gradiente\ Abstrato\ em\ Tons\ de\ Fogo.png);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+*{
+    text-align: center;
+}
+.boxzinho{
+        width: 400px;
+        padding: 40px;
+
+        background-color: rgba(255, 255, 255, 0.08);
+
+        border: 1px solid rgba(255, 255, 255, 0.3);
+
+        border-radius: 20px;
+        backdrop-filter: blur(10px);
+    }
+
+    input {
+        color: rgb(138, 134, 131);
+    text-align: center;
+        
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    text-align: left;
+    padding-left: 45px;
+    
+    margin-top: 15px;
+    height: 40px;
+    width: 320px;
+
+}
+
+input::placeholder{
+    color: rgb(138, 134, 131);
+}
+
+button{
+    
+height: 40px;
+width: 260px;
+border-radius: 20px;
+background-color: rgb(179, 63, 17);
+border: 0px;
+color: white;
+text-align: center;
+margin-top: 40px;
+}
+
+a{
+    color: rgb(179, 63, 17);
+}
+
+p{
+    
+    color: rgb(138, 134, 131);
+}
+
+.topo{
+    color: rgb(138, 134, 131);
+    margin-top: 0;
+    margin-bottom: 20px;
+    
+    font-weight: 300;
+    
+}
+
+h1{
+    font-weight: 200;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: white;
+       font-size: 35px;
+       font-family: Arial, Helvetica, sans-serif;
+}
+
+img{
+    margin-top: 16px;
+    margin-bottom: 0px;
+    height: 85px;
+    width: 85px;
+}
+
+.email{
+    position: relative;
+}
+
+.email img{
+    height: 38px;
+    width: 38px;
+    position: absolute;
+    margin-left: 3px;
+    margin-top: 17px;
+}
+
+.senha{
+    position: relative;
+}
+
+.senha img{
+    height: 34px;
+    width: 34px;
+    position: absolute;
+    margin-left: 5px;
+    margin-top: 19px;
+}
