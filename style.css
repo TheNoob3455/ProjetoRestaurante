@@ -25,6 +25,17 @@ body{
 
         border-radius: 20px;
         backdrop-filter: blur(10px);
+
+        animation: entrada 1.5s ease-out forwards;
+    }
+
+    @keyframes entrada {
+        from{
+            opacity: 0;
+        }
+        to{
+            opacity: 1;
+        }
     }
 
     input {
@@ -215,4 +226,28 @@ img{
 
     cursor: pointer;
 
+}
+
+.cpf img{
+    height: 34px;
+    width: 34px;
+    position: absolute;
+    margin-left: 5px;
+    margin-top: 19px;
+}
+
+#errocpf{
+    margin-left: 0px;
+    margin-right: 134px;
+    font-size: 14px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+#erroEmail{
+    margin-left: 0px;
+    margin-right: 193px;
+    font-size: 14px;
+    margin-top: 2px;
+    margin-bottom: 2px;
 }
