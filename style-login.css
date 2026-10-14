@@ -22,7 +22,18 @@ body{
 
         border-radius: 20px;
         backdrop-filter: blur(10px);
+
+        animation: entrada 1.5s ease-out forwards;
     }
+
+@keyframes entrada {
+    from{
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
 
     input {
         color: rgb(138, 134, 131);
@@ -114,4 +125,63 @@ img{
     position: absolute;
     margin-left: 5px;
     margin-top: 19px;
+}
+
+.mostrarsenha{
+    position: absolute;
+     right: 15px;
+    top: 22px;
+
+    width: 30px;
+    height: 30px;
+
+    margin: 0;
+    padding: 0;
+
+    border: none;
+    border-radius: 0;
+
+    background-color: transparent;
+    background-image: url("img/Ícone\ de\ olho\ oculto\ minimalista.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    cursor: pointer;
+
+}
+.CPF{
+    position: relative;
+}
+.CPF img{
+    height: 34px;
+    width: 34px;
+    position: absolute;
+    margin-left: 3.5px;
+    margin-top: 19px;
+
+}
+
+#erroSenha{
+ margin-left: 0px;
+    margin-right: 100px;
+    font-size: 14px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+#errocpf{
+    margin-left: 0px;
+    margin-right: 130px;
+    font-size: 14px;
+    margin-top: 2px;
+    margin-bottom: 2px;
+}
+
+#erroEmail{
+    margin-left: 0px;
+    margin-right: 192px;
+    font-size: 14px;
+    margin-top: 2px;
+    margin-bottom: 2px;
 }
