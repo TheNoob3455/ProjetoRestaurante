@@ -251,3 +251,14 @@ img{
     margin-top: 2px;
     margin-bottom: 2px;
 }
+
+button {
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background-color: rgb(225, 80, 25);
+    box-shadow: 0 0 12px rgba(255, 100, 30, 0.7);
+    transform: scale(1.04);
+}
