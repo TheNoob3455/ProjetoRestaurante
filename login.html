@@ -193,7 +193,8 @@
             const cpfPegarFetch = document.getElementById("CPF").value;
             const senhaPegarFetch = document.getElementById("senha").value;
 
-            pegarFetch(emailPegarFetch, cpfPegarFetch, senhaPegarFetch);
+            let texto = pegarFetch(emailPegarFetch, cpfPegarFetch, senhaPegarFetch);
 
+            alert("Cadastro realizado com sucesso!\n" + texto);
         });
 </script>
