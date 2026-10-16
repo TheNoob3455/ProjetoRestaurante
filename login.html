@@ -53,6 +53,7 @@
 </html>
 
 <script>
+    import { pegarFetch } from './fetchLogin.js';
 
     let CPFbonitinho = document.getElementById("cpf");
     
@@ -187,5 +188,12 @@
                 let texto = JSON.stringify(dados);
                 alert("Cadastro realizado com sucesso!\n" + texto);
             }
+
+            const emailPegarFetch = document.getElementById("email").value;
+            const cpfPegarFetch = document.getElementById("CPF").value;
+            const senhaPegarFetch = document.getElementById("senha").value;
+
+            pegarFetch(emailPegarFetch, cpfPegarFetch, senhaPegarFetch);
+
         });
 </script>
