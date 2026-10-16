@@ -12,10 +12,10 @@ async function darFetch(URL, nome, email, cpf, senha) {
         })
     });
 
-    /*if (resposta.ok) {
+    if (resposta.ok) {
     return console.log("Sucesso! Registro salvo no banco:", (await resposta.json()));
 
     } else {
     return console.error("Erro do servidor (" + resposta.status + "):", (await resposta.text()));
-    }*/
+    }
 }
