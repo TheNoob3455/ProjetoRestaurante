@@ -72,6 +72,7 @@
     </div>
     <Script>
         import darFetch from './testeFetchCadastro.js';
+        
         let CPFbonitinho = document.getElementById("CPF");
 
         CPFbonitinho.addEventListener("input", function(){
@@ -243,7 +244,9 @@
             alert("Cadastro realizado com sucesso!\n" + texto);
         }
     });
-
+        const botaoCadastrar = document.querySelector("#cadastro");
+        botaoCadastrar.addEventListener("click", () => {
+        
         const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
         const nomeDoFetch = document.querySelector("#nome");
         const emailDoFetch = document.querySelector("#email");
@@ -251,8 +254,8 @@
         const senhaDoFetch = document.querySelector("#senha");
         
         //A ordem é URL, nome, email, cpf, senha
-        darFetch(URL, nomeDoFetch.value, emailDoFetch.value, cpfDoFetch.value, senhaDoFetch.value)
-
+        darFetch(URL, nomeDoFetch.value, emailDoFetch.value, cpfDoFetch.value, senhaDoFetch.value);
+        });
         
 
         
