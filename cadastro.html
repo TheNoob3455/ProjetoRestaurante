@@ -173,12 +173,12 @@
         let erroCpf = document.getElementById("errocpf");
         let erroEmail = document.getElementById("erroEmail");
 
-        const nomePassou = false;
-        const cpfPassou = false;
-        const emailPassou = false;
-        const senhaPassou = false;
-        const cSenhaPassou = false;
-        const duasSenhasIguais = false;
+        let nomePassou = false;
+        let cpfPassou = false;
+        let emailPassou = false;
+        let senhaPassou = false;
+        let cSenhaPassou = false;
+        let duasSenhasIguais = false;
         
         if (nome.length < 3) {
             erroNome.textContent = "Nome tem que ter no mínimo 3 caracteres.";
@@ -271,11 +271,11 @@
             const botaoCadastrar = document.querySelector("#cadastro");
             botaoCadastrar.addEventListener("click", () => {
             
-            const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
-            const nomeDoFetch = document.querySelector("#nome");
-            const emailDoFetch = document.querySelector("#email");
-            const cpfDoFetch = document.querySelector("#CPF");
-            const senhaDoFetch = document.querySelector("#senha");
+            let URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
+            let nomeDoFetch = document.querySelector("#nome");
+            let emailDoFetch = document.querySelector("#email");
+            let cpfDoFetch = document.querySelector("#CPF");
+            let senhaDoFetch = document.querySelector("#senha");
             
             //A ordem é URL, nome, email, cpf, senha
             darFetch(URL, nomeDoFetch.value, emailDoFetch.value, cpfDoFetch.value, senhaDoFetch.value);
