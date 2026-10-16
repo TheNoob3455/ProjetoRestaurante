@@ -254,16 +254,6 @@
                 erroEmail.textContent = "";
                 emailPassou = true;
             }
-            
-            if (erroNome.textContent === "" && erroCpf.textContent === "" && erroSenha.textContent === "" && senhaIgual.textContent === "" && erroEmail.textContent === "") {
-                let dados = {
-                    CPF: cpf,
-                    Nome: nome,
-                    Senha: senha,
-                    Email: email
-                };
-                let texto = JSON.stringify(dados);
-            }
 
             if (cpfPassou === true && nomePassou === true && duasSenhasIguais === true && emailPassou === true){
                 const nomeDoFetch = document.querySelector("#nome");
