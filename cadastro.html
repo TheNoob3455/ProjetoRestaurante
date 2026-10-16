@@ -193,7 +193,7 @@
         }
 
         
-        if (senha.length < 8) {
+        if (senha.length < 5) {
             erroSenha.textContent = "A senha tem que ter no mínimo 8 caracteres.";
             erroSenha.style.color = "white";
         } else {
@@ -244,6 +244,12 @@
             alert("Cadastro realizado com sucesso!\n" + texto);
         }
     });
+        //const cpfPassou = true / false
+        
+        //if (cpfPassou & nomePassou & senhaPassou & emailPassou){
+            
+        //}
+        
         const botaoCadastrar = document.querySelector("#cadastro");
         botaoCadastrar.addEventListener("click", () => {
         
@@ -257,7 +263,7 @@
         darFetch(URL, nomeDoFetch.value, emailDoFetch.value, cpfDoFetch.value, senhaDoFetch.value);
         });
         
-
+        
         
 </script>
 </body>
