@@ -173,57 +173,62 @@
         let erroCpf = document.getElementById("errocpf");
         let erroEmail = document.getElementById("erroEmail");
 
-        const senhaValidada = false;
-        const nomeValidado = false;
-        const cpfValidado = false;
-        const emailValidado = false;
-        const cSenhaValidado = false;
-
+        const nomePassou = false;
+        const cpfPassou = false;
+        const emailPassou = false;
+        const senhaPassou = false;
+        const cSenhaPassou = false;
+        const duasSenhasIguais = false;
         
         if (nome.length < 3) {
             erroNome.textContent = "Nome tem que ter no mínimo 3 caracteres.";
             erroNome.style.color = "white";
-            nomeValidado = false;
+            nomePassou = false;
         } else if (nome.length > 20) {
             erroNome.textContent = "Nome tem que ter no máximo 20 caracteres.";
             erroNome.style.color = "white";
-            nomeValidado = false;
+            nomePassou = false;
         } else {
             erroNome.textContent = "";
-             nomeValidado = true;
+             nomePassou = true;
         }
 
         
         if (!validarCPF(cpf)) {
             erroCpf.textContent = "Seu CPF não está correto ou é inválido.";
             erroCpf.style.color = "white";
-            cpfValidado = false;
+            cpfPassou = false;
         } else {
             erroCpf.textContent = "";
-            cpfValidado = true;
+            cpfPassou = true;
         }
 
         
         if (senha.length < 5) {
             erroSenha.textContent = "A senha tem que ter no mínimo 8 caracteres.";
             erroSenha.style.color = "white";
-            senhaValidada = false;
+            senhaPassou = false;
         } else {
             erroSenha.textContent = "";
-            senhaValidada = true;
+            senhaPassou = true;
         }
 
         
         if (senha !== csenha) {
             senhaIgual.textContent = "As senhas não coincidem.";
             senhaIgual.style.color = "white";
-            cSenhaValidado = false;
+            cSenhaPassou = false;
         } else {
             senhaIgual.textContent = "";
-            cSenhaValidado = true;
+            cSenhaPassou = true;
         }
 
-        
+        if (senhaPassou & cSenhaPassou) {
+            duasSenhasIguais = true;
+        }
+        else {
+            duasSenhasIguais = false;
+        }
         
     function validarEmail(email) {
     const regex = /^[^\s@]+@gmail\.com$/;
@@ -244,10 +249,10 @@
          if (!validarEmail(email)) {
             erroEmail.textContent = "O e-mail tem que ser válido.";
             erroEmail.style.color = "white";
-             emailValidado = false;
+             emailPassou = false;
         } else {
             erroEmail.textContent = "";
-             emailValidado = true;
+             emailPassou = true;
         }
         
         if (erroNome.textContent === "" && erroCpf.textContent === "" && erroSenha.textContent === "" && senhaIgual.textContent === "" && erroEmail.textContent === "") {
@@ -262,24 +267,21 @@
         }
     });
         
-        //if (cpfPassou & nomePassou & senhaPassou & emailPassou){
+        if (cpfPassou & nomePassou & duasSenhasIguais & emailPassou){
+            const botaoCadastrar = document.querySelector("#cadastro");
+            botaoCadastrar.addEventListener("click", () => {
             
-        //}
-        
-        const botaoCadastrar = document.querySelector("#cadastro");
-        botaoCadastrar.addEventListener("click", () => {
-        
-        const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
-        const nomeDoFetch = document.querySelector("#nome");
-        const emailDoFetch = document.querySelector("#email");
-        const cpfDoFetch = document.querySelector("#CPF");
-        const senhaDoFetch = document.querySelector("#senha");
-        
-        //A ordem é URL, nome, email, cpf, senha
-        darFetch(URL, nomeDoFetch.value, emailDoFetch.value, cpfDoFetch.value, senhaDoFetch.value);
-        });
-        
-        
+            const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
+            const nomeDoFetch = document.querySelector("#nome");
+            const emailDoFetch = document.querySelector("#email");
+            const cpfDoFetch = document.querySelector("#CPF");
+            const senhaDoFetch = document.querySelector("#senha");
+            
+            //A ordem é URL, nome, email, cpf, senha
+            darFetch(URL, nomeDoFetch.value, emailDoFetch.value, cpfDoFetch.value, senhaDoFetch.value);
+        }); 
+    }
+
         
 </script>
 </body>
