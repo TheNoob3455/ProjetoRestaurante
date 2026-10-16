@@ -267,14 +267,13 @@
             }
 
             if (cpfPassou === true && nomePassou === true && duasSenhasIguais === true && emailPassou === true){
-                const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
                 const nomeDoFetch = document.querySelector("#nome");
                 const emailDoFetch = document.querySelector("#email");
                 const cpfDoFetch = document.querySelector("#CPF");
                 const senhaDoFetch = document.querySelector("#senha");
                 
-                //A ordem é URL, nome, email, cpf, senha
-                darFetch(URL, nomeDoFetch.value, emailDoFetch.value, cpfDoFetch.value, senhaDoFetch.value);
+                //A ordem é nome, email, cpf, senha
+                darFetch(nomeDoFetch.value, emailDoFetch.value, cpfDoFetch.value, senhaDoFetch.value);
             }
         });
 
