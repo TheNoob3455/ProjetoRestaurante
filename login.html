@@ -194,7 +194,12 @@
             const senhaPegarFetch = document.getElementById("senha").value;
             
             pegarFetch(emailPegarFetch, cpfPegarFetch, senhaPegarFetch)
-            .then(resultado => { alert(resultado);
+            .then(resultado => {     
+                if (resultado === "Login bem-sucedido!") {
+                    window.location.href = "principal.html";
+                } else {
+                    alert(resultado);
+                }
             });
 
         });
