@@ -1,4 +1,5 @@
-export async function darFetch(URL, nome, email, cpf, senha) {
+export async function darFetch(nome, email, cpf, senha) {
+    const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
     const resposta = await fetch(URL, {
         method: "POST",
         headers: {
