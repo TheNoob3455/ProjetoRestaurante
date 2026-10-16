@@ -1,4 +1,4 @@
-async function darFetch(URL, nome, email, cpf, senha) {
+export async function darFetch(URL, nome, email, cpf, senha) {
     const resposta = await fetch(URL, {
         method: "POST",
         headers: {
