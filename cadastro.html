@@ -265,12 +265,8 @@
                 let texto = JSON.stringify(dados);
                 alert("Cadastro realizado com sucesso!\n" + texto);
             }
-        });
-        
-        if (cpfPassou === true && nomePassou === true && duasSenhasIguais === true && emailPassou === true){
-            const botaoCadastrar = document.querySelector("#cadastro");
-            botaoCadastrar.addEventListener("click", () => {
-            
+
+            if (cpfPassou === true && nomePassou === true && duasSenhasIguais === true && emailPassou === true){
                 const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
                 const nomeDoFetch = document.querySelector("#nome");
                 const emailDoFetch = document.querySelector("#email");
@@ -279,11 +275,8 @@
                 
                 //A ordem é URL, nome, email, cpf, senha
                 darFetch(URL, nomeDoFetch.value, emailDoFetch.value, cpfDoFetch.value, senhaDoFetch.value);
-            }); 
-        }
-        else {
-            alert("Não foi possível realizar o cadastro, verifique se todos os campos estão corretos.");
-        }
+            }
+        });
 
 </script>
 </body>
