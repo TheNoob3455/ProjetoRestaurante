@@ -173,39 +173,54 @@
         let erroCpf = document.getElementById("errocpf");
         let erroEmail = document.getElementById("erroEmail");
 
+        const senhaValidada = false;
+        const nomeValidado = false;
+        const cpfValidado = false;
+        const emailValidado = false;
+        const cSenhaValidado = false;
+
         
         if (nome.length < 3) {
             erroNome.textContent = "Nome tem que ter no mínimo 3 caracteres.";
             erroNome.style.color = "white";
+            nomeValidado = false;
         } else if (nome.length > 20) {
             erroNome.textContent = "Nome tem que ter no máximo 20 caracteres.";
             erroNome.style.color = "white";
+            nomeValidado = false;
         } else {
             erroNome.textContent = "";
+             nomeValidado = true;
         }
 
         
         if (!validarCPF(cpf)) {
             erroCpf.textContent = "Seu CPF não está correto ou é inválido.";
             erroCpf.style.color = "white";
+            cpfValidado = false;
         } else {
             erroCpf.textContent = "";
+            cpfValidado = true;
         }
 
         
         if (senha.length < 5) {
             erroSenha.textContent = "A senha tem que ter no mínimo 8 caracteres.";
             erroSenha.style.color = "white";
+            senhaValidada = false;
         } else {
             erroSenha.textContent = "";
+            senhaValidada = true;
         }
 
         
         if (senha !== csenha) {
             senhaIgual.textContent = "As senhas não coincidem.";
             senhaIgual.style.color = "white";
+            cSenhaValidado = false;
         } else {
             senhaIgual.textContent = "";
+            cSenhaValidado = true;
         }
 
         
@@ -229,8 +244,10 @@
          if (!validarEmail(email)) {
             erroEmail.textContent = "O e-mail tem que ser válido.";
             erroEmail.style.color = "white";
+             emailValidado = false;
         } else {
             erroEmail.textContent = "";
+             emailValidado = true;
         }
         
         if (erroNome.textContent === "" && erroCpf.textContent === "" && erroSenha.textContent === "" && senhaIgual.textContent === "" && erroEmail.textContent === "") {
@@ -244,7 +261,6 @@
             alert("Cadastro realizado com sucesso!\n" + texto);
         }
     });
-        //const cpfPassou = true / false
         
         //if (cpfPassou & nomePassou & senhaPassou & emailPassou){
             
