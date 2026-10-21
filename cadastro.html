@@ -158,7 +158,7 @@
         }
 
         let botao = document.getElementById("cadastro");
-        botao.addEventListener("click", function(event){
+        botao.addEventListener("click", async function(event){
             event.preventDefault();
 
             let cpf = document.getElementById("CPF").value;
@@ -267,7 +267,7 @@
                     alert ('Email existe')
                 }
                 else {
-                    darFetch(nomeDoFetch.value, emailDoFetch.value, cpfDoFetch.value, senhaDoFetch.value);
+                    await darFetch(nomeDoFetch.value, emailDoFetch.value, cpfDoFetch.value, senhaDoFetch.value);
                     window.location.href = "login.html";
                 } 
             }
