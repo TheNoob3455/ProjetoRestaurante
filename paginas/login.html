@@ -123,6 +123,8 @@
             pegarFetch(emailPegarFetch, senhaPegarFetch)
             .then(resultado => {     
                 if (resultado === "Login bem-sucedido!") {
+                    localStorage.setItem("usuarioEmail", emailPegarFetch);
+                    localStorage.setItem("senhaUsuario", senhaPegarFetch);
                     window.location.href = "principal.html";
                 } else if (emailPegarFetch == 'adm@yahoo.com' && senha == 'adm123') {
                     
