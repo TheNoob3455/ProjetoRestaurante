@@ -261,7 +261,7 @@
                 const cpfDoFetch = document.querySelector("#CPF");
                 const senhaDoFetch = document.querySelector("#senha");
 
-                const emailExiste = verificarEmailexiste(emailDoFetch.value)
+                const emailExiste = await verificarEmailexiste(emailDoFetch.value)
                 
                 if (emailExiste){
                     alert ('Email existe')
