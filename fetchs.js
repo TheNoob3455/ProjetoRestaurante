@@ -23,7 +23,7 @@ export async function darFetch(nome, email, cpf, senha) {
 
 // ---------------------------------------------------------------------------------
 
-export async function pegarFetch(email, cpf, senha) {
+export async function pegarFetch(email, senha) {
     const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
     const resposta = await fetch(URL);
 
@@ -32,13 +32,12 @@ export async function pegarFetch(email, cpf, senha) {
         for (let loop = 0; loop < cliente.length; loop++) {
             if (
                 cliente[loop].email === email &&
-                cliente[loop].cpf === cpf &&
                 cliente[loop].senha === senha
             ) {
                 return "Login bem-sucedido!";
             }
         }
-        return "Email, CPF ou senha incorretos.";
+        return "Email ou senha incorretos.";
     } else {
         const erro = await resposta.text();
         return "Erro do servidor (" + resposta.status + "): " + erro;
