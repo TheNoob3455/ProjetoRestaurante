@@ -260,11 +260,16 @@
                 const emailDoFetch = document.querySelector("#email");
                 const cpfDoFetch = document.querySelector("#CPF");
                 const senhaDoFetch = document.querySelector("#senha");
+
+                const emailExiste = verificarEmailexiste(emailDoFetch.value)
                 
-                //A ordem é nome, email, cpf, senha
-                darFetch(nomeDoFetch.value, emailDoFetch.value, cpfDoFetch.value, senhaDoFetch.value);
-                window.location.href = "login.html";
-                
+                if (emailexiste){
+                    alert ('Email existe')
+                }
+                else {
+                    darFetch(nomeDoFetch.value, emailDoFetch.value, cpfDoFetch.value, senhaDoFetch.value);
+                    window.location.href = "login.html";
+                } 
             }
         });
 
