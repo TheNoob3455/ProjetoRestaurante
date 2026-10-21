@@ -48,7 +48,7 @@ export async function pegarFetch(email, cpf, senha) {
 // ---------------------------------------------------------------------------------
 
 
-export async function verificarEmailexiste(cpf, email) {
+export async function CpfEmailexiste(cpf, email) {
     const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente'
     const resposta = await fetch(URL)
 
