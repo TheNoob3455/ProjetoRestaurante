@@ -119,18 +119,20 @@
             
             const emailPegarFetch = document.getElementById("email").value;
             const senhaPegarFetch = document.getElementById("senha").value;
+
+            if (emailPegarFetch == 'adm@yahoo.com' && senha == 'adm123') {
+                    
+                localStorage.setItem("usuarioEmail", emailPegarFetch);
+                localStorage.setItem("senhaUsuario", senhaPegarFetch);
+                
+                window.location.href = "principal.html";
+            }
             
             pegarFetch(emailPegarFetch, senhaPegarFetch)
             .then(resultado => {     
                 if (resultado === "Login bem-sucedido!") {
                     localStorage.setItem("usuarioEmail", emailPegarFetch);
                     localStorage.setItem("senhaUsuario", senhaPegarFetch);
-                    window.location.href = "principal.html";
-                } else if (emailPegarFetch == 'adm@yahoo.com' && senha == 'adm123') {
-                    
-                    localStorage.setItem("usuarioEmail", emailPegarFetch);
-                    localStorage.setItem("senhaUsuario", senhaPegarFetch);
-                    
                     window.location.href = "principal.html";
                 } else {
                     alert(resultado);
