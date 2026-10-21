@@ -264,12 +264,15 @@
                 const cpfEmailExiste = await CpfEmailexiste(cpfDoFetch.value, emailDoFetch.value)
                 
     
-                if (!cpfEmailExiste){
+                if (cpfEmailExiste == 'email usado') {
+                    alert("este email já está sendo usado!")
+                }
+                else if (cpfEmailExiste == 'cpf usado'){
+                    alert("este cpf já está sendo usado!")
+                }
+                else if (!cpfEmailExiste){
                     await darFetch(nomeDoFetch.value, emailDoFetch.value, cpfDoFetch.value, senhaDoFetch.value);
                     window.location.href = "login.html";
-                }
-                else {
-                    cpfEmailExiste
                 }
             }
         });
