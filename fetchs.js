@@ -47,7 +47,8 @@ export async function pegarFetch(email, cpf, senha) {
 
 // ---------------------------------------------------------------------------------
 
-export async function verificarEmailexiste(email) {
+
+export async function verificarEmailexiste(cpf, email) {
     const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente'
     const resposta = await fetch(URL)
 
@@ -55,7 +56,12 @@ export async function verificarEmailexiste(email) {
         const cliente = await resposta.json();
         for(let loop = 0; loop < cliente.length; loop++){
             if(cliente[loop].email == email) {
-                return true;
+                return alert('Este email já está sendo usado!');
+            }
+        }
+        for(let loop = 0; loop < cliente.length; loop++) {
+            if(cliente[loop].cpf == cpf) {
+                return alert('Este CPF já está sendo usado!')
             }
         }
         return false;
