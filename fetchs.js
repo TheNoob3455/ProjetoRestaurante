@@ -65,11 +65,8 @@ export async function verificarEmailexiste(email) {
             if(cliente[loop].email == email) {
                 return true;
             }
-            else {
-                return false;
-            }
         }
-
+        return false;
     }
 
 }
