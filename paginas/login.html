@@ -125,11 +125,11 @@
                 if (resultado === "Login bem-sucedido!") {
                     window.location.href = "principal.html";
                 } else if (emailPegarFetch == 'adm@yahoo.com' && senha == 'adm123') {
-                    window.location.href = "principal.html";
-
+                    
                     localStorage.setItem("usuarioEmail", emailPegarFetch);
                     localStorage.setItem("senhaUsuario", senhaPegarFetch);
                     
+                    window.location.href = "principal.html";
                 } else {
                     alert(resultado);
                 }
