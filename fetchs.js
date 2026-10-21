@@ -44,14 +44,6 @@ export async function pegarFetch(email, cpf, senha) {
         return "Erro do servidor (" + resposta.status + "): " + erro;
     }
 }
-const email = "jgdasneves23@gmail.com";
-const cpf = "136.448.229-05";
-const senha = "123456";
-
-pegarFetch(email, cpf, senha)
-.then(resultado => {
-    console.log(resultado)
-});
 
 // ---------------------------------------------------------------------------------
 
