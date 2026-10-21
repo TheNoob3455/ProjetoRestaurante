@@ -56,15 +56,14 @@ export async function CpfEmailexiste(cpf, email) {
         const cliente = await resposta.json();
         for(let loop = 0; loop < cliente.length; loop++){
             if(cliente[loop].email == email) {
-                return alert('Este email já está sendo usado!');
+                return 'email usado';
             }
         }
         for(let loop = 0; loop < cliente.length; loop++) {
             if(cliente[loop].cpf == cpf) {
-                return alert('Este CPF já está sendo usado!')
+                return 'cpf usado';
             }
         }
         return false;
     }
-
 }
