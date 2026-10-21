@@ -261,15 +261,13 @@
                 const cpfDoFetch = document.querySelector("#CPF");
                 const senhaDoFetch = document.querySelector("#senha");
 
-                const emailExiste = await verificarEmailexiste(emailDoFetch.value)
+                const cpfEmailExiste = await CpfEmailexiste(cpfDoFetch.value, emailDoFetch.value)
                 
-                if (emailExiste){
-                    alert ('Email existe')
-                }
-                else {
+    
+                if (!cpfEmailExiste){
                     await darFetch(nomeDoFetch.value, emailDoFetch.value, cpfDoFetch.value, senhaDoFetch.value);
                     window.location.href = "login.html";
-                } 
+                }
             }
         });
 
