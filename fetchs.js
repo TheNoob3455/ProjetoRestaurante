@@ -63,10 +63,10 @@ export async function verificarEmailexiste(email) {
         const cliente = await resposta.json();
         for(let loop = 0; loop < cliente.length; loop++){
             if(cliente[loop].email == email) {
-                return 'Este email já existe!!';
+                return true;
             }
             else {
-                return true;
+                return false;
             }
         }
 
