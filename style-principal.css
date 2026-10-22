@@ -1,0 +1,260 @@
+.opcoes {
+    width: 1100px;
+    height: 50px;
+    padding: 0 15px;
+    margin-top: 30px;
+
+    display: flex;
+    align-items: center;
+
+    box-sizing: border-box;
+    overflow: hidden;
+
+    background-color: rgba(15, 9, 9, 0.637);
+    border: 1px solid rgba(15, 9, 9, 0.637);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.opcoes img {
+    height: 55px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    margin: 0;
+    margin-right: 200px;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-image: url(img/Hambúrguer\ Grelhado\ com\ Fritas\ em\ Luz\ Cinematográfica.png);
+    background-size: cover;
+    background-position: center;
+
+    display: flex;
+    flex-direction: column;   
+    align-items: center;     
+}
+
+.inicio{
+     color: rgb(255, 72, 0);
+     margin-right: 20px;
+}
+
+.cardapio{
+     color: rgb(255, 255, 255);
+     margin-right: 20px;
+     text-decoration: none;
+}
+
+.sobreNos{
+    color: rgb(255, 255, 255);
+     margin-right: 20px;
+     text-decoration: none;
+}
+
+.carrinho{
+    color: rgb(255, 255, 255);
+     margin-right: 20px;
+     text-decoration: none;
+}
+
+.slogan {
+    display: flex;
+    align-items: start;
+    gap: 8px;
+    margin-top: 20px;
+    margin-left: 0px;
+    margin-right: 790px;
+}
+
+.slogan p {
+    font-size: small;
+    font-weight: bold;
+
+}
+
+.sabor{
+    color: rgb(255, 72, 0);
+}
+
+.qualidade{
+    color: rgb(253, 147, 60);
+}
+
+.sempre{
+    color: rgb(255, 72, 0);
+}
+
+.ponto{
+    color: rgb(253, 147, 60);
+}
+
+.titulo{
+    margin-top: 5px;
+    margin-left: 245px;
+    margin-right: 620px;
+    color: rgb(255, 72, 0);
+    margin-bottom: 0px;
+}
+
+.titulo2{
+    margin-top: 2px;
+    margin-left: 245px;
+    margin-right: 620px;
+    color: rgb(247, 247, 247);
+    margin-bottom: 10px;
+}
+
+.T{
+    font-size: xx-large;
+}
+
+.primeiro{
+    margin-top: 2px;
+    margin-left: 315px;
+   margin-right: 940px;
+    margin-bottom: 2px;
+
+}
+
+.segundo{
+    margin-top: 0px;
+    margin-left: 315px;
+    margin-right: 940px;
+    margin-bottom: 2px;
+
+}
+
+.terceiro{
+    margin-top: 0px;
+    margin-left: 315px;
+    margin-right: 940px;
+}
+
+p{
+    color: rgb(212, 143, 97);
+}
+
+.paragrafos{
+    font-size: larger;
+}
+
+button{
+    height: 45px;
+    width: 135px;
+    margin-left: 0px;
+    margin-right: 890px;
+    margin-top: 0px;
+    margin-bottom: 10px;
+    color: #ffff;
+    background-color: rgb(255, 72, 0);
+    border: none;
+    border-radius: 10px;
+}
+
+button {
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+button:hover {
+    background-color: rgb(225, 80, 25);
+    box-shadow: 0 0 12px rgba(255, 100, 30, 0.7);
+    transform: scale(1.04);
+}
+
+.informacoes {
+    width: 1200px;
+    min-height: 120px;
+    padding: 20px 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 20px;
+
+    box-sizing: border-box;
+    background-color: rgba(15, 9, 9, 0.637);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.item {
+    display: flex;
+    align-items: center;
+    
+
+    flex: 0 0 32%;
+    box-sizing: border-box;
+
+    border-right: 2px solid rgba(255, 100, 30, 0.4);
+    padding-right: 20px;
+}
+
+.item:last-child {
+    border-right: none;
+}
+
+.item img {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.textos {
+    display: flex;
+    flex-direction: column;
+   
+}
+
+.textos h1 {
+    font-size: 14px;
+    color: white;
+    margin: 0;
+}
+
+.textos p {
+    font-size: 13px;
+    color: white;
+    margin: 0;
+}
+
+.item {
+    margin-left: 105px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+
+    border-right: 2px solid rgba(255, 100, 30, 0.4);
+    padding-right: 20px;
+}
+
+
+.item:last-child {
+    border-right: none;
+}
+
+.icone{
+    margin-left: 25px;
+}
+
+hr{
+    margin-left: 200px;
+    margin-top: 20px;
+    width: 80px;
+    height: 6px;
+    background-color: rgb(255, 72, 0);
+    border: none;
+    border-radius: 5px;
+}
+
+h2{
+    margin-top: 0px;
+    color: #ffff;
+    font-size: 25px;
+}
