@@ -1,7 +1,7 @@
 body{
     margin: 0;
     min-height: 100vh;
-    background-image: url(img/Gradiente\ Abstrato\ em\ Tons\ de\ Fogo.png);
+    background-image: url("img/Gradiente\ Abstrato\ em\ Tons\ de\ Fogo.png");
     background-size: cover;
     background-position: center;
     display: flex;
@@ -195,7 +195,7 @@ img{
     border-radius: 0;
 
     background-color: transparent;
-    background-image: url("img/Ícone\ de\ olho\ oculto\ minimalista.png");
+    background-image: url("../img/Ícone\ de\ olho\ oculto\ minimalista.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
