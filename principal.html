@@ -9,15 +9,22 @@
 </head>
 
 <body>
-    
-        
 
         <div class="opcoes">
+
+
            <img src="img/Logo Chapa Quente em Chamas.png" alt="Chapa Quente">
+
+           <nav class="links">
             <a class="inicio" href="principal.html">Inicio</a>
             <a class="cardapio" href="cardapio.html">Cardápio</a>
-            <a class="sobreNos" href="sobreNos.html">Sobre nós</a>
+            <a class="pedir" href="pedir.html">Peça já</a>
             <a class="carrinho" href="carrinho.html">Meus Pedidos</a>
+            <a class="recompensas" href="recompensas.html">Recompensas</a>
+            <a class="sobreNos" href="sobreNos.html">Sobre nós</a>
+            </nav>
+
+            <button class="usu"></button>
 
 
         </div>
@@ -36,7 +43,7 @@
         <p class="terceiro">e muito mais, tudo feito com paixão por você.</p>
         </div>
 
-        <button type="button" onclick="location.href='cardapio.html'">Ver Cardápio</button>
+        <button type="button" class="ver-cardapio" onclick="location.href='cardapio.html'">Ver Cardápio</button>
 
        <div class="informacoes">
 
@@ -65,10 +72,149 @@
     </div>
     
 </div>
+
+    <div class="abaixo">
     <hr>
     <h2>Destaques do Cardápio</h2>
+    <button class="ver-tudo" onclick="location.href='cardapio.html'">Ver todos</button>
+</div>
 
-    <script>
+    
+
+    <div class="lanches">
+        <div class="carrossel">
+
+
+
+
+
+
+        <div class="classico">
+            <img src="img/Cheesebúrguer Artesanal com Vapor.png" alt="">
+            <div class="complemento">
+                <h3>Chapa Clássico</h3>
+                <p>Hámburguer artesanal, queijo, cheddar, alface, tomate, molho especial...</p>
+
+                <div class="kk">
+                    
+                <h4>R$ 29,90</h4>
+                <button class="carrinho"></button> 
+                
+                </div>
+
+            </div>
+        </div>
+
+        <div class="duplo">
+            <img src="img/Hambúrguer_Duplo_Gourmet_com_Bacon_e_Vapor-removebg-preview.png" alt="">
+            <div class="complemento">
+                <h3>Chapa Duplo</h3>
+                <p>Dois hambúrgueres, queijo cheddar, bacon, alface, molho especial...</p>
+
+                <div class="kk">
+                    <h4>R$ 39,90</h4>
+                    <button class="carrinho"></button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="bacon">
+            <img src="img/Hambúrguer_Gourmet_com_Bacon_e_Queijo_Derretido-removebg-preview.png" alt="">
+            <div class="complemento">
+                <h3>Chapa Bacon</h3>
+                <p>Hámburguer artesanal, bacon, queijo cheddar, alface, molho especial...</p>
+
+                <div class="kk">
+                    <h4>R$ 34,90</h4>
+                    <button class="carrinho"></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="combo">
+            <img src="img/Combo_de_Cheeseburger__Batatas_e_Refrigerante-removebg-preview.png" alt="">
+            <div class="complemento">
+                <h3>Combo Quente</h3>
+                <p>Hámberguer + batata frita + refrigerante lata</p>
+
+                <div class="kk">
+                    <h4>À partir de 44,90</h4>
+                    <button class="carrinho"></button>
+                </div>
+                </div>
+            </div>
+
+            
+
+
+            <div class="classico">
+            <img src="img/Cheesebúrguer Artesanal com Vapor.png" alt="">
+            <div class="complemento">
+                <h3>Chapa Clássico</h3>
+                <p>Hámburguer artesanal, queijo, cheddar, alface, tomate, molho especial...</p>
+
+                <div class="kk">
+                    
+                <h4>R$ 29,90</h4>
+                <button class="carrinho"></button> 
+                
+                </div>
+
+            </div>
+        </div>
+
+        <div class="duplo">
+            <img src="img/Hambúrguer_Duplo_Gourmet_com_Bacon_e_Vapor-removebg-preview.png" alt="">
+            <div class="complemento">
+                <h3>Chapa Duplo</h3>
+                <p>Dois hambúrgueres, queijo cheddar, bacon, alface, molho especial...</p>
+
+                <div class="kk">
+                    <h4>R$ 39,90</h4>
+                    <button class="carrinho"></button>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="bacon">
+            <img src="img/Hambúrguer_Gourmet_com_Bacon_e_Queijo_Derretido-removebg-preview.png" alt="">
+            <div class="complemento">
+                <h3>Chapa Bacon</h3>
+                <p>Hámburguer artesanal, bacon, queijo cheddar, alface, molho especial...</p>
+
+                <div class="kk">
+                    <h4>R$ 34,90</h4>
+                    <button class="carrinho"></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="combo">
+            <img src="img/Combo_de_Cheeseburger__Batatas_e_Refrigerante-removebg-preview.png" alt="">
+            <div class="complemento">
+                <h3>Combo Quente</h3>
+                <p>Hámberguer + batata frita + refrigerante lata</p>
+
+                <div class="kk">
+                    <h4>À partir de 44,90</h4>
+                    <button class="carrinho"></button>
+                </div>
+                </div>
+            </div>
+
+
+
+
+
+        </div>
+    </div>
+
+    </header>
+</body>
+</html>
+<script>
     let emailUtilizado = localStorage.getItem("usuarioEmail");
     let senhaUtilizada = localStorage.getItem("senhaUsuario");
 
@@ -76,7 +222,4 @@
         window.location.href = "login.html";
     } 
 
-    </script>
-    
-</body>
-</html>
+</script>
