@@ -1,0 +1,400 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff8f2;
+
+    background-image: url("img/Hambúrguer Grelhado com Fritas em Luz Cinematográfica.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+
+.menu-principal {
+    width: min(1100px, calc(100% - 40px));
+    min-height: 65px;
+    margin: 25px auto 22px;
+    padding: 10px 28px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+
+    background: rgba(22, 9, 7, 0.94);
+    border: 1px solid rgba(255, 140, 40, 0.18);
+    border-radius: 18px;
+}
+
+.logo-chapa {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.logo-imagem {
+    display: block;
+    width: 145px;
+    height: 48px;
+    object-fit: contain;
+}
+
+.links-menu {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    gap: 25px;
+}
+
+.links-menu a {
+    color: #fff2e9;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.links-menu a:hover {
+    color: #ff7424;
+}
+
+.pontos-menu {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 10px 14px;
+
+    background: #35100d;
+    border: 1px solid rgba(255, 174, 50, 0.65);
+    border-radius: 12px;
+
+    color: #ffd45c;
+    font-size: 13px;
+    font-weight: bold;
+    white-space: nowrap;
+}
+
+
+.pagina-recompensas {
+    width: min(1100px, calc(100% - 40px));
+    margin: 0 auto 30px;
+    padding: 25px;
+
+    border: 1px solid rgba(255, 174, 113, 0.45);
+    border-radius: 20px;
+
+    background: rgba(45, 12, 10, 0.30);
+}
+
+
+.cabecalho-recompensas {
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.icone-fogo {
+    margin-bottom: 5px;
+    font-size: 30px;
+}
+
+.cabecalho-recompensas h1 {
+    margin: 0;
+    color: #fff8f2;
+    font-size: 30px;
+}
+
+.cabecalho-recompensas > p {
+    margin: 8px 0 15px;
+    color: #ffddd0;
+    font-size: 14px;
+}
+
+
+.loja-recompensas {
+    width: 100%;
+}
+
+.titulo-secao {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    margin-bottom: 16px;
+}
+
+.titulo-secao h2 {
+    margin: 0;
+    color: #fff8f2;
+    font-size: 24px;
+}
+
+.titulo-secao p {
+    margin: 7px 0 0;
+    color: #f5d7cc;
+    font-size: 13px;
+}
+
+.etiqueta {
+    padding: 8px 12px;
+    border: 1px solid rgba(255, 205, 91, 0.5);
+    border-radius: 20px;
+
+    color: #ffd45c;
+    font-size: 10px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    white-space: nowrap;
+}
+
+
+.grade-produtos {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+
+.produto {
+    min-width: 0;
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 222, 204, 0.20);
+    border-radius: 14px;
+
+    background: rgba(49, 19, 17, 0.78);
+}
+
+
+.imagem-produto {
+    position: relative;
+    height: 100px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255, 222, 204, 0.15);
+
+    background:
+        radial-gradient(
+            circle at center,
+            rgba(255, 139, 36, 0.22),
+            transparent 65%
+        ),
+        rgba(48, 10, 10, 0.45);
+}
+
+.imagem-produto > span:first-child {
+    font-size: 48px;
+    line-height: 1;
+}
+
+
+.imagem-produto .selo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+
+    padding: 5px 9px;
+    border-radius: 5px;
+
+    background: #ffca46;
+    color: #5a1b0c;
+
+    font-size: 10px;
+    font-weight: bold;
+    line-height: 1.2;
+}
+
+.imagem-produto .selo-novo {
+    background: #ff6842;
+    color: #fff;
+}
+
+.informacoes-produto {
+    padding: 12px;
+}
+
+.informacoes-produto .categoria {
+    display: block;
+    margin-bottom: 6px;
+
+    color: #ffcb65;
+    font-size: 9px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    line-height: 1.4;
+}
+
+.informacoes-produto h3 {
+    margin: 0 0 7px;
+    color: #fff8f2;
+    font-size: 15px;
+    line-height: 1.3;
+}
+
+.informacoes-produto p {
+    margin: 0 0 12px;
+    color: #e8c9c0;
+
+    font-size: 12px;
+    line-height: 1.4;
+}
+
+
+.rodape-produto {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+
+    margin-top: 10px;
+    padding-top: 9px;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.preco-pontos {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+}
+
+.preco-pontos span {
+    font-size: 14px;
+}
+
+.preco-pontos strong {
+    color: #ffd35a;
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.botao-trocar {
+    flex-shrink: 0;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 8px;
+
+    background: linear-gradient(135deg, #ff9b22, #f04b20);
+    color: #fff;
+
+    font-size: 12px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.produto-especial {
+    border-color: rgba(255, 205, 74, 0.45);
+}
+
+
+.rodape-pagina {
+    margin-top: 25px;
+    color: #f6cbb9;
+    font-size: 12px;
+    text-align: center;
+}
+
+
+@media (max-width: 900px) {
+    .menu-principal {
+        padding: 12px 18px;
+    }
+
+    .links-menu {
+        gap: 14px;
+    }
+
+    .pagina-recompensas {
+        padding: 20px;
+    }
+
+    .grade-produtos {
+        gap: 10px;
+    }
+
+    .imagem-produto {
+        height: 90px;
+    }
+}
+
+
+@media (max-width: 700px) {
+    .menu-principal {
+        width: calc(100% - 20px);
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .links-menu {
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .links-menu a {
+        font-size: 12px;
+    }
+
+    .pontos-menu {
+        padding: 8px 10px;
+    }
+
+    .pagina-recompensas {
+        width: calc(100% - 20px);
+        padding: 16px 12px;
+    }
+
+    .cabecalho-recompensas h1 {
+        font-size: 25px;
+    }
+
+    .titulo-secao h2 {
+        font-size: 20px;
+    }
+
+    .grade-produtos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .informacoes-produto {
+        padding: 10px;
+    }
+
+    .informacoes-produto h3 {
+        font-size: 14px;
+    }
+
+    .informacoes-produto p {
+        font-size: 11px;
+    }
+
+    .rodape-produto {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 420px) {
+    .grade-produtos {
+        grid-template-columns: 1fr;
+    }
+
+    .imagem-produto {
+        height: 100px;
+    }
+
+    .rodape-produto {
+        flex-wrap: nowrap;
+    }
+}
