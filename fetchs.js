@@ -68,7 +68,7 @@ export async function CpfEmailexiste(cpf, email) {
 }
 
 
-/*
+
 
 export async function cadastrarProduto(nome, quantidade, tipo, valor) {
     const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/produto'
@@ -128,6 +128,8 @@ export async function removerProduto(nomeDoProduto) {
         return "erro"
     }
 }
+
+/*
 
 
 export async function cadastrarPedido(desconto, valor, valor_total, email) {
