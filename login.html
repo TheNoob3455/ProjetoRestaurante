@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="style-login.css">
+    <link rel="shortcut icon" href="img/Logo-Circular-Chapa-Quente.ico" type="image/x-icon">
+    <script>
+    window.turnstileToken = '';
+
+    window.turnstileSuccess = function(token) {
+        window.turnstileToken = token;
+
+        const erro = document.getElementById('erroCaptcha');
+        if (erro) erro.textContent = '';
+
+        console.log('Token do CAPTCHA recebido:', !!token);
+    };
+
+    window.turnstileExpired = function() {
+        window.turnstileToken = '';
+
+        const erro = document.getElementById('erroCaptcha');
+        if (erro) erro.textContent = 'A verificação expirou. Faça o CAPTCHA novamente.';
+    };
+
+    window.turnstileError = function() {
+        window.turnstileToken = '';
+
+        const erro = document.getElementById('erroCaptcha');
+        if (erro) erro.textContent = 'Não foi possível carregar o CAPTCHA.';
+    };
+</script>
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer onerror="turnstileError()"></script>
+    
+</head>
+
+<body>
+    <div class="boxzinho">
+        <img src="img/Ícone de Usuário Neon em Vidro.png" alt="">
+    <h1>Entrar</h1>
+    <p class="topo">Entre na sua conta para continuar</p>
+
+
+<div class="email">
+        <img src="img/Ícone de Envelope Branco Minimalista.png" alt="">
+        <input type="email" id="email" name="email" placeholder="Digite seu e-mail">
+   
+</div>
+
+<p id="erroEmail"></p>
+
+        <div class="senha">
+            <img src="img/Ícone de Cadeado Branco Minimalista.png" alt="">
+        <input type="password" id="senha" name="senha" placeholder="Digite sua senha">
+        <button type="button" id="mostrar" class="mostrarsenha"></button>
+
+</div>
+        <p id="erroSenha"></p>
+
+        <div class="cf-turnstile"
+             data-sitekey="0x4AAAAAAFrjVcpO6gvC-ZML"
+             data-callback="turnstileSuccess"
+             data-expired-callback="turnstileExpired"
+             data-error-callback="turnstileError"></div>
+        <p id="erroCaptcha" role="status" style="color: white;"></p>
+
+        <button type="button" id="login">Entrar</button>
+
+    
+
+    <p>
+        Ainda não possui uma conta?
+        <a href="cadastro.html">Cadastre-se</a>
+    </p>
+    
+</div>
+
+    <script type="module">
+        import { validarEmail } from "./funcoes.js";
+        import { pegarFetch } from "./fetchs.js";
+
+        const botaoLogin = document.getElementById("login");
+        const campoSenha = document.getElementById("senha");
+
+        botaoLogin.addEventListener("click", async function(event) {
+            event.preventDefault();
+
+            const email = document.getElementById("email").value.trim();
+            const senha = campoSenha.value;
+            const erroEmail = document.getElementById("erroEmail");
+            const erroSenha = document.getElementById("erroSenha");
+            const erroCaptcha = document.getElementById("erroCaptcha");
+
+            erroEmail.textContent = (!email || !validarEmail(email)) ? "O e-mail tem que ser válido." : "";
+            erroSenha.textContent = senha.length < 5 ? "A senha tem que ter no mínimo 5 caracteres." : "";
+            erroEmail.style.color = "white";
+            erroSenha.style.color = "white";
+
+            if (!email || !validarEmail(email) || senha.length < 5) return;
+
+            if (!window.turnstileToken) {
+                erroCaptcha.textContent = window.turnstile
+                    ? "Complete o CAPTCHA antes de entrar."
+                    : "O CAPTCHA não foi carregado. Atualize a página e tente novamente.";
+                return;
+            }
+
+            botaoLogin.disabled = true;
+            botaoLogin.textContent = "Entrando...";
+
+            try {
+                if (email.toLowerCase() === "adm@yahoo.com" && senha === "adm123") {
+                    localStorage.setItem("usuarioEmail", email);
+                    window.location.href = "principal.html";
+                    return;
+                }
+
+                const resultado = await pegarFetch(email, senha, window.turnstileToken);
+
+                if (resultado === "Login bem-sucedido!") {
+                    localStorage.setItem("usuarioEmail", email);
+                    window.location.href = "principal.html";
+                } else {
+                    alert(resultado);
+                    if (window.turnstile) window.turnstile.reset();
+                    window.turnstileToken = "";
+                }
+            } catch (erro) {
+                console.error(erro);
+                alert("Não foi possível conectar ao servidor.");
+                if (window.turnstile) window.turnstile.reset();
+                window.turnstileToken = "";
+            } finally {
+                botaoLogin.disabled = false;
+                botaoLogin.textContent = "Entrar";
+            }
+        });
+    </script>
+    
+</body>
+</html>
