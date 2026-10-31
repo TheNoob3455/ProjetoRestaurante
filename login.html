@@ -6,6 +6,7 @@
     <title>Login</title>
     <link rel="stylesheet" href="style-login.css">
     <link rel="shortcut icon" href="img/Logo-Circular-Chapa-Quente.ico" type="image/x-icon">
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
     
 </head>
 
@@ -32,6 +33,13 @@
 </div>
         <p id="erroSenha"></p>
 
+        <div class="cf-turnstile"
+             data-sitekey="0x4AAAAAAFrjVcpO6gvC-ZML"
+             data-callback="turnstileSuccess"
+             data-expired-callback="turnstileExpired"
+             data-error-callback="turnstileError"></div>
+        <p id="erroCaptcha" role="status" style="color: white;"></p>
+
         <button type="button" id="login">Entrar</button>
 
     
@@ -45,6 +53,22 @@
     <script type="module">
         import { pegarFetch } from './fetchs.js';
         import { validarEmail } from './funcoes.js';
+
+        // O token fica apenas no frontend por enquanto. O backend precisa validá-lo
+        // com a Secret Key para que o CAPTCHA ofereça proteção real.
+        window.turnstileToken = '';
+        window.turnstileSuccess = function(token) {
+            window.turnstileToken = token;
+            document.getElementById('erroCaptcha').textContent = '';
+        };
+        window.turnstileExpired = function() {
+            window.turnstileToken = '';
+            document.getElementById('erroCaptcha').textContent = 'A verificação expirou. Faça o CAPTCHA novamente.';
+        };
+        window.turnstileError = function() {
+            window.turnstileToken = '';
+            document.getElementById('erroCaptcha').textContent = 'Não foi possível carregar o CAPTCHA. Atualize a página e tente novamente.';
+        };
         
     
     
@@ -71,6 +95,11 @@
             let botao = document.getElementById("login");
             botao.addEventListener("click", function(event){
                 event.preventDefault();
+
+                if (!window.turnstileToken) {
+                    document.getElementById('erroCaptcha').textContent = 'Complete o CAPTCHA antes de entrar.';
+                    return;
+                }
     
                 
                 let senha = document.getElementById("senha").value;

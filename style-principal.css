@@ -12,10 +12,17 @@
     gap: 20px;
 
     box-sizing: border-box;
+    font-family: "Times New Roman", Times, serif;
 
     background-color: rgba(15, 9, 9, 0.637);
     border-radius: 20px;
     backdrop-filter: blur(10px);
+}
+
+.logo-chapa {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
 }
 
 .opcoes button {
@@ -34,6 +41,24 @@
     background-position: center;
 
     cursor: pointer;
+}
+
+.perfil-pontos {
+    display: flex;
+    align-items: center;
+    justify-self: end;
+    gap: 8px;
+}
+
+.opcoes .saldo-pontos {
+    padding: 8px 10px;
+    border: 1px solid rgba(255, 174, 50, 0.65);
+    border-radius: 12px;
+    background: rgba(53, 16, 13, 0.9);
+    color: #ffd45c;
+    font-size: 13px;
+    font-weight: bold;
+    white-space: nowrap;
 }
 
 .opcoes img {
@@ -63,6 +88,7 @@ body {
     align-items: center;
     justify-content: center;
     gap: 20px;
+    font-size: 16px;
 }
 
 .opcoes a {
@@ -72,10 +98,21 @@ body {
     flex-shrink: 0;
 }
 
-.inicio {
-
+.opcoes .inicio {
+    position: relative;
     color: rgb(255, 72, 0);
-    
+    text-decoration: none;
+}
+
+.opcoes .inicio::after {
+    position: absolute;
+    right: 0;
+    bottom: -7px;
+    left: 0;
+    height: 2px;
+    border-radius: 2px;
+    background-color: rgb(255, 72, 0);
+    content: "";
 }
 
 .cardapio {

@@ -1,5 +1,7 @@
-export async function darFetch(nome, email, cpf, senha) {
+
+export async function darFetch(nome, email, cpf, senha, token) {
     const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
+
     const resposta = await fetch(URL, {
         method: "POST",
         headers: {
@@ -9,19 +11,23 @@ export async function darFetch(nome, email, cpf, senha) {
             nome: nome,
             email: email,
             cpf: cpf,
-            senha: senha
+            senha: senha,
+            token: token
         })
     });
 
     if (resposta.ok) {
-    return console.log("Sucesso! Registro salvo no banco:", (await resposta.json()));
-
+        const dados = await resposta.json();
+        console.log("Sucesso! Registro salvo no banco:", dados);
+        return { ok: true, dados: dados };
     } else {
-    return console.error("Erro do servidor (" + resposta.status + "):", (await resposta.text()));
+        const erro = await resposta.text();
+        console.error("Erro do servidor (" + resposta.status + "):", erro);
+        return { ok: false, erro: erro };
     }
 }
 
-// ---------------------------------------------------------------------------------
+// --------------------------------------------------
 
 export async function pegarFetch(email, senha) {
     const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
@@ -29,6 +35,7 @@ export async function pegarFetch(email, senha) {
 
     if (resposta.ok) {
         const cliente = await resposta.json();
+
         for (let loop = 0; loop < cliente.length; loop++) {
             if (
                 cliente[loop].email === email &&
@@ -37,6 +44,7 @@ export async function pegarFetch(email, senha) {
                 return "Login bem-sucedido!";
             }
         }
+
         return "Email ou senha incorretos.";
     } else {
         const erro = await resposta.text();
@@ -44,34 +52,73 @@ export async function pegarFetch(email, senha) {
     }
 }
 
-// ---------------------------------------------------------------------------------
-
+// --------------------------------------------------
 
 export async function CpfEmailexiste(cpf, email) {
-    const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente'
-    const resposta = await fetch(URL)
+    const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
+    const resposta = await fetch(URL);
 
-    if (resposta.ok){
+    if (resposta.ok) {
         const cliente = await resposta.json();
-        for(let loop = 0; loop < cliente.length; loop++){
-            if(cliente[loop].email == email) {
+
+        for (let loop = 0; loop < cliente.length; loop++) {
+            if (cliente[loop].email === email) {
                 return 'email usado';
             }
         }
-        for(let loop = 0; loop < cliente.length; loop++) {
-            if(cliente[loop].cpf == cpf) {
+
+        for (let loop = 0; loop < cliente.length; loop++) {
+            if (cliente[loop].cpf === cpf) {
                 return 'cpf usado';
             }
         }
+
         return false;
     }
+
+    throw new Error("Não foi possível consultar os clientes.");
 }
 
 
 
+/*
+export async function criarPrato(id_pedido, id_produto) {
+    const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/prato';
+    const resposta = await fetch(URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ 
+            id_pedido: id_pedido, 
+            id_produto: id_produto
+        })
+    });
 
-export async function cadastrarProduto(nome, quantidade, tipo, valor) {
-    const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/produto'
+    if (resposta.ok) {
+        return console.log('Prato criado com sucesso!');
+    }
+    else {
+        return console.log('Erro ao criar prato.' + resposta.status);
+    }
+}
+
+export async function removerPrato(id_prato) {
+    const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/prato';
+    const resposta = await fetch(URL, {
+    method: 'DELETE',
+    });
+
+    if (resposta.ok) {
+        return console.log('Prato removido com sucesso!');
+    }
+    else {
+        return console.log('Erro ao remover prato.' + resposta.status);
+    }
+}
+
+export async function adicionarProdutos(nome, quantidade, tipo_produto, valor) {
+    const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/produto';
     const resposta = await fetch(URL, {
         method: "POST",
         headers: {
@@ -80,86 +127,69 @@ export async function cadastrarProduto(nome, quantidade, tipo, valor) {
         body: JSON.stringify({
             nome: nome,
             quantidade: quantidade,
-            tipo_produto: tipo,
+            tipo_produto: tipo_produto,
             valor: valor
-        }) 
+        })
     });
 
     if (resposta.ok) {
-        console.log("deu tudo certo tropa");
-        return "ok";
-    }
-    else {
-        console.log("deu erro rapaziada: " + resposta.status);
-        return "erro";
+        return console.log('Produto adicionado com sucesso!');
+    } else {
+        return console.log('Erro ao adicionar produto.' + resposta.status);
     }
 }
 
-export async function removerProduto(nomeDoProduto) {
-    const URL = `https://projeto-restaurante-backend-5mhl.onrender.com/produto`
-    const respostaDoProduto = await fetch(URL)
-
-    let idProduto;
-
-    if (respostaDoProduto.ok) {
-        const produto = await respostaDoProduto.json();
-
-        for (let loop = 0; loop < produto.length; loop++){
-            if (produto[loop].nome == nomeDoProduto) {
-                idProduto = produto[loop].id_Produto;
-                console.log(idProduto);
-            }
-        }
-    }
-    else {
-        console.log("deu erro no resposta produto tropa: " + respostaDoProduto.status)
-    }
-    const URLproduto = `https://projeto-restaurante-backend-5mhl.onrender.com/produto/${idProduto}`
-    const respostaDoDelete = await fetch(URLproduto, {
+export async function removerProduto(id_produto) {
+    const URL = `https://projeto-restaurante-backend-5mhl.onrender.com/produto`;
+    const resposta = await fetch(URL, {
         method: "DELETE",
     });
 
-    if (respostaDoDelete.ok) {
-        console.log("Deu certo tropa");
-        return "ok";
+    if (resposta.ok) {
+        return console.log('Produto removido com sucesso!');
     }
     else {
-        console.log("deu erro no resposta delete tropa: " + respostaDoDelete.status);
-        return "erro"
+        return console.log('Erro ao remover produto.' + resposta.status);
     }
 }
 
-/*
-
-
-export async function cadastrarPedido(desconto, valor, valor_total, email) {
-    const URLcliente //continuar daqui
-
-
-
-
-
-
-    const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/pedido'
-    const resposta = await fetch(URL, 
-        { method: "POST", 
-        headers: {"Content-Type": "application/json"},
-        body: JSON.stringify({
-            desconto: desconto,
-            valor: valor,
-            valorTotal: valor_total,
-            id_Cliente: idcliente
-        }) 
-    })
+export async function verCarrinho(id_pedido) {
+    const URL = `https://projeto-restaurante-backend-5mhl.onrender.com/pedido/${id_pedido}`;
+    const resposta = await fetch(URL);
 
     if (resposta.ok) {
-        console.log("Deu certo ao cadastrar pedido tropa!")
+        const dados = await resposta.json();
+        return dados;
     }
-    else{
-        console.log("Deu errado ao cadastrar pedido tropa ;c : " + resposta.status)
+    else {
+        return console.log('Erro ao buscar carrinho.' + resposta.status);
     }
 }
 
-cadastrarPedido(0, 10, 10);
+export async function criarPedido(desconto, valor, valor_total, id_cliente, id_produto) {
+    const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/pedido';
+    const resposta = await fetch(URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ 
+            desconto: desconto,
+            valor: valor,
+            valor_total: valor_total,
+            id_cliente: id_cliente,
+            produto: id_produto 
+        })
+    });
+
+    if (resposta.ok) {
+        return console.log('Pedido criado com sucesso!');
+    }
+    else {
+        return console.log('Erro ao criar pedido.' + resposta.status);
+    }
+}
+
+criarPedido(10, 50.0, 45.0, 4, 2);
 
 */

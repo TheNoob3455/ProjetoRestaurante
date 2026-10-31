@@ -13,10 +13,12 @@
         <div class="opcoes">
 
 
-           <img src="img/Logo Chapa Quente em Chamas.png" alt="Chapa Quente">
+           <a class="logo-chapa" href="principal.html" aria-label="Voltar para o início">
+               <img src="img/Logo Chapa Quente em Chamas.png" alt="Chapa Quente">
+           </a>
 
-           <nav class="links">
-            <a class="inicio" href="principal.html">Inicio</a>
+           <nav class="links" aria-label="Navegação principal">
+            <a class="inicio" href="principal.html" aria-current="page">Inicio</a>
             <a class="cardapio" href="cardapio.html">Cardápio</a>
             <a class="pedir" href="pedir.html">Peça já</a>
             <a class="carrinho" href="carrinho.html">Meus Pedidos</a>
@@ -24,7 +26,10 @@
             <a class="sobreNos" href="sobreNos.html">Sobre nós</a>
             </nav>
 
-            <button class="usu"></button>
+            <div class="perfil-pontos">
+                <button class="usu" type="button" aria-label="Perfil"></button>
+                <span class="saldo-pontos">⭐ 500 pontos</span>
+            </div>
 
 
         </div>
