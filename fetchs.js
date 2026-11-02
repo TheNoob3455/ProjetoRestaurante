@@ -71,7 +71,7 @@ export async function pegarFetch(email, senha, token) {
     });
 
     if (respostaHash.ok) {
-        resultado = await respostaHash.json();
+        let resultado = await respostaHash.json();
         if (resultado == true) {
             return true;
         } else {
