@@ -95,9 +95,14 @@
             emailValidado = true;
         }
 
-    if (senhaValidada && emailValidado) {
-        pegarfetch(email, senha);
-    }
-
+        if (senhaValidada && emailValidado) {
+            let resultado = pegarfetch(email, senha);
+            if (resultado === "ok") {
+                    console.log("login realizado com sucesso!");
+                    window.location.href = "principal.html";
+                } else {
+                    console.log("Erro ao fazer login");
+                }
+        }
     });
 </script>
