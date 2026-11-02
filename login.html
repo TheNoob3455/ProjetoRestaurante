@@ -53,7 +53,7 @@
 <script type="module"> 
 
     import { validarEmail } from './funcoes.js';
-    import { pegarFetch } from './fetchs.js';
+    import { pegarFetch, Hash } from './fetchs.js';
 
     let mostrar = document.getElementById("mostrar");
     let senhaOculta = document.getElementById("senha");
@@ -128,7 +128,8 @@
         
         if (senhaValidada && emailValidado) {
             let resultado = await pegarFetch(email, senha);
-            if (resultado) {
+            let resultadoHash = await Hash(token, senha);
+            if (resultado && resultadoHash) {
                     console.log("login realizado com sucesso!");
                     window.location.href = "principal.html";
                 } else {
