@@ -134,6 +134,32 @@ export async function Hash(token, senha) {
     }
 }
 
+// --------------------------------------------------------------------------------- // ---------------------------------------------------------------------------------
+
+export async function confirmarES(email, senha, opcao){
+    const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
+    const resposta = await fetch(URL);
+
+    if (resposta.ok) {
+        const cliente = await resposta.json();
+        for (let loop = 0; loop < cliente.length; loop++) {
+            if (opcao === 'email' && cliente[loop].email === email) {
+                return true;
+            }
+            else if (opcao === 'senha' && cliente[loop].senha === senha) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+    }
+    else {
+        console.error("Erro ao buscar clientes: ", resposta.status);
+        return "erro";
+    }    
+}
+
 
 
 /*
