@@ -10,6 +10,8 @@
 </head>
 
 <body>
+    <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+
     <div class="boxzinho">
     <img src="img/Ícone Glossy de Adicionar Usuário.png" alt="">
     <h1>Cadastro</h1>
@@ -59,6 +61,8 @@
     </div>
     <p id="senhaigual"></p>
 
+    <div class="cf-turnstile" data-sitekey="0x4AAAAAAFwJ3SDm_0wdNBwN"></div>
+
     <div>
         <button type="button" id="cadastro">Cadastrar</button>
     </div>
@@ -70,10 +74,19 @@
         <a href="login.html">Entrar</a>
     </p>
     </div>
+
     <script type="module">
 
     import { darFetch, CpfEmailexiste } from './fetchs.js';
     import { validarCPF, validarEmail } from './funcoes.js';
+
+    document.getElementById('form-cadastro').addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        const formData = new FormData(event.target);
+        const token = formData.get('cf-turnstile-response');
+    });
+
     
     let CPFbonitinho = document.getElementById("CPF");
 
@@ -228,7 +241,7 @@
         
 
         if (nomeValidado && cpfValidado && senhaValidada && emailValidado) {
-            darFetch(nome, email, cpf, senha);
+            darFetch(nome, email, cpf, senha, token);
         }
     });
         
