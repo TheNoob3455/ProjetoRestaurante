@@ -100,16 +100,9 @@
             erroEmail.style.color = "white";
             emailValidado = false;
         } else {
-            let verificarEmail = await pegarFetch(email, senha, token, "email");
-            if(verificarEmail == false) {
-                erroEmail.textContent = "Email incorreto.";
-                erroEmail.style.color = "white";
-                emailValidado = false;
-            }
-            else{
-                erroEmail.textContent = "";
-                emailValidado = true;
-            }
+            erroEmail.textContent = "";
+            emailValidado = true;
+
         }
         
         
