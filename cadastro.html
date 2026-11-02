@@ -79,15 +79,7 @@
 
     import { darFetch, CpfEmailexiste } from './fetchs.js';
     import { validarCPF, validarEmail } from './funcoes.js';
-
-    document.getElementById('form-cadastro').addEventListener('submit', async function(event) {
-        event.preventDefault();
-
-        const formData = new FormData(event.target);
-        const token = formData.get('cf-turnstile-response');
-    });
-
-    
+  
     let CPFbonitinho = document.getElementById("CPF");
 
     CPFbonitinho.addEventListener("input", function(){
@@ -238,6 +230,10 @@
                 emailValidado = true;
             }
         }
+
+        const form = document.getElementById('form-cadastro');
+        const formData = new FormData(form);
+        let token = formData.get('cf-turnstile-response');
         
 
         if (nomeValidado && cpfValidado && senhaValidada && emailValidado) {
