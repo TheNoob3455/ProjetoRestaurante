@@ -40,8 +40,11 @@
 </html>
 
 <script>
-    
-let mostrar = document.getElementById("mostrar");
+
+    import { validarEmail } from './funcoes.js';
+    import { pegarFetch } from './fetchs.js';
+
+    let mostrar = document.getElementById("mostrar");
     let senhaOculta = document.getElementById("senha");
     let confirmarOculta = document.getElementById("confirmar-senha");
     let mostrar2 = document.getElementById("mostrar2");
@@ -61,23 +64,6 @@ let mostrar = document.getElementById("mostrar");
         }
     });
 
-      function validarEmail(email) {
-    const regex = /^[^\s@]+@gmail\.com$/;
-    const regex2 = /^[^\s@]+@hotmail\.com$/;
-    const regex3 = /^[^\s@]+@yahoo\.com$/;
-    const regex4 = /^[^\s@]+@outlook\.com$/;
-    const regex5 = /^[^\s@]+@icloud\.com$/;
-    const regex6 = /^[^\s@]+@proton\.me$/;
-    
-        if (regex.test(email) || regex2.test(email) || regex3.test(email) || regex4.test(email) || regex5.test(email) || regex6.test(email)) {
-            return true;
-        } else {
-            return false;
-        }
-    return regex.test(email);
-}
-
-
 
     let botao = document.getElementById("login");
     botao.addEventListener("click", function(event){
@@ -89,12 +75,16 @@ let mostrar = document.getElementById("mostrar");
         
         let erroSenha = document.getElementById("erroSenha");
         let erroEmail = document.getElementById("erroEmail");
+
+        let senhaValidada = false;
+        let emailValidado = false;
         
-        if (senha.length < 8) {
-            erroSenha.textContent = "A senha tem que ter no mínimo 8 caracteres.";
+        if (senha.length < 5) {
+            erroSenha.textContent = "A senha tem que ter no mínimo 5 caracteres.";
             erroSenha.style.color = "white";
         } else {
             erroSenha.textContent = "";
+            senhaValidada = true;
         }
 
         if (email.regex === "" || !validarEmail(email)) {
@@ -102,7 +92,12 @@ let mostrar = document.getElementById("mostrar");
             erroEmail.style.color = "white";
         } else {
             erroEmail.textContent = "";
+            emailValidado = true;
         }
+
+    if (senhaValidada && emailValidado) {
+        pegarfetch(email, senha);
+    }
 
     });
 </script>
