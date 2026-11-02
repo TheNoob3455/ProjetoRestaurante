@@ -121,13 +121,18 @@
             if (resultado) {
                     console.log("login realizado com sucesso!");
                     window.location.href = "principal.html";
-                } else {
-                    console.log("Erro ao fazer login");
-                    erroSenha.textContent = "Senha incorreta.";
-                    erroSenha.style.color = "white";
-                    senhaValidada = false;
+                } else if (resultado == "email") {
+                    console.log("Erro ao fazer login - email");
+                    erroEmail.textContent = "E-mail incorreto .";
+                    erroEmail.style.color = "white";
                 
                     turnstile.reset();
+                } else if (resultado == "senha") {
+                    console.log("Erro ao fazer login - senha");
+                    erroSenha.textContent = "Senha incorreta.";
+                    erroSenha.style.color = "white";
+
+                    turnstile.reset()
                 }
         }
     });
