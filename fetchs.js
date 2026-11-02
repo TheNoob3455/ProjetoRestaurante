@@ -28,7 +28,7 @@ export async function darFetch(nome, email, cpf, senha, token) {
 
 // --------------------------------------------------
 
-export async function pegarFetch(email, senha) {
+export async function pegarFetch(email, senha, opcao) {
     const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
     const resposta = await fetch(URL);
 
@@ -40,7 +40,15 @@ export async function pegarFetch(email, senha) {
                 cliente[loop].email === email &&
                 cliente[loop].senha === senha
             ) {
-                return true;
+                if (opcao == "senha") {
+                    return "senha";
+                }
+                else if (opcao == "email") {
+                    return "email";
+                }
+                else {
+                    return true;
+                }
             }
         }
         return false;
