@@ -118,19 +118,8 @@
             erroSenha.style.color = "white";
             senhaValidada = false;
         } else {
-            let verificarSenha = await pegarFetch(email, senha, token, "senha");
-            if(verificarSenha == false) {
-                erroSenha.textContent = "Senha incorreta.";
-                erroSenha.style.color = "white";
-                senhaValidada = false;
-
-                turnstile.reset();
-
-            }
-            else{
-                erroSenha.textContent = "";
-                senhaValidada = true;
-            }
+            erroSenha.textContent = "";
+            senhaValidada = true;
         }
 
 
@@ -141,6 +130,10 @@
                     window.location.href = "principal.html";
                 } else {
                     console.log("Erro ao fazer login");
+                    erroSenha.textContent = "Senha incorreta.";
+                    erroSenha.style.color = "white";
+                    senhaValidada = false;
+                
                     turnstile.reset();
                 }
         }
