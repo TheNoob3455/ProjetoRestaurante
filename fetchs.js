@@ -60,7 +60,7 @@ export async function pegarFetch(email, senha, token) {
 
     if (clienteAtual == null) {
         console.log("Não existe nenhum cliente com esse e-mail");
-        return false;
+        return "email";
     }
     else {
         console.log("Existe um cliente com esse e-mail");
