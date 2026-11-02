@@ -82,11 +82,11 @@ export async function pegarFetch(email, senha, token) {
 
     if (respostaHash.ok) {
         let resultado = await respostaHash.json();
-        if (resultado == true) {
-            console.log(resultado);
+        console.log("Resultado do hash:", resultado);
+
+        if (resultado.autenticado == true) {
             return true;
         } else {
-            console.log(resultado);
             return false;
         }
     } else {
