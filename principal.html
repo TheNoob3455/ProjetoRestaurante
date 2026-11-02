@@ -354,15 +354,32 @@ async function criarCarrosel() {
 
 function criarCard(produto, isClone) {
     const cardDiv = document.createElement("div");
-    // Garante uma classe padrão caso o tipo venha vazio
+    // Usa o tipo_produto vindo do Java para definir a classe CSS (ex: classico, duplo, bacon, etc.)
     cardDiv.className = produto.tipo_produto || "classico"; 
 
     if (isClone) {
         cardDiv.setAttribute("aria-hidden", "true");
     }
 
+    // Como o back-end não envia imagem e descrição, mapeamos com base no nome do produto:
+    let imagemSrc = "img/Cheesebúrguer Artesanal com Vapor.png";
+    let descricaoTexto = "Hambúrguer artesanal feito com ingredientes selecionados.";
+
+    const nomeLower = produto.nome ? produto.nome.toLowerCase() : "";
+
+    if (nomeLower.includes("duplo")) {
+        imagemSrc = "img/Hambúrguer_Duplo_Gourmet_com_Bacon_e_Vapor-removebg-preview.png";
+        descricaoTexto = "Dois hambúrgueres, queijo cheddar, bacon, alface e molho especial.";
+    } else if (nomeLower.includes("bacon")) {
+        imagemSrc = "img/Hambúrguer_Gourmet_com_Bacon_e_Queijo_Derretido-removebg-preview.png";
+        descricaoTexto = "Hambúrguer artesanal, bacon, queijo cheddar, alface e molho especial.";
+    } else if (nomeLower.includes("combo")) {
+        imagemSrc = "img/Combo_de_Cheeseburger__Batatas_e_Refrigerante-removebg-preview.png";
+        descricaoTexto = "Hambúrguer, batata frita e refrigerante em lata.";
+    }
+
     const img = document.createElement("img");
-    img.src = produto.imagem;
+    img.src = imagemSrc;
     img.alt = isClone ? "" : produto.nome;
 
     const complementoDiv = document.createElement("div");
@@ -372,13 +389,16 @@ function criarCard(produto, isClone) {
     h3.textContent = produto.nome;
 
     const p = document.createElement("p");
-    p.textContent = produto.descricao;
+    p.textContent = descricaoTexto;
 
     const kkDiv = document.createElement("div");
     kkDiv.className = "kk";
 
     const h4 = document.createElement("h4");
-    h4.textContent = produto.preco;
+    
+    // Converte o Double 'valor' do Java para o formato de moeda (R$ XX,XX)
+    const valorFormatado = (produto.valor || 0).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    h4.textContent = valorFormatado;
 
     const button = document.createElement("button");
     button.className = "botao-carrinho";
@@ -403,7 +423,6 @@ function criarCard(produto, isClone) {
     return cardDiv;
 }
 
-// Chamada correta da função principal ao carregar a página
+// Chamada da função principal ao carregar a página
 document.addEventListener("DOMContentLoaded", criarCarrosel);
-
 </script>
