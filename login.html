@@ -99,7 +99,7 @@
             }
         }
 
-        if (email.regex === "" || !validarEmail(email)) {
+        if (email === "" || !validarEmail(email)) {
             erroEmail.textContent = "O e-mail tem que ser válido.";
             erroEmail.style.color = "white";
             emailValidado = false;
