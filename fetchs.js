@@ -28,7 +28,7 @@ export async function darFetch(nome, email, cpf, senha, token) {
 
 // --------------------------------------------------
 
-export async function pegarFetch(email, senha, token, opcao) {
+export async function pegarFetch(email, senha, token) {
     const URLcliente = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
     const respostaCliente = await fetch(URLcliente);
 
@@ -57,15 +57,13 @@ export async function pegarFetch(email, senha, token, opcao) {
         return "erro";
     }
 
-    if (opcao == "email") {
-        if (clienteAtual == null) {
-            console.log("Não existe nenhum cliente com esse e-mail");
-            return false;
-        }
-        else {
-            console.log("Existe um cliente com esse e-mail");
-            return true;
-        }
+
+    if (clienteAtual == null) {
+        console.log("Não existe nenhum cliente com esse e-mail");
+        return false;
+    }
+    else {
+        console.log("Existe um cliente com esse e-mail");
     }
 
     const URLhash = `https://projeto-restaurante-backend-5mhl.onrender.com/cliente/${clienteAtual.id_Cliente}`;
@@ -79,6 +77,8 @@ export async function pegarFetch(email, senha, token, opcao) {
             senhaDigitada: senha
         })
     });
+
+    console.log("Resposta do hash:", respostaHash);
 
     if (respostaHash.ok) {
         let resultado = await respostaHash.json();
