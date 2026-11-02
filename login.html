@@ -53,7 +53,7 @@
 <script type="module"> 
 
     import { validarEmail } from './funcoes.js';
-    import { pegarFetch } from './fetchs.js';
+    import { pegarFetch, confirmarES } from './fetchs.js';
 
     let mostrar = document.getElementById("mostrar");
     let senhaOculta = document.getElementById("senha");
@@ -100,7 +100,7 @@
             erroSenha.style.color = "white";
             senhaValidada = false;
         } else {
-            if((await pegarFetch(email, senha, token)) == "senha") {
+            if(!(await confirmarES(email, senha, "senha"))) {
                 erroEmail.textContent = "Senha incorreta.";
                 erroEmail.style.color = "white";
                 senhaValidada = false;
@@ -116,7 +116,7 @@
             erroEmail.style.color = "white";
             emailValidado = false;
         } else {
-            if((await pegarFetch(email, senha, token)) == "email") {
+            if(!(await confirmarES(email, senha, "email"))) {
                 erroEmail.textContent = "Email incorreto.";
                 erroEmail.style.color = "white";
                 emailValidado = false;
