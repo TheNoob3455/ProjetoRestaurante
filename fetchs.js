@@ -54,7 +54,7 @@ export async function pegarFetch(email, senha, token) {
 
     else {
         console.error("Erro ao buscar clientes: ", respostaCliente.status);
-        return "erro";
+        return false;
     }
 
 
@@ -91,7 +91,7 @@ export async function pegarFetch(email, senha, token) {
         }
     } else {
         console.error("Erro ao buscar clientes: ", respostaHash.status);
-        return "erro";
+        return false;
     }
 }
 // --------------------------------------------------
