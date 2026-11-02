@@ -100,7 +100,7 @@
             erroSenha.style.color = "white";
             senhaValidada = false;
         } else {
-            if(pegarFetch(email, senha, token) == "senha") {
+            if((await pegarFetch(email, senha, token)) == "senha") {
                 erroEmail.textContent = "Senha incorreta.";
                 erroEmail.style.color = "white";
                 senhaValidada = false;
@@ -116,7 +116,7 @@
             erroEmail.style.color = "white";
             emailValidado = false;
         } else {
-            if(pegarFetch(email, senha, token) == "email") {
+            if((await pegarFetch(email, senha, token)) == "email") {
                 erroEmail.textContent = "Email incorreto.";
                 erroEmail.style.color = "white";
                 emailValidado = false;
