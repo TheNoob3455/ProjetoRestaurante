@@ -1,0 +1,87 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background-image: url("img/Hambúrguer Grelhado com Fritas em Luz Cinematográfica.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+}
+
+
+
+.opcoes {
+    position: relative;
+
+    width: 76%;
+    min-height: 60px;
+    margin-top: 30px;
+    padding: 0 20px;
+
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 20px;
+
+    background-color: rgba(15, 9, 9, 0.637);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.opcoes img {
+    height: 55px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    justify-self: start;
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.opcoes a {
+    color: white;
+    text-decoration: none;
+}
+
+.opcoes .inicio {
+    color: white;
+}
+
+.opcoes .carrinho {
+    color: rgb(255, 72, 0);
+}
+
+.opcoes a:hover {
+    color: rgb(255, 72, 0);
+}
+
+.opcoes .usu {
+    width: 40px;
+    height: 40px;
+
+    justify-self: end;
+
+    border: none;
+    background-color: transparent;
+    background-image: url("img/Ícone de Perfil Neon Incandescente.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    cursor: pointer;
+}

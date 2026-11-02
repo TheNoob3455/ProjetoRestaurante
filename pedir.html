@@ -1,0 +1,377 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapa Quente - Cardápio</title>
+
+    <link rel="stylesheet" href="style-pedir.css">
+    <link rel="shortcut icon" href="img/Logo-Circular-Chapa-Quente.ico" type="image/x-icon">
+    <script src="script-pedir.js" defer></script>
+</head>
+
+<body>
+
+    <div class="opcoes">
+
+        <img src="img/Logo Chapa Quente em Chamas.png" alt="Chapa Quente">
+
+        <nav class="links">
+            <a class="inicio" href="principal.html">Início</a>
+            <a class="pedir" href="pedir.html">Peça já</a>
+            <a class="carrinho" href="carrinho.html">Meus Pedidos</a>
+            <a class="recompensas" href="recompensas.html">Recompensas</a>
+            <a class="sobreNos" href="sobreNos.html">Sobre nós</a>
+        </nav>
+
+        <button class="usu" aria-label="Perfil"></button>
+
+    </div>
+
+    
+    <div class="titulo-cardapio">
+        <h1>Nosso Cardápio</h1>
+        <p>Escolha seus favoritos e aproveite!</p>
+    </div>
+
+    
+    <div class="escolhas">
+
+        <button class="ativo" onclick="selecionarCategoria('todos', this)">Todos</button>
+
+        <button onclick="selecionarCategoria('hamburguer', this)">Hambúrgueres</button>
+
+        <button onclick="selecionarCategoria('sobremesas', this)">Sobremesas</button>
+
+        <button onclick="selecionarCategoria('bebidas', this)">Bebidas</button>
+
+        <button onclick="selecionarCategoria('combos', this)">Combos</button>
+
+        <button onclick="selecionarCategoria('outros', this)">Outros</button>
+
+    </div>
+
+    
+    <div class="produtos">
+
+
+        <div class="produto hamburguer">
+            <img src="img/Cheesebúrguer Artesanal com Vapor.png" alt="Chapa Clássico">
+
+            <div class="complemento">
+                <h3>Chapa Clássico</h3>
+                <p>Hambúrguer artesanal, queijo, cheddar, alface, tomate e molho especial.</p>
+
+                <div class="preco">
+                    <h4>R$ 29,90</h4>
+                    <button onclick="abrirModal('Chapa Clássico', 29.90)">Adicionar +</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="produto hamburguer">
+            <img src="img/Hambúrguer_Duplo_Gourmet_com_Bacon_e_Vapor-removebg-preview.png" alt="Chapa Duplo">
+
+            <div class="complemento">
+                <h3>Chapa Duplo</h3>
+                <p>Dois hambúrgueres, queijo cheddar, bacon, alface e molho especial.</p>
+
+                <div class="preco">
+                    <h4>R$ 39,90</h4>
+                    <button onclick="abrirModal('Chapa Duplo', 39.90)">Adicionar +</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="produto hamburguer">
+            <img src="img/Hambúrguer_Gourmet_com_Bacon_e_Queijo_Derretido-removebg-preview.png" alt="Chapa Bacon">
+
+            <div class="complemento">
+                <h3>Chapa Bacon</h3>
+                <p>Hambúrguer artesanal, bacon, queijo cheddar, alface e molho especial.</p>
+
+                <div class="preco">
+                    <h4>R$ 34,90</h4>
+                    <button onclick="abrirModal('Chapa Bacon', 34.90)">Adicionar +</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="produto hamburguer">
+            <div class="imagem-provisoria"></div>
+
+            <div class="complemento">
+                <h3>Chapa Egg</h3>
+                <p>Hambúrguer bovino, ovo, queijo, alface e maionese temperada.</p>
+
+                <div class="preco">
+                    <h4>R$ 25,90</h4>
+                    <button onclick="abrirModal('Chapa Egg', 25.90)">Adicionar +</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="produto hamburguer">
+            <div class="imagem-provisoria"></div>
+
+            <div class="complemento">
+                <h3>Frango Crocante</h3>
+                <p>Filé de frango empanado, queijo, alface e molho barbecue.</p>
+
+                <div class="preco">
+                    <h4>R$ 26,90</h4>
+                    <button onclick="abrirModal('Frango Crocante', 26.90)">Adicionar +</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="produto hamburguer">
+            <div class="imagem-provisoria"></div>
+
+            <div class="complemento">
+                <h3>Chapa Tudo</h3>
+                <p>Hambúrguer, presunto, queijo, bacon, ovo, milho, alface, tomate e molho da casa.</p>
+
+                <div class="preco">
+                    <h4>R$ 34,90</h4>
+                    <button onclick="abrirModal('Chapa Tudo', 34.90)">Adicionar +</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="produto hamburguer">
+            <div class="imagem-provisoria"></div>
+
+            <div class="complemento">
+                <h3>Chapa Vegetariano</h3>
+                <p>Hambúrguer de grão-de-bico, queijo, alface, tomate e molho de ervas.</p>
+
+                <div class="preco">
+                    <h4>R$ 25,90</h4>
+                    <button onclick="abrirModal('Chapa Vegetariano', 25.90)">Adicionar +</button>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <div class="produto combos">
+            <img src="img/Combo_de_Cheeseburger__Batatas_e_Refrigerante-removebg-preview.png" alt="Combo Quente">
+
+            <div class="complemento">
+                <h3>Combo Quente</h3>
+                <p>Hambúrguer artesanal, batata frita e refrigerante em lata.</p>
+
+                <div class="preco">
+                    <h4>R$ 44,90</h4>
+                    <button onclick="abrirModal('Combo Quente', 44.90)">Adicionar +</button>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <div class="produto outros">
+            <div class="imagem-provisoria"></div>
+
+            <div class="complemento">
+                <h3>Dogão da Chapa</h3>
+                <p>Duas salsichas, molho, milho, purê de batata, batata palha e queijo.</p>
+
+                <div class="preco">
+                    <h4>R$ 19,90</h4>
+                    <button onclick="abrirModal('Dogão da Chapa', 19.90)">Adicionar +</button>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <div class="produto bebidas">
+            <div class="imagem-provisoria"></div>
+
+            <div class="complemento">
+                <h3>Coca-Cola</h3>
+                <p>Refrigerante Coca-Cola, lata de 350 ml.</p>
+
+                <div class="preco">
+                    <h4>R$ 7,00</h4>
+                    <button onclick="abrirModal('Coca-Cola 350ml', 7.00)">Adicionar +</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="produto bebidas">
+            <div class="imagem-provisoria"></div>
+
+            <div class="complemento">
+                <h3>Guaraná Antarctica</h3>
+                <p>Refrigerante Guaraná Antarctica, lata de 350 ml.</p>
+
+                <div class="preco">
+                    <h4>R$ 6,00</h4>
+                    <button onclick="abrirModal('Guaraná Antarctica 350ml', 6.00)">Adicionar +</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="produto bebidas">
+            <div class="imagem-provisoria"></div>
+
+            <div class="complemento">
+                <h3>Água Mineral</h3>
+                <p>Água mineral sem gás, garrafa de 500 ml.</p>
+
+                <div class="preco">
+                    <h4>R$ 4,00</h4>
+                    <button onclick="abrirModal('Água Mineral 500ml', 4.00)">Adicionar +</button>
+                </div>
+            </div>
+        </div>
+
+        
+
+        <div class="produto sobremesas">
+            <div class="imagem-provisoria"></div>
+
+            <div class="complemento">
+                <h3>Brownie de Chocolate</h3>
+                <p>Brownie de chocolate com cobertura cremosa.</p>
+
+                <div class="preco">
+                    <h4>R$ 12,90</h4>
+                    <button onclick="abrirModal('Brownie de Chocolate', 12.90)">Adicionar +</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="produto sobremesas">
+            <div class="imagem-provisoria"></div>
+
+            <div class="complemento">
+                <h3>Sorvete</h3>
+                <p>Sorvete cremoso de chocolate.</p>
+
+                <div class="preco">
+                    <h4>R$ 9,90</h4>
+                    <button onclick="abrirModal('Sorvete', 9.90)">Adicionar +</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    
+    <div class="modal" id="modal">
+        <div class="modal-conteudo">
+
+            <button class="fechar" onclick="fecharModal()" aria-label="Fechar">×</button>
+
+            <h2>Adicionar ao carrinho</h2>
+
+            <h3 id="nome-produto"></h3>
+
+            <p id="preco-produto"></p>
+
+            <label for="quantidade">Quantidade</label>
+
+            <input type="number" id="quantidade" value="1" min="1">
+
+            <div class="botoes-modal">
+                <button onclick="fecharModal()">Cancelar</button>
+                <button onclick="confirmarPedido()">Confirmar</button>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+</html>
+<script>
+
+
+
+function selecionarCategoria(categoria, botao) {
+
+    const produtos = document.querySelectorAll(".produto");
+    const botoes = document.querySelectorAll(".escolhas button");
+
+    botoes.forEach(item => {
+        item.classList.remove("ativo");
+    });
+
+    botao.classList.add("ativo");
+
+    produtos.forEach(produto => {
+
+        if (
+            categoria === "todos" ||
+            produto.classList.contains(categoria)
+        ) {
+            produto.style.display = "flex";
+        } else {
+            produto.style.display = "none";
+        }
+
+    });
+}
+
+
+
+
+let produtoSelecionado = "";
+let precoSelecionado = 0;
+
+function abrirModal(nome, preco) {
+
+    produtoSelecionado = nome;
+    precoSelecionado = preco;
+
+    document.getElementById("nome-produto").textContent = nome;
+
+    document.getElementById("preco-produto").textContent =
+        preco.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL"
+        });
+
+    document.getElementById("quantidade").value = 1;
+
+    document.getElementById("modal").style.display = "flex";
+}
+
+
+
+
+function fecharModal() {
+    document.getElementById("modal").style.display = "none";
+}
+
+
+
+
+function confirmarPedido() {
+
+    const quantidade = Number(
+        document.getElementById("quantidade").value
+    );
+
+    if (!Number.isInteger(quantidade) || quantidade < 1) {
+        alert("Escolha uma quantidade válida.");
+        return;
+    }
+
+    const pedido = {
+        nome: produtoSelecionado,
+        preco: precoSelecionado,
+        quantidade: quantidade
+    };
+
+    console.log("Pedido selecionado:", pedido);
+
+    fecharModal();
+}
+
+
+</script>
