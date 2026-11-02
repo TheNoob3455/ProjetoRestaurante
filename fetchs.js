@@ -87,7 +87,7 @@ export async function pegarFetch(email, senha, token) {
         if (resultado.autenticado == true) {
             return true;
         } else {
-            return false;
+            return "senha";
         }
     } else {
         console.error("Erro ao buscar clientes: ", respostaHash.status);
