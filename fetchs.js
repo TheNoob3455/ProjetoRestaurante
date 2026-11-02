@@ -43,10 +43,10 @@ export async function pegarFetch(email, senha, opcao) {
                 return true;
             }
         }
-        if(opcao == "senha") {
+        if(opcao == "email") {
             return false;
         }
-        else if(opcao == "email") {
+        else if(opcao == "senha") {
             return false;
         }
 
