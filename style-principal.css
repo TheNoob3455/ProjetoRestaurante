@@ -1,32 +1,77 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background-image: url("img/Hambúrguer Grelhado com Fritas em Luz Cinematográfica.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+}
+
+
+
+
 .opcoes {
     position: relative;
+
     width: 76%;
-    height: 60px;
+    min-height: 60px;
+    margin-top: 30px;
     padding: 0 20px;
-    top: 30px;
-    left: 12%;
 
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
     gap: 20px;
 
-    box-sizing: border-box;
-    font-family: "Times New Roman", Times, serif;
-
     background-color: rgba(15, 9, 9, 0.637);
     border-radius: 20px;
     backdrop-filter: blur(10px);
 }
 
-.logo-chapa {
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
+.opcoes img {
+    height: 55px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    justify-self: start;
 }
 
-.opcoes button {
+.links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.opcoes a {
     position: static;
+
+    font-size: 100%;
+    white-space: nowrap;
+    text-decoration: none;
+    color: white;
+}
+
+.opcoes a:hover {
+    color: rgb(255, 72, 0);
+}
+
+.opcoes .inicio {
+    color: rgb(255, 72, 0);
+}
+
+.opcoes .usu {
     width: 40px;
     height: 40px;
     padding: 0;
@@ -43,224 +88,101 @@
     cursor: pointer;
 }
 
-.perfil-pontos {
-    display: flex;
-    align-items: center;
-    justify-self: end;
-    gap: 8px;
-}
-
-.opcoes .saldo-pontos {
-    padding: 8px 10px;
-    border: 1px solid rgba(255, 174, 50, 0.65);
-    border-radius: 12px;
-    background: rgba(53, 16, 13, 0.9);
-    color: #ffd45c;
-    font-size: 13px;
-    font-weight: bold;
-    white-space: nowrap;
-}
-
-.opcoes img {
-    position: static;
-    height: 55px;
-    width: auto;
-    max-width: 100%;
-    object-fit: contain;
-    justify-self: start;
-}
 
 
-body {
-    margin: 0;
-    min-height: 100vh;
-    background-image: url(img/Hambúrguer\ Grelhado\ com\ Fritas\ em\ Luz\ Cinematográfica.png);
-    background-size: cover;
-    background-position: center;
+
+.apresentacao {
+    width: 76%;
+    margin-top: 75px;
+    margin-bottom: 55px;
 
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
 }
 
-.links {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    font-size: 16px;
-}
 
-.opcoes a {
-    position: static;
-    font-size: 100%;
-    white-space: nowrap;
-    flex-shrink: 0;
-}
 
-.opcoes .inicio {
-    position: relative;
-    color: rgb(255, 72, 0);
-    text-decoration: none;
-}
-
-.opcoes .inicio::after {
-    position: absolute;
-    right: 0;
-    bottom: -7px;
-    left: 0;
-    height: 2px;
-    border-radius: 2px;
-    background-color: rgb(255, 72, 0);
-    content: "";
-}
-
-.cardapio {
-    color: rgb(255, 255, 255);
-    
-    text-decoration: none;
-}
-
-.sobreNos {
-    color: rgb(255, 255, 255);
-    
-    text-decoration: none;
-}
-
-.carrinho {
-    color: rgb(255, 255, 255);
-    
-    text-decoration: none;
-}
-
-.pedir {
-    color: rgb(255, 255, 255);
-    
-    text-decoration: none;
-}
-
-.pedidos {
-    color: rgb(255, 255, 255);
-    
-    text-decoration: none;
-}
-
-.recompensas {
-    color: rgb(255, 255, 255);
-    
-    text-decoration: none;
-}
 
 .slogan {
-    position: relative;
     display: flex;
-    align-items: start;
+    align-items: center;
+    flex-wrap: wrap;
     gap: 8px;
-    top: 35px;
-    left: 260px;
-    right: 790px;
+
+    margin-bottom: 15px;
 }
 
 .slogan p {
-    font-size: 80%;
+    margin: 0;
+    font-size: 13px;
     font-weight: bold;
 }
 
-.sabor {
-    color: rgb(255, 72, 0);
-}
-
-.qualidade {
-    color: rgb(253, 147, 60);
-}
-
+.sabor,
 .sempre {
     color: rgb(255, 72, 0);
 }
 
+.qualidade,
 .ponto {
     color: rgb(253, 147, 60);
 }
 
+
+
+
+.T {
+    width: 100%;
+}
+
 .titulo {
-    position: relative;
-    top: 10px;
-    left: 38%;
-    right: 620px;
+    margin: 0;
+
     color: rgb(255, 72, 0);
+    font-size: clamp(25px, 3vw, 42px);
 }
 
 .titulo2 {
-    position: relative;
-    
-    left: 38%;
-    
-    color: rgb(247, 247, 247);
-    bottom: 30px;
+    margin: 5px 0 20px;
+
+    color: white;
+    font-size: clamp(32px, 4vw, 55px);
 }
 
-.T {
-    font-size: 195%;
+
+
+
+.paragrafos {
+    font-size: 16px;
+    line-height: 1.6;
 }
 
-.primeiro {
-    position: relative;
-    
-    left: 65%;
-    
-    bottom: 80px;
-}
-
-.segundo {
-    position: relative;
-    
-    left: 65%;
-    
-    bottom: 95px;
-}
-
-.terceiro {
-    position: relative;
-    bottom: 110px;
-    left: 65%;
-    
-}
-
-p {
+.paragrafos p {
+    margin: 0;
     color: rgb(212, 143, 97);
 }
 
-.paragrafos {
-    font-size: larger;
-}
 
 
 
-
-
-
-    .ver-cardapio {
-        position: relative;
+.ver-cardapio {
+    width: 145px;
     height: 45px;
-    width: 135px;
-    left: 258px;
-    
-    bottom: 115px;
+    margin-top: 25px;
 
-    color: #ffff;
+    color: white;
     background-color: rgb(255, 72, 0);
+
     border: none;
     border-radius: 10px;
-}
 
-.ver-cardapio:hover {
     cursor: pointer;
-    transition: 0.3s ease;
+    transition: 0.2s ease;
 }
 
 .ver-cardapio:hover {
     background-color: rgb(225, 80, 25);
-    box-shadow: 0 0 12px rgba(255, 100, 30, 0.7);
     transform: scale(1.04);
 }
 
@@ -268,34 +190,31 @@ p {
 
 
 .informacoes {
-    position: relative;
     width: 76%;
     min-height: 120px;
-    padding: 20px 30px;
+    padding: 20px;
 
     display: flex;
     align-items: center;
-    justify-content: flex-start;
-    gap: 20px;
+    justify-content: space-between;
+    gap: 15px;
 
-    box-sizing: border-box;
     background-color: rgba(15, 9, 9, 0.637);
     border-radius: 20px;
     backdrop-filter: blur(10px);
-    bottom: 105px;
-    left: 12%;
-    right: 12%;
 }
 
 .item {
+    flex: 1 1 0;
+    min-width: 0;
+
     display: flex;
     align-items: center;
+    gap: 12px;
 
-    flex: 0 0 32%;
-    box-sizing: border-box;
+    padding: 10px 15px;
 
     border-right: 2px solid rgba(255, 100, 30, 0.4);
-    padding-right: 20px;
 }
 
 .item:last-child {
@@ -303,8 +222,9 @@ p {
 }
 
 .item img {
-    width: 20%;
-    height: 20%;
+    width: 55px;
+    height: 55px;
+
     object-fit: contain;
     flex-shrink: 0;
 }
@@ -314,240 +234,94 @@ p {
     flex-direction: column;
 }
 
-.textos h1 {
-    font-size: 90%;
+.textos h3 {
+    margin: 0 0 5px;
+
+    font-size: 15px;
     color: white;
-    margin: 0;
 }
 
 .textos p {
-    font-size: 70%;
-    color: white;
     margin: 0;
+
+    font-size: 12px;
+    color: #ccc;
 }
 
-.item {
-    margin-left: 10%;
+
+
+
+.abaixo {
+    width: 76%;
+    margin: 45px 0 20px;
+
     display: flex;
     align-items: center;
-    gap: 2%;
-    flex: 1;
-    
-
-    border-right: 2px solid rgba(255, 100, 30, 0.4);
-    padding-right: 20px;
+    gap: 20px;
 }
 
-.item:last-child {
-    border-right: none;
+.abaixo hr {
+    width: 80px;
+    height: 6px;
+
+    margin: 0;
+    flex-shrink: 0;
+
+    background-color: rgb(255, 72, 0);
+    border: none;
+    border-radius: 5px;
 }
 
-.icone {
-    margin-left: 5%;
-}
+.abaixo h2 {
+    margin: 0;
+    margin-right: auto;
 
+    color: white;
+    font-size: 25px;
+}
 
 .ver-tudo {
-    position: relative;
-    height: 45px;
     width: 135px;
+    height: 45px;
     flex-shrink: 0;
-    top:4%;
-    
-
-    
 
     color: white;
     background-color: rgb(255, 72, 0);
+
     border: none;
     border-radius: 10px;
 
     cursor: pointer;
-}
-
-.ver-tudo:hover {
-    cursor: pointer;
-    transition: 0.3s ease;
+    transition: 0.2s ease;
 }
 
 .ver-tudo:hover {
     background-color: rgb(225, 80, 25);
-    box-shadow: 0 0 12px rgba(255, 100, 30, 0.7);
     transform: scale(1.04);
 }
 
 
 
 
-
-.abaixo {
-    position: relative;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-
-    width: 76%;
-    height: 10%;
-    margin-left: 12%;
-    margin-top: 20px;
-    
-    
-    bottom: 115px;
-
-    box-sizing: border-box;
-}
-
-.abaixo hr {
-    width: 80px;
-    height: 6px;
-    background-color: rgb(255, 72, 0);
-    border: none;
-    border-radius: 5px;
-
-    margin: 0;
-    flex-shrink: 0;
-}
-
-.abaixo h2 {
-    color: white;
-    font-size: 25px;
-
-    margin: 0;
-    margin-right: auto;
-}
-
-
-
 .lanches {
     position: relative;
+
     width: 76%;
-    height: 60%;
-    padding: 0 15px;
-    right: 12%;
-    left: 12%;
-    bottom: 100px;
-    
-    
+    padding: 25px 15px;
+    margin-bottom: 70px;
 
     display: flex;
     align-items: center;
 
-    box-sizing: border-box;
     overflow: hidden;
 
     background-color: rgba(15, 9, 9, 0.637);
-    border: 1px solid rgba(15, 9, 9, 0.637);
     border-radius: 20px;
     backdrop-filter: blur(10px);
-
-    gap: 10%;
-}
-
-.classico img {
-    position: relative;
-    
-    right: 5px;
-    height: 110px;
-    bottom: 0px;
-}
-
-.bacon img {
-    position: relative;
-    
-    margin-left: 10px;
-    height: 105px;
-    bottom: 0px;
-}
-
-.duplo img {
-    position: relative;
-    top: 0px;
-    left: 5px;
-    height: 110px;
-    bottom: 0px;
-}
-
-.combo img {
-    position: relative;
-    top: 0px;
-    left: 5px;
-    height: 110px;
-    bottom: 0px;
-}
-
-.complemento {
-    
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-    min-height: 0;
-
-    width: 100%;
-    padding: 0 5px 10px;
-    box-sizing: border-box;
-
-    background-color: rgba(15, 9, 9, 0.4);
-    border: none;
-    box-shadow: none;
 }
 
 
-.complemento h3 {
-    margin-top: 2px;
-    font-size: medium;
-    color: #ffff;
-    margin-bottom: 2px;
-}
 
-
-.complemento p {
-    margin-top: 2px;
-    margin-bottom: 1px;
-}
-
-
-.kk {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    margin-top: auto;
-    width: 100%;
-    min-height: 35px;
-    flex-shrink: 0;
-
-    background: transparent;
-    border: none;
-    box-shadow: none;
-}
-
-
-.kk h4 {
-    margin: 0;
-    font-size: medium;
-    color: rgb(255, 72, 0);
-}
-
-
-.kk button {
-    width: 45px;
-    height: 45px;
-    flex-shrink: 0;
-    margin: 0;
-    padding: 0;
-
-    border: none;
-    border-radius: 0;
-
-    background-color: transparent;
-    background-image: url("img/Botão Neon Laranja com Carrinho.png");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-
-    cursor: pointer;
-    box-shadow: none;
-}
 
 .carrossel {
     display: flex;
@@ -560,25 +334,103 @@ p {
 }
 
 
+
 .carrossel > .classico,
 .carrossel > .duplo,
 .carrossel > .bacon,
 .carrossel > .combo {
+    width: 250px;
+    height: 275px;
+    flex: 0 0 250px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    background-color: rgba(15, 9, 9, 0.85);
+    border: 1px solid rgba(255, 72, 0, 0.65);
+    border-radius: 15px;
+
+    overflow: hidden;
+}
+
+
+
+
+.carrossel > div > img {
+    width: 100%;
+    height: 135px;
+
+    padding: 10px;
+    object-fit: contain;
+}
+
+
+
+
+.complemento {
+    width: 100%;
+    padding: 10px 15px 15px;
+    flex: 1;
+
     display: flex;
     flex-direction: column;
 
-    width: 250px;
-    height: 245px;
-    flex: 0 0 250px;
-
-    box-sizing: border-box;
-
-    background-color: rgba(15, 9, 9, 0.637);
-    border: 1px solid rgb(255, 72, 0);
-    border-radius: 20px;
-
-    box-shadow: 0 0 12px rgba(255, 100, 30, 0.7);
+    background-color: transparent;
 }
+
+.complemento h3 {
+    margin: 0 0 8px;
+
+    font-size: 17px;
+    color: white;
+}
+
+.complemento p {
+    margin: 0 0 12px;
+
+    font-size: 12px;
+    line-height: 1.4;
+    color: #ccc;
+}
+
+
+
+
+.kk {
+    margin-top: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.kk h4 {
+    margin: 0;
+
+    font-size: 17px;
+    color: rgb(255, 115, 0);
+}
+
+.botao-carrinho {
+    width: 45px;
+    height: 45px;
+    flex-shrink: 0;
+
+    padding: 0;
+
+    background-color: transparent;
+    background-image: url("img/Botão Neon Laranja com Carrinho.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    border: none;
+    cursor: pointer;
+}
+
+
 
 
 @keyframes deslizar {
@@ -591,6 +443,82 @@ p {
     }
 }
 
+
+
+@media (max-width: 1100px) {
+
+    .opcoes {
+        width: 94%;
+        grid-template-columns: auto 1fr auto;
+    }
+
+    .links {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+
+    .apresentacao,
+    .informacoes,
+    .abaixo,
+    .lanches {
+        width: 94%;
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .opcoes {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 15px;
+    }
+
+    .links {
+        order: 3;
+        width: 100%;
+    }
+
+    .apresentacao {
+        margin-top: 50px;
+    }
+
+    .titulo2 {
+        font-size: 32px;
+    }
+
+    .informacoes {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .item {
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 100, 30, 0.4);
+    }
+
+    .item:last-child {
+        border-bottom: none;
+    }
+
+    .abaixo {
+        gap: 10px;
+    }
+
+    .abaixo hr {
+        width: 35px;
+    }
+
+    .abaixo h2 {
+        font-size: 19px;
+    }
+
+    .ver-tudo {
+        width: 100px;
+    }
+
+}
 
 @media (prefers-reduced-motion: reduce) {
     .carrossel {
