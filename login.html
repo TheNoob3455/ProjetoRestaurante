@@ -101,8 +101,8 @@
             senhaValidada = false;
         } else {
             if((await pegarFetch(email, senha, token)) == "senha") {
-                erroEmail.textContent = "Senha incorreta.";
-                erroEmail.style.color = "white";
+                erroSenha.textContent = "Senha incorreta.";
+                erroSenha.style.color = "white";
                 senhaValidada = false;
 
                 if (typeof turnstile !== 'undefined') {
