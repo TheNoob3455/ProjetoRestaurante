@@ -53,7 +53,7 @@
 <script type="module"> 
 
     import { validarEmail } from './funcoes.js';
-    import { pegarFetch, confirmarES } from './fetchs.js';
+    import { pegarFetch } from './fetchs.js';
 
     let mostrar = document.getElementById("mostrar");
     let senhaOculta = document.getElementById("senha");
@@ -100,10 +100,14 @@
             erroSenha.style.color = "white";
             senhaValidada = false;
         } else {
-            if(!(await confirmarES(email, senha, "senha"))) {
+            if((await pegarFetch(email, senha, token)) == "senha") {
                 erroEmail.textContent = "Senha incorreta.";
                 erroEmail.style.color = "white";
                 senhaValidada = false;
+
+                if (typeof turnstile !== 'undefined') {
+                    turnstile.reset();
+                }
             }
             else{
                 erroSenha.textContent = "";
@@ -116,10 +120,14 @@
             erroEmail.style.color = "white";
             emailValidado = false;
         } else {
-            if(!(await confirmarES(email, senha, "email"))) {
+            if( (await pegarFetch(email, senha, token)) == "email") {
                 erroEmail.textContent = "Email incorreto.";
                 erroEmail.style.color = "white";
                 emailValidado = false;
+
+                if (typeof turnstile !== 'undefined') {
+                    turnstile.reset();
+                }
             }
             else{
                 erroEmail.textContent = "";
@@ -134,6 +142,9 @@
                     window.location.href = "principal.html";
                 } else {
                     console.log("Erro ao fazer login");
+                    if (typeof turnstile !== 'undefined') {
+                    turnstile.reset();
+                }
                 }
         }
     });
