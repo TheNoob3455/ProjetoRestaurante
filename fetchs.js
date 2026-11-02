@@ -99,9 +99,11 @@ export async function Hash(token, senha) {
         
     if(resposta.ok){
         console.log("tudo certo")
+        return true;
     }
     else{
         console.log("erro: "+ resposta.status)
+        return false;
     }
 }
 
