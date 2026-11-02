@@ -121,6 +121,10 @@
             }
         }
 
+        const form = document.getElementById('form-login');
+        const formData = new FormData(form);
+        let token = formData.get('cf-turnstile-response');
+        
         if (senhaValidada && emailValidado) {
             let resultado = await pegarFetch(email, senha);
             if (resultado) {
