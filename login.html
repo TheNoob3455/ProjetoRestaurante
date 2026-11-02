@@ -87,16 +87,22 @@
             erroSenha.textContent = "A senha tem que ter no mínimo 5 caracteres.";
             erroSenha.style.color = "white";
         } else {
-            erroSenha.textContent = "";
-            senhaValidada = true;
+            if(!pegarFetch(email, senha, "senha")) {
+                erroEmail.textContent = "Senha incorreta.";
+                erroEmail.style.color = "white";
+            }
+            else{
+                erroSenha.textContent = "";
+                senhaValidada = true;
+            }
         }
 
         if (email.regex === "" || !validarEmail(email)) {
             erroEmail.textContent = "O e-mail tem que ser válido.";
             erroEmail.style.color = "white";
         } else {
-            if(pegarFetch(email, senha, "email") == "email") {
-                erroEmail.textContent = "O e-mail tem que ser válido.";
+            if(!pegarFetch(email, senha, "email")) {
+                erroEmail.textContent = "Email incorreto.";
                 erroEmail.style.color = "white";
             }
             else{
