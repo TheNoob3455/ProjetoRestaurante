@@ -95,8 +95,14 @@
             erroEmail.textContent = "O e-mail tem que ser válido.";
             erroEmail.style.color = "white";
         } else {
-            erroEmail.textContent = "";
-            emailValidado = true;
+            if(pegarFetch(email, senha, "email") == "email") {
+                erroEmail.textContent = "O e-mail tem que ser válido.";
+                erroEmail.style.color = "white";
+            }
+            else{
+                erroEmail.textContent = "";
+                emailValidado = true;
+            }
         }
 
         if (senhaValidada && emailValidado) {
