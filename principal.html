@@ -321,3 +321,89 @@
 
 </body>
 </html>
+<script type="module">
+async function criarCarrosel() {
+    const cont = document.getElementById("carrossel-container");
+    if (!cont) return; // Segurança caso o elemento não exista na página
+
+    try {
+        const resposta = await fetch('https://projeto-restaurante-backend-5mhl.onrender.com/produto');
+
+        if (resposta.ok) {
+            const produtos = await resposta.json();
+
+            cont.innerHTML = "";
+
+            // Cria os cards normais
+            produtos.forEach(produto => {
+                cont.appendChild(criarCard(produto, false));
+            });
+
+            // Cria os clones para o efeito do carrossel infinito
+            produtos.forEach(produto => {
+                cont.appendChild(criarCard(produto, true));
+            });
+
+        } else {
+            console.error("Erro ao carregar o cardápio para o carrossel.");
+        }
+    } catch (erro) {
+        console.error("Erro de conexão ao buscar produtos:", erro);
+    }
+}
+
+function criarCard(produto, isClone) {
+    const cardDiv = document.createElement("div");
+    // Garante uma classe padrão caso o tipo venha vazio
+    cardDiv.className = produto.tipo_produto || "classico"; 
+
+    if (isClone) {
+        cardDiv.setAttribute("aria-hidden", "true");
+    }
+
+    const img = document.createElement("img");
+    img.src = produto.imagem;
+    img.alt = isClone ? "" : produto.nome;
+
+    const complementoDiv = document.createElement("div");
+    complementoDiv.className = "complemento";
+
+    const h3 = document.createElement("h3");
+    h3.textContent = produto.nome;
+
+    const p = document.createElement("p");
+    p.textContent = produto.descricao;
+
+    const kkDiv = document.createElement("div");
+    kkDiv.className = "kk";
+
+    const h4 = document.createElement("h4");
+    h4.textContent = produto.preco;
+
+    const button = document.createElement("button");
+    button.className = "botao-carrinho";
+
+    if (isClone) {
+        button.setAttribute("tabindex", "-1");
+    } else {
+        button.setAttribute("aria-label", `Adicionar ${produto.nome}`);
+        button.addEventListener("click", () => adicionarAoCarrinho(produto));
+    }
+
+    kkDiv.appendChild(h4);
+    kkDiv.appendChild(button);
+
+    complementoDiv.appendChild(h3);
+    complementoDiv.appendChild(p);
+    complementoDiv.appendChild(kkDiv);
+
+    cardDiv.appendChild(img);
+    cardDiv.appendChild(complementoDiv);
+
+    return cardDiv;
+}
+
+// Chamada correta da função principal ao carregar a página
+document.addEventListener("DOMContentLoaded", criarCarrosel);
+
+</script>
