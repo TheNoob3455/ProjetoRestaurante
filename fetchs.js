@@ -84,6 +84,27 @@ export async function CpfEmailexiste(cpf, email) {
     }
 }
 
+export async function Hash(token, senha) {
+    const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente/cliente'
+    const resposta = await fetch(URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ 
+                token: token, 
+                senhaDigitada: senha
+            })
+        });
+        
+    if(resposta.ok){
+        console.log("tudo certo")
+    }
+    else{
+        console.log("erro: "+ resposta.status)
+    }
+}
+
 
 
 /*
