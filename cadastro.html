@@ -182,7 +182,7 @@
             erroCpf.style.color = "white";
             cpfValidado = false;
         } else {
-            if (CpfEmailexiste(document.querySelector("#email").value) == "cpf") {
+            if (CpfEmailexiste(cpf, email) == "cpf") {
                 erroCpf.textContent = "O CPF já está cadastrado.";
                 erroCpf.style.color = "white";
                 cpfValidado = false;
@@ -220,7 +220,7 @@
             erroEmail.style.color = "white";
             emailValidado = false;
         } else {
-            if(CpfEmailexiste(document.querySelector("#email").value) == "email"){
+            if(CpfEmailexiste(cpf, email) == "email"){
                 erroEmail.textContent = "O e-mail já está cadastrado.";
                 erroEmail.style.color = "white";
                 emailValidado = false;
