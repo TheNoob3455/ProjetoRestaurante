@@ -28,30 +28,57 @@ export async function darFetch(nome, email, cpf, senha, token) {
 
 // --------------------------------------------------
 
-export async function pegarFetch(email, senha, opcao) {
-    const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
-    const resposta = await fetch(URL);
+export async function pegarFetch(email, senha, token) {
+    const URLcliente = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
+    const respostaCliente = await fetch(URLcliente);
+    let clientes = null;
+    let clienteAtual = null;
 
-    if (resposta.ok) {
-        const cliente = await resposta.json();
 
-        for (let loop = 0; loop < cliente.length; loop++) {
-            if (
-                cliente[loop].email === email &&
-                cliente[loop].senha === senha
-            ) {
-                return true;
+    if(respostaCliente.ok) {
+        clientes = await respostaCliente.json();
+        
+        if (clientes === null) {
+            return "cliente";
+        }
+
+        for (let loop = 0; loop < clientes.length; loop++) {
+            if (clientes[loop].email === email) {
+                clienteAtual = clientes[loop];
+                break;
             }
         }
-        if(opcao == "email") {
-            return false;
+        if (clienteAtual == null) {
+            return "email";
         }
-        else if(opcao == "senha") {
-            return false;
-        }
+    }
 
+    else {
+        console.error("Erro ao buscar clientes: ", respostaCliente.status);
+        return "erro";
+    }
+
+    const URLhash = `https://projeto-restaurante-backend-5mhl.onrender.com/cliente/${clienteAtual.id_Cliente}`;
+    const respostaHash = await fetch(URLhash, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            token: token,
+            senhaDigitada: senha
+        })
+    });
+
+    if (respostaHash.ok) {
+        resultado = await respostaHash.json();
+        if (resultado == true) {
+            return true;
+        } else {
+            return "senha";
+        }
     } else {
-        console.error("Erro ao buscar clientes: ", resposta.status);
+        console.error("Erro ao buscar clientes: ", respostaHash.status);
         return "erro";
     }
 }
