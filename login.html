@@ -53,7 +53,7 @@
 <script type="module"> 
 
     import { validarEmail } from './funcoes.js';
-    import { pegarFetch, Hash } from './fetchs.js';
+    import { pegarFetch } from './fetchs.js';
 
     let mostrar = document.getElementById("mostrar");
     let senhaOculta = document.getElementById("senha");
@@ -75,6 +75,10 @@
         }
     });
 
+    const form = document.getElementById('form-login');
+    const formData = new FormData(form);
+    let token = formData.get('cf-turnstile-response');
+
 
     let botao = document.getElementById("login");
     botao.addEventListener("click", async function(event){
@@ -95,7 +99,7 @@
             erroSenha.style.color = "white";
             senhaValidada = false;
         } else {
-            if(!pegarFetch(email, senha, "senha")) {
+            if(pegarFetch(email, senha, token) == "senha") {
                 erroEmail.textContent = "Senha incorreta.";
                 erroEmail.style.color = "white";
                 senhaValidada = false;
@@ -111,7 +115,7 @@
             erroEmail.style.color = "white";
             emailValidado = false;
         } else {
-            if(!pegarFetch(email, senha, "email")) {
+            if(pegarFetch(email, senha, token) == "email") {
                 erroEmail.textContent = "Email incorreto.";
                 erroEmail.style.color = "white";
                 emailValidado = false;
@@ -121,15 +125,10 @@
                 emailValidado = true;
             }
         }
-
-        const form = document.getElementById('form-login');
-        const formData = new FormData(form);
-        let token = formData.get('cf-turnstile-response');
         
         if (senhaValidada && emailValidado) {
-            let resultado = await pegarFetch(email, senha);
-            let resultadoHash = await Hash(token, senha);
-            if (resultado && resultadoHash) {
+            let resultado = await pegarFetch(email, senha, token);
+            if (resultado) {
                     console.log("login realizado com sucesso!");
                     window.location.href = "principal.html";
                 } else {
