@@ -94,40 +94,17 @@
 
         let senhaValidada = false;
         let emailValidado = false;
-        
-        if (senha.length < 5) {
-            erroSenha.textContent = "A senha tem que ter no mínimo 5 caracteres.";
-            erroSenha.style.color = "white";
-            senhaValidada = false;
-        } else {
-            if((await pegarFetch(email, senha, token)) == "senha") {
-                erroSenha.textContent = "Senha incorreta.";
-                erroSenha.style.color = "white";
-                senhaValidada = false;
-
-                if (typeof turnstile !== 'undefined') {
-                    turnstile.reset();
-                }
-            }
-            else{
-                erroSenha.textContent = "";
-                senhaValidada = true;
-            }
-        }
 
         if (email === "" || !validarEmail(email)) {
-            erroEmail.textContent = "O e-mail tem que ser válido.";
+            erroEmail.textContent = "O e-mail não é válido.";
             erroEmail.style.color = "white";
             emailValidado = false;
         } else {
-            if( (await pegarFetch(email, senha, token)) == "email") {
+            let verificarEmail = await pegarFetch(email, senha, token, "email");
+            if(verificarEmail == false) {
                 erroEmail.textContent = "Email incorreto.";
                 erroEmail.style.color = "white";
                 emailValidado = false;
-
-                if (typeof turnstile !== 'undefined') {
-                    turnstile.reset();
-                }
             }
             else{
                 erroEmail.textContent = "";
@@ -135,16 +112,36 @@
             }
         }
         
+        
+        if (senha.length < 5) {
+            erroSenha.textContent = "A senha tem que ter no mínimo 5 caracteres.";
+            erroSenha.style.color = "white";
+            senhaValidada = false;
+        } else {
+            let verificarSenha = await pegarFetch(email, senha, token, "senha");
+            if(verificarSenha == false) {
+                erroSenha.textContent = "Senha incorreta.";
+                erroSenha.style.color = "white";
+                senhaValidada = false;
+
+                turnstile.reset();
+
+            }
+            else{
+                erroSenha.textContent = "";
+                senhaValidada = true;
+            }
+        }
+
+
         if (senhaValidada && emailValidado) {
             let resultado = await pegarFetch(email, senha, token);
-            if (resultado) {
+            if (resultado.ok) {
                     console.log("login realizado com sucesso!");
                     window.location.href = "principal.html";
                 } else {
                     console.log("Erro ao fazer login");
-                    if (typeof turnstile !== 'undefined') {
                     turnstile.reset();
-                }
                 }
         }
     });
