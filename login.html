@@ -118,7 +118,7 @@
 
         if (senhaValidada && emailValidado) {
             let resultado = await pegarFetch(email, senha, token);
-            if (resultado) {
+            if (resultado == true) {
                     console.log("login realizado com sucesso!");
                     window.location.href = "principal.html";
                 } else if (resultado == "email") {
