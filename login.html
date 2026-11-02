@@ -70,7 +70,7 @@
 
 
     let botao = document.getElementById("login");
-    botao.addEventListener("click", function(event){
+    botao.addEventListener("click", async function(event){
         event.preventDefault();
         
         let senha = document.getElementById("senha").value;
@@ -100,7 +100,7 @@
         }
 
         if (senhaValidada && emailValidado) {
-            let resultado = pegarFetch(email, senha);
+            let resultado = await pegarFetch(email, senha);
             if (resultado) {
                     console.log("login realizado com sucesso!");
                     window.location.href = "principal.html";
