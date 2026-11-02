@@ -75,14 +75,15 @@
         }
     });
 
-    const form = document.getElementById('form-login');
-    const formData = new FormData(form);
-    let token = formData.get('cf-turnstile-response');
 
 
     let botao = document.getElementById("login");
     botao.addEventListener("click", async function(event){
         event.preventDefault();
+        
+        const form = document.getElementById('form-login');
+        const formData = new FormData(form);
+        let token = formData.get('cf-turnstile-response');
         
         let senha = document.getElementById("senha").value;
         let email = document.getElementById("email").value;
