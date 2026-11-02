@@ -140,7 +140,7 @@
     });
 
     let botao = document.getElementById("cadastro");
-    botao.addEventListener("click", function(event){
+    botao.addEventListener("click", async function(event){
         event.preventDefault();
     
         let cpf = document.getElementById("CPF").value;
@@ -237,8 +237,13 @@
         
 
         if (nomeValidado && cpfValidado && senhaValidada && emailValidado) {
-            darFetch(nome, email, cpf, senha, token);
-            window.location.href = "login.html";
+            let resultado = await darFetch(nome, email, cpf, senha, token);
+            if (resultado === "ok") {
+                console.log("Cadastro realizado com sucesso!");
+                window.location.href = "login.html";
+            } else {
+                console.log("Erro ao cadastrar. Verifique os dados ou o CAPTCHA.");
+            }
         }
     });
         
