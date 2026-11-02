@@ -28,9 +28,10 @@ export async function darFetch(nome, email, cpf, senha, token) {
 
 // --------------------------------------------------
 
-export async function pegarFetch(email, senha, token) {
+export async function pegarFetch(email, senha, token, opcao) {
     const URLcliente = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
     const respostaCliente = await fetch(URLcliente);
+
     let clientes = null;
     let clienteAtual = null;
 
@@ -39,7 +40,8 @@ export async function pegarFetch(email, senha, token) {
         clientes = await respostaCliente.json();
         
         if (clientes === null) {
-            return "cliente";
+            console.log("Não existe nenhum cliente");
+            return false;
         }
 
         for (let loop = 0; loop < clientes.length; loop++) {
@@ -48,14 +50,22 @@ export async function pegarFetch(email, senha, token) {
                 break;
             }
         }
-        if (clienteAtual == null) {
-            return "email";
-        }
     }
 
     else {
         console.error("Erro ao buscar clientes: ", respostaCliente.status);
         return "erro";
+    }
+
+    if (opcao == "email") {
+        if (clienteAtual == null) {
+            console.log("Não existe nenhum cliente com esse e-mail");
+            return false;
+        }
+        else {
+            console.log("Existe um cliente com esse e-mail");
+            return true;
+        }
     }
 
     const URLhash = `https://projeto-restaurante-backend-5mhl.onrender.com/cliente/${clienteAtual.id_Cliente}`;
@@ -73,9 +83,11 @@ export async function pegarFetch(email, senha, token) {
     if (respostaHash.ok) {
         let resultado = await respostaHash.json();
         if (resultado == true) {
+            console.log(resultado);
             return true;
         } else {
-            return "senha";
+            console.log(resultado);
+            return false;
         }
     } else {
         console.error("Erro ao buscar clientes: ", respostaHash.status);
