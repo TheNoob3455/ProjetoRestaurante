@@ -72,32 +72,34 @@
     </div>
     <script type="module">
 
-        import { darFetch } from './testeFetchCadastro.js';
-        
-        let CPFbonitinho = document.getElementById("CPF");
+    import { darFetch } from './fetchs.js';
+    import { validarCPF } from './funcoes.js';
+    
+    let CPFbonitinho = document.getElementById("CPF");
 
-        CPFbonitinho.addEventListener("input", function(){
-           let numeros = CPFbonitinho.value.replace(/\D/g, "");
-           numeros = numeros.substring(0, 11);
-           
-           if (numeros.length > 9) {
+    CPFbonitinho.addEventListener("input", function(){
+        let numeros = CPFbonitinho.value.replace(/\D/g, "");
+        numeros = numeros.substring(0, 11);
+        
+        if (numeros.length > 9) {
         numeros = numeros.replace(
             /^(\d{3})(\d{3})(\d{3})(\d{1,2}).*/,
             "$1.$2.$3-$4"
         );
-    } else if (numeros.length > 6) {
-        numeros = numeros.replace(
-            /^(\d{3})(\d{3})(\d{1,3}).*/,
-            "$1.$2.$3"
+        } 
+        else if (numeros.length > 6) {
+            numeros = numeros.replace(
+                /^(\d{3})(\d{3})(\d{1,3}).*/,
+                "$1.$2.$3"
         );
-    } else if (numeros.length > 3) {
-        numeros = numeros.replace(
-            /^(\d{3})(\d{1,3}).*/,
-            "$1.$2"
-        );
-    }
+        } else if (numeros.length > 3) {
+            numeros = numeros.replace(
+                /^(\d{3})(\d{1,3}).*/,
+                "$1.$2"
+            );
+        }
         CPFbonitinho.value = numeros;
-        })
+    })
 
 
     let mostrar = document.getElementById("mostrar");
