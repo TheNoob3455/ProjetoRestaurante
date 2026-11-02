@@ -39,17 +39,16 @@ export async function pegarFetch(email, senha) {
                 cliente[loop].email === email &&
                 cliente[loop].senha === senha
             ) {
-                return "Login bem-sucedido!";
+                return true;
             }
         }
+        return false;
 
-        return "Email ou senha incorretos.";
     } else {
-        const erro = await resposta.text();
-        return "Erro do servidor (" + resposta.status + "): " + erro;
+        console.error("Erro ao buscar clientes: ", resposta.status);
+        return "erro";
     }
 }
-
 // --------------------------------------------------
 
 export async function CpfEmailexiste(cpf, email) {
@@ -61,20 +60,22 @@ export async function CpfEmailexiste(cpf, email) {
 
         for (let loop = 0; loop < cliente.length; loop++) {
             if (cliente[loop].email === email) {
-                return 'email usado';
+                return 'email';
             }
         }
 
         for (let loop = 0; loop < cliente.length; loop++) {
             if (cliente[loop].cpf === cpf) {
-                return 'cpf usado';
+                return 'cpf';
             }
         }
 
         return false;
     }
-
-    throw new Error("Não foi possível consultar os clientes.");
+    else {
+        console.error("Erro ao buscar clientes: ", resposta.status);
+        return "erro";
+    }
 }
 
 
