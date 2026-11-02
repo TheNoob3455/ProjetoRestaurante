@@ -1,5 +1,5 @@
 
-export async function darFetch(nome, email, cpf, senha, token) {
+export async function darFetch(nome, email, cpf, senha) {
     const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
 
     const resposta = await fetch(URL, {
@@ -11,19 +11,17 @@ export async function darFetch(nome, email, cpf, senha, token) {
             nome: nome,
             email: email,
             cpf: cpf,
-            senha: senha,
-            token: token
+            senha: senha
         })
     });
 
     if (resposta.ok) {
-        const dados = await resposta.json();
-        console.log("Sucesso! Registro salvo no banco:", dados);
-        return { ok: true, dados: dados };
+        const cliente = await resposta.json();
+        console.log("Sucesso! Registro salvo no banco:", cliente);
+        return "ok";
     } else {
-        const erro = await resposta.text();
-        console.error("Erro do servidor (" + resposta.status + "):", erro);
-        return { ok: false, erro: erro };
+        console.error("Erro no 'darFetch': ", resposta.status);
+        return "erro";
     }
 }
 
