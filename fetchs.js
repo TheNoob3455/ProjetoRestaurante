@@ -40,18 +40,15 @@ export async function pegarFetch(email, senha, opcao) {
                 cliente[loop].email === email &&
                 cliente[loop].senha === senha
             ) {
-                if (opcao == "senha") {
-                    return "senha";
-                }
-                else if (opcao == "email") {
-                    return "email";
-                }
-                else {
-                    return true;
-                }
+                return true;
             }
         }
-        return false;
+        if(opcao == "senha") {
+            return false;
+        }
+        else if(opcao == "email") {
+            return false;
+        }
 
     } else {
         console.error("Erro ao buscar clientes: ", resposta.status);
