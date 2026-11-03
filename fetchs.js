@@ -203,6 +203,22 @@ export async function verificarADM(email, senha) {
   }
 }
 
+export async function pegarSenha(email) {
+    const URL = `https://projeto-restaurante-backend-5mhl.onrender.com/cliente`
+    const resposta = await fetch(URL);
+
+    if (resposta.ok) {
+        const cliente = await resposta.json();
+        for (let loop = 0; loop < cliente.length; loop++) {
+            if (cliente[loop].email == email) {
+                return cliente[loop].senha;
+            }
+        }
+    }
+    else {
+        console.log("deu erro tropa: " + resposta.status);
+    }
+}
 
 
 /*
