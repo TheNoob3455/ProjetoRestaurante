@@ -53,7 +53,7 @@
 <script type="module"> 
 
     import { validarEmail } from './funcoes.js';
-    import { pegarFetch } from './fetchs.js';
+    import { pegarFetch, verificarADM } from './fetchs.js';
 
     let mostrar = document.getElementById("mostrar");
     let senhaOculta = document.getElementById("senha");
@@ -115,7 +115,12 @@
             senhaValidada = true;
         }
 
+        let respostaADM = await verificarADM(email, senha)
 
+        if(respostaADM == true){
+            window.location.href = "principal.html";
+        }
+        
         if (senhaValidada && emailValidado) {
             let resultado = await pegarFetch(email, senha, token);
             if (resultado == true) {
