@@ -1,0 +1,679 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Chapa Quente - Administração</title>
+
+    <link rel="stylesheet" href="style-admin.css">
+    <link rel="shortcut icon" href="img/Logo-Circular-Chapa-Quente.ico" type="image/x-icon">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <header class="opcoes">
+
+        <img src="img/Logo Chapa Quente em Chamas.png" alt="Chapa Quente">
+
+        <nav class="links">
+            <a href="#principal">Principal</a>
+            <a href="#pedidos">Pedidos</a>
+            <a href="#ingredientes">Ingredientes</a>
+        </nav>
+
+        <div class="perfil-admin">
+            <span>Administrador</span>
+            <button type="button" class="usu" aria-label="Perfil"></button>
+        </div>
+
+    </header>
+
+
+    <!-- TÍTULO -->
+
+    <section class="titulo-admin" id="principal">
+
+        <h1>Painel Administrativo</h1>
+
+        <p>Gerencie o funcionamento do Chapa Quente em um só lugar.</p>
+
+    </section>
+
+
+    <!-- PRINCIPAL: MESAS E CADEIRAS -->
+
+    <main class="painel-admin">
+
+        <div class="titulo-secao">
+
+            <h2>Controle de Mesas e Cadeiras</h2>
+
+            <p>Consulte e atualize a disponibilidade do restaurante.</p>
+
+        </div>
+
+
+        <!-- RESUMO -->
+
+        <div class="resumo">
+
+            <div class="card-resumo">
+                <h3>Total de Mesas</h3>
+                <strong>20</strong>
+                <p>Mesas cadastradas</p>
+            </div>
+
+            <div class="card-resumo">
+                <h3>Mesas Disponíveis</h3>
+                <strong>15</strong>
+                <p>Disponíveis para reserva</p>
+            </div>
+
+            <div class="card-resumo">
+                <h3>Total de Cadeiras</h3>
+                <strong>80</strong>
+                <p>Cadeiras cadastradas</p>
+            </div>
+
+            <div class="card-resumo">
+                <h3>Cadeiras Disponíveis</h3>
+                <strong>60</strong>
+                <p>Disponíveis no momento</p>
+            </div>
+
+        </div>
+
+
+        <!-- FORMULÁRIO DE MESAS -->
+
+        <section class="area-controle">
+
+            <h3>Atualizar disponibilidade</h3>
+
+            <form class="form-controle">
+
+                <div class="campo">
+
+                    <label for="total-mesas">Total de mesas</label>
+
+                    <input
+                        type="number"
+                        id="total-mesas"
+                        name="totalMesas"
+                        min="0"
+                        value="20">
+
+                </div>
+
+                <div class="campo">
+
+                    <label for="mesas-ocupadas">Mesas ocupadas</label>
+
+                    <input
+                        type="number"
+                        id="mesas-ocupadas"
+                        name="mesasOcupadas"
+                        min="0"
+                        value="5">
+
+                </div>
+
+                <div class="campo">
+
+                    <label for="total-cadeiras">Total de cadeiras</label>
+
+                    <input
+                        type="number"
+                        id="total-cadeiras"
+                        name="totalCadeiras"
+                        min="0"
+                        value="80">
+
+                </div>
+
+                <div class="campo">
+
+                    <label for="cadeiras-ocupadas">Cadeiras ocupadas</label>
+
+                    <input
+                        type="number"
+                        id="cadeiras-ocupadas"
+                        name="cadeirasOcupadas"
+                        min="0"
+                        value="20">
+
+                </div>
+
+                <div class="acoes">
+
+                    <button type="button" class="botao-salvar">
+                        Salvar alterações
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+    </main>
+
+
+    <!-- PEDIDOS -->
+
+    <section class="painel-admin" id="pedidos">
+
+        <div class="titulo-secao">
+
+            <h2>Gerenciamento de Pedidos</h2>
+
+            <p>Acompanhe e atualize a situação dos pedidos recebidos.</p>
+
+        </div>
+
+
+        <!-- RESUMO DOS PEDIDOS -->
+
+        <div class="resumo">
+
+            <div class="card-resumo">
+                <h3>Total de Pedidos</h3>
+                <strong>4</strong>
+                <p>Pedidos recebidos</p>
+            </div>
+
+            <div class="card-resumo">
+                <h3>Em Validação</h3>
+                <strong>1</strong>
+                <p>Aguardando confirmação</p>
+            </div>
+
+            <div class="card-resumo">
+                <h3>Em Preparo</h3>
+                <strong>1</strong>
+                <p>Na cozinha</p>
+            </div>
+
+            <div class="card-resumo">
+                <h3>Saiu para Entrega</h3>
+                <strong>1</strong>
+                <p>A caminho do cliente</p>
+            </div>
+
+        </div>
+
+
+        <!-- LISTA DE PEDIDOS -->
+
+        <div class="area-controle">
+
+            <div class="topo-pedidos">
+
+                <div>
+                    <h3>Pedidos Recebidos</h3>
+                    <p>Visualize os produtos e atualize cada pedido.</p>
+                </div>
+
+                <span class="contador-pedidos">4 pedidos</span>
+
+            </div>
+
+
+            <div class="lista-pedidos">
+
+                <!-- PEDIDO 001 -->
+
+                <article class="pedido-admin">
+
+                    <div class="pedido-cabecalho">
+
+                        <div>
+                            <h3>Pedido #001</h3>
+                            <p>Cliente: João Silva</p>
+                        </div>
+
+                        <span class="status validacao">
+                            Ainda em validação
+                        </span>
+
+                    </div>
+
+
+                    <div class="pedido-detalhes">
+
+                        <div>
+                            <span>Produtos</span>
+                            <p>1x Chapa Clássico</p>
+                            <p>1x Coca-Cola</p>
+                        </div>
+
+                        <div>
+                            <span>Adicionais</span>
+                            <p>Bacon extra</p>
+                        </div>
+
+                        <div>
+                            <span>Tipo de pedido</span>
+                            <p>Entrega</p>
+                        </div>
+
+                        <div>
+                            <span>Total</span>
+                            <strong>R$ 36,90</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="pedido-acoes">
+
+                        <div class="campo-status">
+
+                            <label for="status-001">Atualizar situação</label>
+
+                            <select id="status-001" name="status-001">
+                                <option selected>Ainda em validação</option>
+                                <option>Aceito</option>
+                                <option>Preparando seu pedido</option>
+                                <option>Saiu para entrega</option>
+                            </select>
+
+                        </div>
+
+                        <button type="button" class="botao-salvar">
+                            Salvar situação
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PEDIDO 002 -->
+
+                <article class="pedido-admin">
+
+                    <div class="pedido-cabecalho">
+
+                        <div>
+                            <h3>Pedido #002</h3>
+                            <p>Cliente: Maria Oliveira</p>
+                        </div>
+
+                        <span class="status aceito">Aceito</span>
+
+                    </div>
+
+
+                    <div class="pedido-detalhes">
+
+                        <div>
+                            <span>Produtos</span>
+                            <p>2x Chapa Bacon</p>
+                        </div>
+
+                        <div>
+                            <span>Adicionais</span>
+                            <p>Queijo extra</p>
+                        </div>
+
+                        <div>
+                            <span>Tipo de pedido</span>
+                            <p>Entrega</p>
+                        </div>
+
+                        <div>
+                            <span>Total</span>
+                            <strong>R$ 69,80</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="pedido-acoes">
+
+                        <div class="campo-status">
+
+                            <label for="status-002">Atualizar situação</label>
+
+                            <select id="status-002" name="status-002">
+                                <option>Ainda em validação</option>
+                                <option selected>Aceito</option>
+                                <option>Preparando seu pedido</option>
+                                <option>Saiu para entrega</option>
+                            </select>
+
+                        </div>
+
+                        <button type="button" class="botao-salvar">
+                            Salvar situação
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PEDIDO 003 -->
+
+                <article class="pedido-admin">
+
+                    <div class="pedido-cabecalho">
+
+                        <div>
+                            <h3>Pedido #003</h3>
+                            <p>Cliente: Pedro Santos</p>
+                        </div>
+
+                        <span class="status preparando">
+                            Preparando seu pedido
+                        </span>
+
+                    </div>
+
+
+                    <div class="pedido-detalhes">
+
+                        <div>
+                            <span>Produtos</span>
+                            <p>1x Chapa Duplo</p>
+                        </div>
+
+                        <div>
+                            <span>Adicionais</span>
+                            <p>Sem cebola</p>
+                        </div>
+
+                        <div>
+                            <span>Tipo de pedido</span>
+                            <p>Entrega</p>
+                        </div>
+
+                        <div>
+                            <span>Total</span>
+                            <strong>R$ 39,90</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="pedido-acoes">
+
+                        <div class="campo-status">
+
+                            <label for="status-003">Atualizar situação</label>
+
+                            <select id="status-003" name="status-003">
+                                <option>Ainda em validação</option>
+                                <option>Aceito</option>
+                                <option selected>Preparando seu pedido</option>
+                                <option>Saiu para entrega</option>
+                            </select>
+
+                        </div>
+
+                        <button type="button" class="botao-salvar">
+                            Salvar situação
+                        </button>
+
+                    </div>
+
+                </article>
+
+
+                <!-- PEDIDO 004 -->
+
+                <article class="pedido-admin">
+
+                    <div class="pedido-cabecalho">
+
+                        <div>
+                            <h3>Pedido #004</h3>
+                            <p>Cliente: Ana Costa</p>
+                        </div>
+
+                        <span class="status entrega">
+                            Saiu para entrega
+                        </span>
+
+                    </div>
+
+
+                    <div class="pedido-detalhes">
+
+                        <div>
+                            <span>Produtos</span>
+                            <p>1x Combo Quente</p>
+                        </div>
+
+                        <div>
+                            <span>Adicionais</span>
+                            <p>Nenhum</p>
+                        </div>
+
+                        <div>
+                            <span>Tipo de pedido</span>
+                            <p>Entrega</p>
+                        </div>
+
+                        <div>
+                            <span>Total</span>
+                            <strong>R$ 44,90</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="pedido-acoes">
+
+                        <div class="campo-status">
+
+                            <label for="status-004">Atualizar situação</label>
+
+                            <select id="status-004" name="status-004">
+                                <option>Ainda em validação</option>
+                                <option>Aceito</option>
+                                <option>Preparando seu pedido</option>
+                                <option selected>Saiu para entrega</option>
+                            </select>
+
+                        </div>
+
+                        <button type="button" class="botao-salvar">
+                            Salvar situação
+                        </button>
+
+                    </div>
+
+                </article>
+
+            </div>
+
+            <p class="aviso">
+                Pedidos de exemplo. Os pedidos reais serão carregados
+                quando o sistema estiver integrado.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- INGREDIENTES -->
+
+    <section class="painel-admin" id="ingredientes">
+
+        <div class="titulo-secao">
+
+            <h2>Controle de Ingredientes</h2>
+
+            <p>Atualize o estoque utilizado na preparação dos pedidos.</p>
+
+        </div>
+
+
+        <!-- RESUMO DO ESTOQUE -->
+
+        <div class="resumo resumo-estoque">
+
+            <div class="card-resumo">
+                <h3>Ingredientes Cadastrados</h3>
+                <strong>12</strong>
+                <p>Itens de exemplo</p>
+            </div>
+
+            <div class="card-resumo">
+                <h3>Controle de Estoque</h3>
+                <strong>Ativo</strong>
+                <p>Área de gerenciamento</p>
+            </div>
+
+        </div>
+
+
+        <!-- TABELA DE INGREDIENTES -->
+
+        <div class="area-controle">
+
+            <div class="topo-estoque">
+
+                <div>
+                    <h3>Estoque de Ingredientes</h3>
+                    <p>Informe a quantidade disponível de cada item.</p>
+                </div>
+
+                <button type="button" class="botao-adicionar">
+                    + Novo Ingrediente
+                </button>
+
+            </div>
+
+
+            <div class="tabela-container">
+
+                <table class="tabela-ingredientes">
+
+                    <thead>
+                        <tr>
+                            <th>Ingrediente</th>
+                            <th>Quantidade</th>
+                            <th>Unidade</th>
+                            <th>Ação</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Hambúrguer bovino</td>
+                            <td><input type="number" min="0" value="50" aria-label="Quantidade de hambúrguer bovino"></td>
+                            <td>Unidades</td>
+                            <td><button type="button" class="botao-atualizar">Atualizar</button></td>
+                        </tr>
+
+                        <tr>
+                            <td>Pão de hambúrguer</td>
+                            <td><input type="number" min="0" value="60" aria-label="Quantidade de pão de hambúrguer"></td>
+                            <td>Unidades</td>
+                            <td><button type="button" class="botao-atualizar">Atualizar</button></td>
+                        </tr>
+
+                        <tr>
+                            <td>Queijo</td>
+                            <td><input type="number" min="0" value="80" aria-label="Quantidade de queijo"></td>
+                            <td>Fatias</td>
+                            <td><button type="button" class="botao-atualizar">Atualizar</button></td>
+                        </tr>
+
+                        <tr>
+                            <td>Bacon</td>
+                            <td><input type="number" min="0" step="0.1" value="5" aria-label="Quantidade de bacon"></td>
+                            <td>kg</td>
+                            <td><button type="button" class="botao-atualizar">Atualizar</button></td>
+                        </tr>
+
+                        <tr>
+                            <td>Alface</td>
+                            <td><input type="number" min="0" value="30" aria-label="Quantidade de alface"></td>
+                            <td>Porções</td>
+                            <td><button type="button" class="botao-atualizar">Atualizar</button></td>
+                        </tr>
+
+                        <tr>
+                            <td>Tomate</td>
+                            <td><input type="number" min="0" value="25" aria-label="Quantidade de tomate"></td>
+                            <td>Porções</td>
+                            <td><button type="button" class="botao-atualizar">Atualizar</button></td>
+                        </tr>
+
+                        <tr>
+                            <td>Ovo</td>
+                            <td><input type="number" min="0" value="40" aria-label="Quantidade de ovo"></td>
+                            <td>Unidades</td>
+                            <td><button type="button" class="botao-atualizar">Atualizar</button></td>
+                        </tr>
+
+                        <tr>
+                            <td>Presunto</td>
+                            <td><input type="number" min="0" value="35" aria-label="Quantidade de presunto"></td>
+                            <td>Fatias</td>
+                            <td><button type="button" class="botao-atualizar">Atualizar</button></td>
+                        </tr>
+
+                        <tr>
+                            <td>Milho</td>
+                            <td><input type="number" min="0" value="20" aria-label="Quantidade de milho"></td>
+                            <td>Porções</td>
+                            <td><button type="button" class="botao-atualizar">Atualizar</button></td>
+                        </tr>
+
+                        <tr>
+                            <td>Batata palha</td>
+                            <td><input type="number" min="0" value="15" aria-label="Quantidade de batata palha"></td>
+                            <td>Porções</td>
+                            <td><button type="button" class="botao-atualizar">Atualizar</button></td>
+                        </tr>
+
+                        <tr>
+                            <td>Cebola</td>
+                            <td><input type="number" min="0" value="20" aria-label="Quantidade de cebola"></td>
+                            <td>Porções</td>
+                            <td><button type="button" class="botao-atualizar">Atualizar</button></td>
+                        </tr>
+
+                        <tr>
+                            <td>Molho especial</td>
+                            <td><input type="number" min="0" value="30" aria-label="Quantidade de molho especial"></td>
+                            <td>Porções</td>
+                            <td><button type="button" class="botao-atualizar">Atualizar</button></td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+            <p class="aviso">
+                Quantidades ilustrativas. O sistema deverá verificar o estoque
+                antes de confirmar os pedidos.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- RODAPÉ -->
+
+    <footer class="rodape-admin">
+        <p>Chapa Quente — Painel Administrativo</p>
+    </footer>
+
+</body>
+</html>
