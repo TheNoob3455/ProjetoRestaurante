@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -8,7 +7,8 @@
 
     <link rel="stylesheet" href="style-pedir.css">
     <link rel="shortcut icon" href="img/Logo-Circular-Chapa-Quente.ico" type="image/x-icon">
-    <script src="script-pedir.js" defer></script>
+    <script src="pedido.js" defer></script>
+    <script src="pedir.js" defer></script>
 </head>
 
 <body>
@@ -20,12 +20,19 @@
         <nav class="links">
             <a class="inicio" href="principal.html">Início</a>
             <a class="pedir" href="pedir.html">Peça já</a>
-            <a class="carrinho" href="carrinho.html">Meus Pedidos</a>
+            <a class="carrinho" href="carrinho.html">
+                Meus Pedidos <span class="contador-carrinho" data-cart-count>0</span>
+            </a>
             <a class="recompensas" href="recompensas.html">Recompensas</a>
             <a class="sobreNos" href="sobreNos.html">Sobre nós</a>
         </nav>
 
-        <button class="usu" aria-label="Perfil"></button>
+        <div class="acoes-cabecalho">
+            <a class="atalho-carrinho" href="carrinho.html" aria-label="Abrir carrinho">
+                <img src="img/Botão Neon Laranja com Carrinho.png" alt="">
+            </a>
+            <button class="usu" aria-label="Perfil"></button>
+        </div>
 
     </div>
 
@@ -33,22 +40,23 @@
     <div class="titulo-cardapio">
         <h1>Nosso Cardápio</h1>
         <p>Escolha seus favoritos e aproveite!</p>
+        <p id="mensagem-pedido" class="mensagem-pedido" role="status" aria-live="polite"></p>
     </div>
 
     
     <div class="escolhas">
 
-        <button class="ativo" onclick="selecionarCategoria('todos', this)">Todos</button>
+        <button class="ativo" type="button" data-categoria="todos">Todos</button>
 
-        <button onclick="selecionarCategoria('hamburguer', this)">Hambúrgueres</button>
+        <button type="button" data-categoria="hamburguer">Hambúrgueres</button>
 
-        <button onclick="selecionarCategoria('sobremesas', this)">Sobremesas</button>
+        <button type="button" data-categoria="sobremesas">Sobremesas</button>
 
-        <button onclick="selecionarCategoria('bebidas', this)">Bebidas</button>
+        <button type="button" data-categoria="bebidas">Bebidas</button>
 
-        <button onclick="selecionarCategoria('combos', this)">Combos</button>
+        <button type="button" data-categoria="combos">Combos</button>
 
-        <button onclick="selecionarCategoria('outros', this)">Outros</button>
+        <button type="button" data-categoria="outros">Outros</button>
 
     </div>
 
@@ -65,7 +73,7 @@
 
                 <div class="preco">
                     <h4>R$ 29,90</h4>
-                    <button onclick="abrirModal('Chapa Clássico', 29.90)">Adicionar +</button>
+                    <button type="button" data-adicionar="chapa-classico">Adicionar +</button>
                 </div>
             </div>
         </div>
@@ -79,7 +87,7 @@
 
                 <div class="preco">
                     <h4>R$ 39,90</h4>
-                    <button onclick="abrirModal('Chapa Duplo', 39.90)">Adicionar +</button>
+                    <button type="button" data-adicionar="chapa-duplo">Adicionar +</button>
                 </div>
             </div>
         </div>
@@ -93,7 +101,7 @@
 
                 <div class="preco">
                     <h4>R$ 34,90</h4>
-                    <button onclick="abrirModal('Chapa Bacon', 34.90)">Adicionar +</button>
+                    <button type="button" data-adicionar="chapa-bacon">Adicionar +</button>
                 </div>
             </div>
         </div>
@@ -107,7 +115,7 @@
 
                 <div class="preco">
                     <h4>R$ 25,90</h4>
-                    <button onclick="abrirModal('Chapa Egg', 25.90)">Adicionar +</button>
+                    <button type="button" data-adicionar="chapa-egg">Adicionar +</button>
                 </div>
             </div>
         </div>
@@ -121,7 +129,7 @@
 
                 <div class="preco">
                     <h4>R$ 26,90</h4>
-                    <button onclick="abrirModal('Frango Crocante', 26.90)">Adicionar +</button>
+                    <button type="button" data-adicionar="frango-crocante">Adicionar +</button>
                 </div>
             </div>
         </div>
@@ -135,7 +143,7 @@
 
                 <div class="preco">
                     <h4>R$ 34,90</h4>
-                    <button onclick="abrirModal('Chapa Tudo', 34.90)">Adicionar +</button>
+                    <button type="button" data-adicionar="chapa-tudo">Adicionar +</button>
                 </div>
             </div>
         </div>
@@ -149,7 +157,7 @@
 
                 <div class="preco">
                     <h4>R$ 25,90</h4>
-                    <button onclick="abrirModal('Chapa Vegetariano', 25.90)">Adicionar +</button>
+                    <button type="button" data-adicionar="chapa-vegetariano">Adicionar +</button>
                 </div>
             </div>
         </div>
@@ -165,7 +173,7 @@
 
                 <div class="preco">
                     <h4>R$ 44,90</h4>
-                    <button onclick="abrirModal('Combo Quente', 44.90)">Adicionar +</button>
+                    <button type="button" data-adicionar="combo-quente">Adicionar +</button>
                 </div>
             </div>
         </div>
@@ -181,7 +189,7 @@
 
                 <div class="preco">
                     <h4>R$ 19,90</h4>
-                    <button onclick="abrirModal('Dogão da Chapa', 19.90)">Adicionar +</button>
+                    <button type="button" data-adicionar="dogao-chapa">Adicionar +</button>
                 </div>
             </div>
         </div>
@@ -197,7 +205,7 @@
 
                 <div class="preco">
                     <h4>R$ 7,00</h4>
-                    <button onclick="abrirModal('Coca-Cola 350ml', 7.00)">Adicionar +</button>
+                    <button type="button" data-adicionar="coca-cola-350ml">Adicionar +</button>
                 </div>
             </div>
         </div>
@@ -211,7 +219,7 @@
 
                 <div class="preco">
                     <h4>R$ 6,00</h4>
-                    <button onclick="abrirModal('Guaraná Antarctica 350ml', 6.00)">Adicionar +</button>
+                    <button type="button" data-adicionar="guarana-antarctica-350ml">Adicionar +</button>
                 </div>
             </div>
         </div>
@@ -225,7 +233,7 @@
 
                 <div class="preco">
                     <h4>R$ 4,00</h4>
-                    <button onclick="abrirModal('Água Mineral 500ml', 4.00)">Adicionar +</button>
+                    <button type="button" data-adicionar="agua-mineral-500ml">Adicionar +</button>
                 </div>
             </div>
         </div>
@@ -241,7 +249,7 @@
 
                 <div class="preco">
                     <h4>R$ 12,90</h4>
-                    <button onclick="abrirModal('Brownie de Chocolate', 12.90)">Adicionar +</button>
+                    <button type="button" data-adicionar="brownie-chocolate">Adicionar +</button>
                 </div>
             </div>
         </div>
@@ -255,7 +263,7 @@
 
                 <div class="preco">
                     <h4>R$ 9,90</h4>
-                    <button onclick="abrirModal('Sorvete', 9.90)">Adicionar +</button>
+                    <button type="button" data-adicionar="sorvete-chocolate">Adicionar +</button>
                 </div>
             </div>
         </div>
@@ -266,7 +274,7 @@
     <div class="modal" id="modal">
         <div class="modal-conteudo">
 
-            <button class="fechar" onclick="fecharModal()" aria-label="Fechar">×</button>
+            <button class="fechar" type="button" data-fechar-modal aria-label="Fechar">×</button>
 
             <h2>Adicionar ao carrinho</h2>
 
@@ -279,8 +287,8 @@
             <input type="number" id="quantidade" value="1" min="1">
 
             <div class="botoes-modal">
-                <button onclick="fecharModal()">Cancelar</button>
-                <button onclick="confirmarPedido()">Confirmar</button>
+                <button type="button" data-fechar-modal>Cancelar</button>
+                <button type="button" id="confirmar-pedido">Confirmar pedido</button>
             </div>
 
         </div>
@@ -288,90 +296,3 @@
 
 </body>
 </html>
-<script>
-
-
-
-function selecionarCategoria(categoria, botao) {
-
-    const produtos = document.querySelectorAll(".produto");
-    const botoes = document.querySelectorAll(".escolhas button");
-
-    botoes.forEach(item => {
-        item.classList.remove("ativo");
-    });
-
-    botao.classList.add("ativo");
-
-    produtos.forEach(produto => {
-
-        if (
-            categoria === "todos" ||
-            produto.classList.contains(categoria)
-        ) {
-            produto.style.display = "flex";
-        } else {
-            produto.style.display = "none";
-        }
-
-    });
-}
-
-
-
-
-let produtoSelecionado = "";
-let precoSelecionado = 0;
-
-function abrirModal(nome, preco) {
-
-    produtoSelecionado = nome;
-    precoSelecionado = preco;
-
-    document.getElementById("nome-produto").textContent = nome;
-
-    document.getElementById("preco-produto").textContent =
-        preco.toLocaleString("pt-BR", {
-            style: "currency",
-            currency: "BRL"
-        });
-
-    document.getElementById("quantidade").value = 1;
-
-    document.getElementById("modal").style.display = "flex";
-}
-
-
-
-
-function fecharModal() {
-    document.getElementById("modal").style.display = "none";
-}
-
-
-
-
-function confirmarPedido() {
-
-    const quantidade = Number(
-        document.getElementById("quantidade").value
-    );
-
-    if (!Number.isInteger(quantidade) || quantidade < 1) {
-        alert("Escolha uma quantidade válida.");
-        return;
-    }
-
-    const pedido = {
-        nome: produtoSelecionado,
-        preco: precoSelecionado,
-        quantidade: quantidade
-    };
-
-    console.log("Pedido selecionado:", pedido);
-
-    fecharModal();
-}
-
-
-</script>
