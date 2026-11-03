@@ -126,6 +126,9 @@
             if (resultado == true) {
                     console.log("login realizado com sucesso!");
                     window.location.href = "principal.html";
+                    localStorage.setItem("usuarioEmail", email);
+                    localStorage.setItem("senhaUsuario", senha);
+                
                 } else if (resultado == "email") {
                     console.log("Erro ao fazer login - email");
                     erroEmail.textContent = "Não existe nenhum cliente com esse e-mail";
