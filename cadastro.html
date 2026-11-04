@@ -70,7 +70,7 @@
 
     <script type="module">
 
-    import { darFetch, CpfEmailexiste } from './fetchs.js';
+    import { darFetch, Emailexiste } from './fetchs.js';
     import { validarEmail } from './funcoes.js';
 
     let mostrar = document.getElementById("mostrar");
@@ -166,7 +166,7 @@
             erroEmail.style.color = "white";
             emailValidado = false;
         } else {
-            if((await CpfEmailexiste(cpf, email)) == "email"){
+            if((await Emailexiste(email)) === "email"){
                 erroEmail.textContent = "O e-mail já está cadastrado.";
                 erroEmail.style.color = "white";
                 emailValidado = false;
