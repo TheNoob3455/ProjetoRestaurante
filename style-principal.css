@@ -334,7 +334,7 @@ body {
 }
 
 
-
+.carrossel: hover{animation-play-state: paused;}
 .carrossel > .classico,
 .carrossel > .duplo,
 .carrossel > .bacon,
