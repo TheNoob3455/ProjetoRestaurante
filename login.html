@@ -125,11 +125,12 @@
             let resultado = await pegarFetch(email, senha, token);
             if (resultado == true) {
                     console.log("login realizado com sucesso!");
-                    window.location.href = "principal.html";
 
                     const senhaLogin = await pegarSenha(email);
                     localStorage.setItem("usuarioEmail", email);
                     localStorage.setItem("senhaUsuario", senhaLogin);
+
+                    window.location.href = "principal.html";
                 
                 } else if (resultado == "email") {
                     console.log("Erro ao fazer login - email");
