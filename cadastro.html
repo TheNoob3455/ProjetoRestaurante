@@ -19,7 +19,7 @@
         Crie sua conta para começar
     </p>
 
-    <form id="form-cadastro">
+    <form>
 
     <div class="nome">
         <img src="img/Ícone_de_usuário_branco_brilhante-removebg-preview.png" alt="">
@@ -54,7 +54,6 @@
     </div>
     <p id="senhaigual"></p>
 
-    <div class="cf-turnstile" data-sitekey="0x4AAAAAAFwJ3SDm_0wdNBwN"></div>
 
     <div>
         <button type="button" id="cadastro">Cadastrar</button>
@@ -67,7 +66,9 @@
         <a href="login.html">Entrar</a>
     </p>
     </div>
-
+    <form id="form-cadastro">
+    <div class="cf-turnstile" data-sitekey="0x4AAAAAAFwJ3SDm_0wdNBwN"></div>
+    </form>
     <script type="module">
 
     import { darFetch, Emailexiste } from './fetchs.js';
