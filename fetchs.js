@@ -1,31 +1,52 @@
 
 export async function darFetch(nome, email, cpf, senha, token) {
-    const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
 
+    const URLcsrf = 'https://projeto-restaurante-backend-5mhl.onrender.com/csrf';
+    const rCSRF = await fetch(URLcsrf, {
+        method: "GET",
+        credentials: "include"
+    });
+    
+    if(!rCSRF.ok) {
+        console.error("Erro ao obter CSRF token: ", rCSRF.status);
+        return false;
+
+    }
+    
+    const CSRF = await rCSRF.json();
+    let tokenCSRF = CSRF.token;
+
+    const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
     const resposta = await fetch(URL, {
         method: "POST",
+        credentials: "include",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "X-CSRF-TOKEN": tokenCSRF
         },
+
         body: JSON.stringify({
             nome: nome,
             email: email,
             cpf: cpf,
             senha: senha,
             token: token
+
         })
     });
-
     if (resposta.ok) {
+
         const cliente = await resposta.json();
         console.log("Sucesso! Registro salvo no banco:", cliente);
+
         return "ok";
+
     } else {
+
         console.error("Erro no 'darFetch': ", resposta.status);
         return "erro";
     }
 }
-
 // --------------------------------------------------
 
 export async function pegarFetch(email, senha, token) {
