@@ -136,6 +136,7 @@ export async function pegarFetch(email, senha, token) {
 }
 // --------------------------------------------------
 
+
 export async function Emailexiste(email) {
     const URLcsrf = 'https://projeto-restaurante-backend-5mhl.onrender.com/csrf';
     const rCSRF = await fetch(URLcsrf, {
