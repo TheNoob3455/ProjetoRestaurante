@@ -137,8 +137,17 @@ export async function pegarFetch(email, senha, token) {
 // --------------------------------------------------
 
 export async function Emailexiste(email) {
+    const URLcsrf = 'https://projeto-restaurante-backend-5mhl.onrender.com/csrf';
+    const rCSRF = await fetch(URLcsrf, {
+        method: "GET",
+        credentials: "include"
+    });
+
     const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
-    const resposta = await fetch(URL);
+    const resposta = await fetch(URL, {
+        method: "GET",
+        credentials: "include"
+    });
 
     if (resposta.ok) {
         const cliente = await resposta.json();
