@@ -47,7 +47,7 @@
             id: "chapa-classico",
             nome: "Chapa Clássico",
             preco: 29.9,
-            imagem: "img/Cheesebúrguer Artesanal com Vapor.png",
+            imagem: "img/chapa-classico.png",
             ingredientes: ["Tomate", "Alface", "Queijo", "Queijo cheddar"],
             molhos: ["Molho especial da casa"]
         },
@@ -55,7 +55,7 @@
             id: "chapa-duplo",
             nome: "Chapa Duplo",
             preco: 39.9,
-            imagem: "img/Hambúrguer_Duplo_Gourmet_com_Bacon_e_Vapor-removebg-preview.png",
+            imagem: "img/duplo.png",
             ingredientes: ["Bacon", "Alface", "Queijo cheddar", "Cebola caramelizada"],
             molhos: ["Molho especial da casa"]
         },
@@ -63,7 +63,7 @@
             id: "chapa-bacon",
             nome: "Chapa Bacon",
             preco: 34.9,
-            imagem: "img/Hambúrguer_Gourmet_com_Bacon_e_Queijo_Derretido-removebg-preview.png",
+            imagem: "img/bacon.png",
             ingredientes: ["Bacon", "Alface", "Queijo cheddar"],
             molhos: ["Molho especial da casa"]
         },
@@ -71,7 +71,7 @@
             id: "chapa-egg",
             nome: "Chapa Egg",
             preco: 25.9,
-            imagem: null,
+            imagem: "img/chapa egg.png",
             ingredientes: ["Ovo", "Queijo", "Alface"],
             molhos: ["Maionese temperada"]
         },
@@ -79,7 +79,7 @@
             id: "frango-crocante",
             nome: "Frango Crocante",
             preco: 26.9,
-            imagem: null,
+            imagem: "img/chapa crocante.png",
             ingredientes: ["Queijo", "Alface"],
             molhos: ["Barbecue"]
         },
@@ -87,7 +87,7 @@
             id: "chapa-tudo",
             nome: "Chapa Tudo",
             preco: 34.9,
-            imagem: null,
+            imagem: "img/chapa tudo.png",
             ingredientes: ["Presunto", "Queijo", "Bacon", "Ovo", "Milho", "Alface", "Tomate"],
             molhos: ["Molho especial da casa"]
         },
@@ -95,7 +95,7 @@
             id: "chapa-vegetariano",
             nome: "Chapa Vegetariano",
             preco: 25.9,
-            imagem: null,
+            imagem: "img/chapa vegetariano.png",
             ingredientes: ["Queijo", "Alface", "Tomate"],
             molhos: ["Molho de ervas"]
         },
@@ -103,7 +103,7 @@
             id: "combo-quente",
             nome: "Combo Quente",
             preco: 44.9,
-            imagem: "img/Combo_de_Cheeseburger__Batatas_e_Refrigerante-removebg-preview.png",
+            imagem: "img/combo.png",
             ingredientes: ["Tomate", "Alface", "Queijo", "Queijo cheddar"],
             molhos: ["Molho especial da casa"]
         },
@@ -111,7 +111,7 @@
             id: "dogao-chapa",
             nome: "Dogão da Chapa",
             preco: 19.9,
-            imagem: null,
+            imagem: "img/Dogão_Gourmet_com_Batata_Palha-removebg-preview.png",
             ingredientes: ["Milho", "Batata palha", "Queijo"],
             molhos: ["Ketchup", "Mostarda"],
             pao: "Pão de hot dog"
@@ -120,31 +120,31 @@
             id: "coca-cola-350ml",
             nome: "Coca-Cola 350ml",
             preco: 7,
-            imagem: null
+            imagem: "img/coca-cola.png"
         },
         "guarana-antarctica-350ml": {
             id: "guarana-antarctica-350ml",
             nome: "Guaraná Antarctica 350ml",
             preco: 6,
-            imagem: null
+            imagem: "img/guarana-antartica.png"
         },
         "agua-mineral-500ml": {
             id: "agua-mineral-500ml",
             nome: "Água Mineral 500ml",
             preco: 4,
-            imagem: null
+            imagem: "img/agua.png"
         },
         "brownie-chocolate": {
             id: "brownie-chocolate",
             nome: "Brownie de Chocolate",
             preco: 12.9,
-            imagem: null
+            imagem: "img/brownie.png"
         },
         "sorvete-chocolate": {
             id: "sorvete-chocolate",
             nome: "Sorvete",
             preco: 9.9,
-            imagem: null
+            imagem: "img/sorvete.png"
         }
     };
 
