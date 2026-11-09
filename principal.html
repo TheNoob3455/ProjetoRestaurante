@@ -9,6 +9,8 @@
 
     <link rel="stylesheet" href="style-principal.css">
     <link rel="shortcut icon" href="img/Logo-Circular-Chapa-Quente.ico"type="image/x-icon">
+    <script src="pedido.js" defer></script>
+    <script src="principal.js" defer></script>
 </head>
 
 <body>
@@ -22,14 +24,23 @@
         <nav class="links">
             <a class="inicio" href="principal.html">Início</a>
             <a class="pedir" href="pedir.html">Peça já</a>
-            <a class="carrinho" href="carrinho.html">Meus Pedidos</a>
+            <a class="carrinho" href="carrinho.html">
+                Meus Pedidos <span class="contador-carrinho" data-cart-count>0</span>
+            </a>
             <a class="recompensas" href="recompensas.html">Recompensas</a>
             <a class="sobreNos" href="sobreNos.html">Sobre nós</a>
         </nav>
 
-        <button class="usu" aria-label="Perfil"></button>
+        <div class="acoes-cabecalho">
+            <a class="atalho-carrinho" href="carrinho.html" aria-label="Abrir carrinho">
+                <img src="img/Botão Neon Laranja com Carrinho.png" alt="">
+            </a>
+            <button class="usu" aria-label="Perfil"></button>
+        </div>
 
     </header>
+
+    <p id="feedback-carrinho" class="feedback-carrinho" role="status" aria-live="polite"></p>
 
 
     <section class="apresentacao">
@@ -118,14 +129,14 @@
 
 
     <!-- CARROSSEL -->
-    <section class="lanches">
+    <section class="lanches" id="cardapio">
 
         <div class="carrossel">
 
             <!-- CHAPA CLÁSSICO -->
             <div class="classico">
 
-                <img src="img/Cheesebúrguer Artesanal com Vapor.png"
+                <img src="img/chapa-classico.png"
                      alt="Chapa Clássico">
 
                 <div class="complemento">
@@ -139,8 +150,8 @@
 
                     <div class="kk">
                         <h4>R$ 29,90</h4>
-                        <button class="botao-carrinho"
-                                aria-label="Adicionar Chapa Clássico"></button>
+                        <button class="botao-carrinho" type="button" data-adicionar-carrinho="chapa-classico"
+                                aria-label="Adicionar Chapa Clássico ao carrinho"></button>
                     </div>
 
                 </div>
@@ -151,7 +162,7 @@
             <!-- CHAPA DUPLO -->
             <div class="duplo">
 
-                <img src="img/Hambúrguer_Duplo_Gourmet_com_Bacon_e_Vapor-removebg-preview.png"
+                <img src="img/duplo.png"
                      alt="Chapa Duplo">
 
                 <div class="complemento">
@@ -165,8 +176,8 @@
 
                     <div class="kk">
                         <h4>R$ 39,90</h4>
-                        <button class="botao-carrinho"
-                                aria-label="Adicionar Chapa Duplo"></button>
+                        <button class="botao-carrinho" type="button" data-adicionar-carrinho="chapa-duplo"
+                                aria-label="Adicionar Chapa Duplo ao carrinho"></button>
                     </div>
 
                 </div>
@@ -177,7 +188,7 @@
             <!-- CHAPA BACON -->
             <div class="bacon">
 
-                <img src="img/Hambúrguer_Gourmet_com_Bacon_e_Queijo_Derretido-removebg-preview.png"
+                <img src="img/bacon.png"
                      alt="Chapa Bacon">
 
                 <div class="complemento">
@@ -191,8 +202,8 @@
 
                     <div class="kk">
                         <h4>R$ 34,90</h4>
-                        <button class="botao-carrinho"
-                                aria-label="Adicionar Chapa Bacon"></button>
+                        <button class="botao-carrinho" type="button" data-adicionar-carrinho="chapa-bacon"
+                                aria-label="Adicionar Chapa Bacon ao carrinho"></button>
                     </div>
 
                 </div>
@@ -203,7 +214,7 @@
             
             <div class="combo">
 
-                <img src="img/Combo_de_Cheeseburger__Batatas_e_Refrigerante-removebg-preview.png"
+                <img src="img/combo.png"
                      alt="Combo Quente">
 
                 <div class="complemento">
@@ -217,8 +228,8 @@
 
                     <div class="kk">
                         <h4>A partir de R$ 44,90</h4>
-                        <button class="botao-carrinho"
-                                aria-label="Adicionar Combo Quente"></button>
+                        <button class="botao-carrinho" type="button" data-adicionar-carrinho="combo-quente"
+                                aria-label="Adicionar Combo Quente ao carrinho"></button>
                     </div>
 
                 </div>
@@ -230,8 +241,8 @@
 
             <div class="classico" aria-hidden="true">
 
-                <img src="img/Cheesebúrguer Artesanal com Vapor.png"
-                     alt="">
+                <img src="img/chapa-classico.png"
+                     alt="Chapa Clássico">
 
                 <div class="complemento">
                     <h3>Chapa Clássico</h3>
@@ -252,8 +263,8 @@
 
             <div class="duplo" aria-hidden="true">
 
-                <img src="img/Hambúrguer_Duplo_Gourmet_com_Bacon_e_Vapor-removebg-preview.png"
-                     alt="">
+                <img src="img/duplo.png"
+                     alt="Chapa Duplo">
 
                 <div class="complemento">
                     <h3>Chapa Duplo</h3>
@@ -274,8 +285,8 @@
 
             <div class="bacon" aria-hidden="true">
 
-                <img src="img/Hambúrguer_Gourmet_com_Bacon_e_Queijo_Derretido-removebg-preview.png"
-                     alt="">
+                <img src="img/bacon.png"
+                     alt="Chapa Bacon">
 
                 <div class="complemento">
                     <h3>Chapa Bacon</h3>
@@ -296,8 +307,8 @@
 
             <div class="combo" aria-hidden="true">
 
-                <img src="img/Combo_de_Cheeseburger__Batatas_e_Refrigerante-removebg-preview.png"
-                     alt="">
+                <img src="img/combo.png"
+                     alt="Combo Quente">
 
                 <div class="complemento">
                     <h3>Combo Quente</h3>
@@ -319,11 +330,38 @@
 
     </section>
 
+    <dialog class="modal-personalizacao" id="modal-personalizacao" aria-labelledby="titulo-personalizacao">
+        <form id="form-personalizacao">
+            <header class="cabecalho-modal">
+                <div>
+                    <p class="selo-secao">MONTE DO SEU JEITO</p>
+                    <h2 id="titulo-personalizacao">Personalize seu lanche</h2>
+                    <p id="descricao-personalizacao"></p>
+                </div>
+                <button class="fechar-modal" type="button" data-fechar-modal aria-label="Fechar personalização">×</button>
+            </header>
+
+            <fieldset class="opcoes-personalizacao">
+                <legend>Escolha o tipo de pão</legend>
+                <div id="opcoes-pao" class="grade-opcoes"></div>
+            </fieldset>
+
+            <fieldset class="opcoes-personalizacao">
+                <legend>Ingredientes <span>— marque os que deseja</span></legend>
+                <div id="opcoes-ingredientes" class="grade-opcoes grade-checkboxes"></div>
+            </fieldset>
+
+            <fieldset class="opcoes-personalizacao">
+                <legend>Molhos <span>— escolha os seus</span></legend>
+                <div id="opcoes-molhos" class="grade-opcoes grade-checkboxes"></div>
+            </fieldset>
+
+            <footer class="rodape-modal">
+                <p>Total deste lanche <strong id="preco-personalizado"></strong></p>
+                <button class="botao-adicionar-personalizado" type="submit">Adicionar ao carrinho</button>
+            </footer>
+        </form>
+    </dialog>
+
 </body>
 </html>
-<script>
-    let emailUtilizado = localStorage.getItem("usuarioEmail");
-    let senhaUtilizada = localStorage.getItem("senhaUsuario");
-
-
-</script>
