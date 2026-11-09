@@ -50,17 +50,38 @@ export async function darFetch(nome, email, cpf, senha, token) {
 // --------------------------------------------------
 
 export async function pegarFetch(email, senha, token) {
+    const URLcsrf = 'https://projeto-restaurante-backend-5mhl.onrender.com/csrf';
+    const rCSRF = await fetch(URLcsrf, {
+        method: "GET",
+        credentials: "include"
+    });
+
+    if(!rCSRF.ok) {
+        console.error("Erro ao obter CSRF token: ", rCSRF.status);
+        return false;
+    }
+
+    // CORREÇÃO 1: Extrai o JSON corretamente do rCSRF
+    const CSRF = await rCSRF.json();
+    let tokenCSRF = CSRF.token;
+
     const URLcliente = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
-    const respostaCliente = await fetch(URLcliente);
+    const respostaCliente = await fetch(URLcliente, {
+        method: "GET",
+        credentials: "include", // Obrigatório para enviar a sessão
+        headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-TOKEN": tokenCSRF // (Nota: rotas GET puras geralmente não exigem CSRF, mas enviar não faz mal)
+        }
+    });
 
     let clientes = null;
     let clienteAtual = null;
 
-
     if(respostaCliente.ok) {
         clientes = await respostaCliente.json();
         
-        if (clientes === null) {
+        if (clientes === null || clientes.length === 0) {
             console.log("Não existe nenhum cliente");
             return false;
         }
@@ -71,27 +92,25 @@ export async function pegarFetch(email, senha, token) {
                 break;
             }
         }
-    }
-
-    else {
+    } else {
         console.error("Erro ao buscar clientes: ", respostaCliente.status);
         return false;
     }
 
-
     if (clienteAtual == null) {
         console.log("Não existe nenhum cliente com esse e-mail");
         return "email";
-    }
-    else {
+    } else {
         console.log("Existe um cliente com esse e-mail");
     }
 
     const URLhash = `https://projeto-restaurante-backend-5mhl.onrender.com/cliente/${clienteAtual.id_Cliente}`;
     const respostaHash = await fetch(URLhash, {
         method: "POST",
+        credentials: "include", // CORREÇÃO 2: Necessário para manter a sessão
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            "X-CSRF-TOKEN": tokenCSRF // CORREÇÃO 3: POST exige o token CSRF de proteção
         },
         body: JSON.stringify({
             token: token,
@@ -111,7 +130,7 @@ export async function pegarFetch(email, senha, token) {
             return "senha";
         }
     } else {
-        console.error("Erro ao buscar clientes: ", respostaHash.status);
+        console.error("Erro ao validar senha: ", respostaHash.status);
         return false;
     }
 }
