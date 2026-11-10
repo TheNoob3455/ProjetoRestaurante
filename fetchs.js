@@ -129,7 +129,7 @@ export async function Emailexiste(email) {
 // --------------------------------------------------------------------------------- // ---------------------------------------------------------------------------------
 
 export async function verificarADM(email, senha) {
-  const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/verificacao/admin-status'
+  const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/verificacao/admin'
   const resposta = await fetch(URL, {
         method: "POST",
         headers: {
