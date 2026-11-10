@@ -1,28 +1,11 @@
 
 export async function darFetch(nome, email, senha, token) {
-
-    const URLcsrf = 'https://projeto-restaurante-backend-5mhl.onrender.com/csrf';
-    const rCSRF = await fetch(URLcsrf, {
-        method: "GET",
-        credentials: "include"
-    });
-    
-    if(!rCSRF.ok) {
-        console.error("Erro ao obter CSRF token: ", rCSRF.status);
-        return "ctoken";
-
-    }
-    
-    const CSRF = await rCSRF.json();
-    let tokenCSRF = CSRF.token;
-
     const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
     const resposta = await fetch(URL, {
         method: "POST",
         credentials: "include",
         headers: {
             "Content-Type": "application/json",
-            "X-CSRF-TOKEN": tokenCSRF
         },
 
         body: JSON.stringify({
