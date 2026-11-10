@@ -28,6 +28,7 @@ export async function darFetch(nome, email, senha, token) {
         body: JSON.stringify({
             nome: nome,
             email: email,
+            cpf: null,
             senha: senha,
             token: token
 
