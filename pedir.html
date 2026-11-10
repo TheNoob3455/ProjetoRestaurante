@@ -1,0 +1,333 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapa Quente - Cardápio</title>
+    <link rel="stylesheet" href="style-pedir.css">
+    <link rel="shortcut icon" href="img/Logo-Circular-Chapa-Quente.ico" type="image/x-icon">
+    <script src="pedido.js" defer></script>
+    <script src="pedir.js" defer></script>
+</head>
+<body>
+    <div class="opcoes">
+        <img src="img/Logo Chapa Quente em Chamas.png" alt="Chapa Quente">
+        <nav class="links">
+            <a class="inicio" href="principal.html">Início</a>
+            <a class="pedir" href="pedir.html">Peça já</a>
+            <a class="carrinho" href="carrinho.html">
+                Meus Pedidos <span class="contador-carrinho" data-cart-count>0</span>
+            </a>
+            <a class="recompensas" href="recompensas.html">Recompensas</a>
+            <a class="sobreNos" href="sobreNos.html">Sobre nós</a>
+        </nav>
+        <div class="acoes-cabecalho">
+            <a class="atalho-carrinho" href="carrinho.html" aria-label="Abrir carrinho">
+                <img src="img/Botão Neon Laranja com Carrinho.png" alt="">
+            </a>
+            <button class="usu" aria-label="Perfil"></button>
+        </div>
+    </div>
+
+    <div class="titulo-cardapio">
+        <h1>Nosso Cardápio</h1>
+        <p>Escolha seus favoritos e aproveite!</p>
+        <p id="mensagem-pedido" class="mensagem-pedido" role="status" aria-live="polite"></p>
+    </div>
+
+    <div class="escolhas">
+        <button class="ativo" type="button" data-categoria="todos">Todos</button>
+        <button type="button" data-categoria="hamburguer">Hambúrgueres</button>
+        <button type="button" data-categoria="sobremesas">Sobremesas</button>
+        <button type="button" data-categoria="bebidas">Bebidas</button>
+        <button type="button" data-categoria="combos">Combos</button>
+        <button type="button" data-categoria="outros">Outros</button>
+        <button type="button" data-categoria="reservas">Reservar mesa</button>
+    </div>
+
+    <section class="reservas-area" id="reservas-area" hidden aria-labelledby="titulo-reservas">
+        <div class="reservas-cabecalho">
+            <span class="reservas-etiqueta">CHAPA QUENTE • RESERVAS</span>
+            <h2 id="titulo-reservas">Garanta seu lugar à mesa</h2>
+            <p>Escolha o dia, horário e número de pessoas. Nós encontramos uma mesa para você.</p>
+        </div>
+
+        <div class="reservas-layout">
+            <form class="reserva-form" id="reserva-form" novalidate>
+                <h3>Dados da reserva</h3>
+
+                <div class="reserva-campos">
+                    <div class="campo-reserva campo-largo">
+                        <label for="reserva-nome">Nome completo</label>
+                        <input id="reserva-nome" name="nome" maxlength="90"
+                               autocomplete="name" placeholder="Seu nome completo" required>
+                        <small class="erro-campo" data-erro="nome"></small>
+                    </div>
+
+                    <div class="campo-reserva">
+                        <label for="reserva-data">Data</label>
+                        <input id="reserva-data" name="data" type="text"
+                               inputmode="numeric" maxlength="10"
+                               placeholder="DD/MM/AAAA" autocomplete="off" required>
+                        <small class="erro-campo" data-erro="data"></small>
+                    </div>
+
+                    <div class="campo-reserva">
+                        <label for="reserva-hora">Horário</label>
+                        <select id="reserva-hora" name="hora" required>
+                            <option value="">Selecione</option>
+                            <option>18:00</option>
+                            <option>18:30</option>
+                            <option>19:00</option>
+                            <option>19:30</option>
+                            <option>20:00</option>
+                            <option>20:30</option>
+                            <option>21:00</option>
+                            <option>21:30</option>
+                            <option>22:00</option>
+                            <option>22:30</option>
+                            <option>23:00</option>
+                        </select>
+                        <small class="erro-campo" data-erro="hora"></small>
+                    </div>
+
+                    <div class="campo-reserva campo-largo">
+                        <label for="reserva-pessoas">Quantidade de pessoas</label>
+                        <select id="reserva-pessoas" name="pessoas" required>
+                            <option value="">Selecione a quantidade</option>
+                            <option value="1">1 pessoa</option>
+                            <option value="2">2 pessoas</option>
+                            <option value="3">3 pessoas</option>
+                            <option value="4">4 pessoas</option>
+                            <option value="5">5 pessoas</option>
+                            <option value="6">6 pessoas</option>
+                            <option value="7">7 pessoas</option>
+                            <option value="8">8 pessoas</option>
+                        </select>
+                        <small class="erro-campo" data-erro="pessoas"></small>
+                    </div>
+
+                    <div class="campo-reserva campo-largo">
+                        <label for="reserva-obs">Observações <span>(opcional)</span></label>
+                        <textarea id="reserva-obs" name="observacoes" rows="3"
+                                  maxlength="300" placeholder="Algum pedido especial?"></textarea>
+                    </div>
+                </div>
+
+                <p class="reserva-aviso">
+                    Reservas de demonstração: ficam salvas somente neste navegador
+                    e não são enviadas ao restaurante.
+                </p>
+                <button class="reserva-enviar" type="submit">Solicitar reserva</button>
+                <p class="reserva-feedback" id="reserva-feedback" role="status" aria-live="polite"></p>
+            </form>
+
+            <aside class="reserva-painel">
+                <h3>Disponibilidade de mesas</h3>
+                <p class="reserva-subtitulo">
+                    Selecione data e horário para consultar a disponibilidade simulada.
+                </p>
+                <div class="reserva-legenda">
+                    <span><i class="ponto disponivel"></i> Disponível</span>
+                    <span><i class="ponto reservada"></i> Reservada</span>
+                    <span><i class="ponto ocupada"></i> Ocupada</span>
+                </div>
+                <div class="reserva-mesas" id="reserva-mesas" aria-live="polite"></div>
+                <div class="reserva-resumo" id="reserva-resumo">
+                    Escolha a data, o horário e a quantidade de pessoas.
+                </div>
+                <p class="reserva-aviso">
+                    Mesas e capacidades são exemplos configuráveis.
+                    A disponibilidade real dependerá do sistema administrativo.
+                </p>
+            </aside>
+        </div>
+    </section>
+
+    <div class="produtos">
+        <div class="produto hamburguer">
+            <img src="img/chapa-classico.png" alt="Chapa Clássico">
+            <div class="complemento">
+                <h3>Chapa Clássico</h3>
+                <p>Hambúrguer artesanal, queijo, cheddar, alface, tomate e molho especial.</p>
+                <div class="preco">
+                    <h4>R$ 29,90</h4>
+                    <button type="button" data-adicionar="chapa-classico">Adicionar +</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="produto hamburguer">
+            <img src="img/duplo.png" alt="Chapa Duplo">
+            <div class="complemento">
+                <h3>Chapa Duplo</h3>
+                <p>Dois hambúrgueres, queijo cheddar, bacon, alface e molho especial.</p>
+                <div class="preco">
+                    <h4>R$ 39,90</h4>
+                    <button type="button" data-adicionar="chapa-duplo">Adicionar +</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="produto hamburguer">
+            <img src="img/bacon.png" alt="Chapa Bacon">
+            <div class="complemento">
+                <h3>Chapa Bacon</h3>
+                <p>Hambúrguer artesanal, bacon, queijo cheddar, alface e molho especial.</p>
+                <div class="preco">
+                    <h4>R$ 34,90</h4>
+                    <button type="button" data-adicionar="chapa-bacon">Adicionar +</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="produto hamburguer">
+            <img src="img/chapa egg.png" alt="Chapa Egg">
+            <div class="complemento">
+                <h3>Chapa Egg</h3>
+                <p>Hambúrguer bovino, ovo, queijo, alface e maionese temperada.</p>
+                <div class="preco">
+                    <h4>R$ 25,90</h4>
+                    <button type="button" data-adicionar="chapa-egg">Adicionar +</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="produto hamburguer">
+            <img src="img/chapa crocante.png" alt="Frango Crocante">
+            <div class="complemento">
+                <h3>Frango Crocante</h3>
+                <p>Filé de frango empanado, queijo, alface e molho barbecue.</p>
+                <div class="preco">
+                    <h4>R$ 26,90</h4>
+                    <button type="button" data-adicionar="frango-crocante">Adicionar +</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="produto hamburguer">
+            <img src="img/chapa tudo.png" alt="Chapa Tudo">
+            <div class="complemento">
+                <h3>Chapa Tudo</h3>
+                <p>Hambúrguer, presunto, queijo, bacon, ovo, milho, alface, tomate e molho da casa.</p>
+                <div class="preco">
+                    <h4>R$ 34,90</h4>
+                    <button type="button" data-adicionar="chapa-tudo">Adicionar +</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="produto hamburguer">
+            <img src="img/chapa vegetariano.png" alt="Chapa Vegetariano">
+            <div class="complemento">
+                <h3>Chapa Vegetariano</h3>
+                <p>Hambúrguer de grão-de-bico, queijo, alface, tomate e molho de ervas.</p>
+                <div class="preco">
+                    <h4>R$ 25,90</h4>
+                    <button type="button" data-adicionar="chapa-vegetariano">Adicionar +</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="produto combos">
+            <img src="img/combo.png" alt="Combo Quente">
+            <div class="complemento">
+                <h3>Combo Quente</h3>
+                <p>Hambúrguer artesanal, batata frita e refrigerante em lata.</p>
+                <div class="preco">
+                    <h4>R$ 44,90</h4>
+                    <button type="button" data-adicionar="combo-quente">Adicionar +</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="produto outros">
+            <img src="img/Dogão_Gourmet_com_Batata_Palha-removebg-preview.png" alt="Dogão da Chapa">
+            <div class="complemento">
+                <h3>Dogão da Chapa</h3>
+                <p>Duas salsichas, molho, milho, purê de batata, batata palha e queijo.</p>
+                <div class="preco">
+                    <h4>R$ 19,90</h4>
+                    <button type="button" data-adicionar="dogao-chapa">Adicionar +</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="produto bebidas">
+            <img src="img/coca-cola.png" alt="Coca-Cola">
+            <div class="complemento">
+                <h3>Coca-Cola</h3>
+                <p>Refrigerante Coca-Cola, lata de 350 ml.</p>
+                <div class="preco">
+                    <h4>R$ 7,00</h4>
+                    <button type="button" data-adicionar="coca-cola-350ml">Adicionar +</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="produto bebidas">
+            <img src="img/guarana-antartica.png" alt="Guaraná Antarctica">
+            <div class="complemento">
+                <h3>Guaraná Antarctica</h3>
+                <p>Refrigerante Guaraná Antarctica, lata de 350 ml.</p>
+                <div class="preco">
+                    <h4>R$ 6,00</h4>
+                    <button type="button" data-adicionar="guarana-antarctica-350ml">Adicionar +</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="produto bebidas">
+            <img src="img/agua.png" alt="Água Mineral">
+            <div class="complemento">
+                <h3>Água Mineral</h3>
+                <p>Água mineral sem gás, garrafa de 500 ml.</p>
+                <div class="preco">
+                    <h4>R$ 4,00</h4>
+                    <button type="button" data-adicionar="agua-mineral-500ml">Adicionar +</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="produto sobremesas">
+            <img src="img/brownie.png" alt="Brownie de Chocolate">
+            <div class="complemento">
+                <h3>Brownie de Chocolate</h3>
+                <p>Brownie de chocolate com cobertura cremosa.</p>
+                <div class="preco">
+                    <h4>R$ 12,90</h4>
+                    <button type="button" data-adicionar="brownie-chocolate">Adicionar +</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="produto sobremesas">
+            <img src="img/sorvete.png" alt="Sorvete de Chocolate">
+            <div class="complemento">
+                <h3>Sorvete</h3>
+                <p>Sorvete cremoso de chocolate.</p>
+                <div class="preco">
+                    <h4>R$ 9,90</h4>
+                    <button type="button" data-adicionar="sorvete-chocolate">Adicionar +</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal" id="modal">
+        <div class="modal-conteudo">
+            <button class="fechar" type="button" data-fechar-modal aria-label="Fechar">×</button>
+            <h2>Adicionar ao carrinho</h2>
+            <h3 id="nome-produto"></h3>
+            <p id="preco-produto"></p>
+            <label for="quantidade">Quantidade</label>
+            <input type="number" id="quantidade" value="1" min="1">
+            <div class="botoes-modal">
+                <button type="button" data-fechar-modal>Cancelar</button>
+                <button type="button" id="confirmar-pedido">Confirmar pedido</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
