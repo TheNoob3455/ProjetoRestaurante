@@ -137,12 +137,6 @@ export async function pegarFetch(email, senha, token) {
 
 
 export async function Emailexiste(email) {
-    const URLcsrf = 'https://projeto-restaurante-backend-5mhl.onrender.com/csrf';
-    const rCSRF = await fetch(URLcsrf, {
-        method: "GET",
-        credentials: "include"
-    });
-
     const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
     const resposta = await fetch(URL, {
         method: "GET",
@@ -154,17 +148,18 @@ export async function Emailexiste(email) {
 
         for (let loop = 0; loop < cliente.length; loop++) {
             if (cliente[loop].email === email) {
-                return 'email';
+                return true;
             }
         }
 
-        return false;
+        return "nenhum cliente com esse e-mail";
     }
     else {
         console.error("Erro ao buscar clientes: ", resposta.status);
-        return "erro";
+        return "erro ao buscar clientes";
     }
 }
+
 
 export async function Hash(token, senha) {
     const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente/cliente'
