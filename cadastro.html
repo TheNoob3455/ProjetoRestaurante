@@ -73,7 +73,7 @@
   
     <script type="module">
 
-    import { darFetch, Emailexiste } from './fetchs.js';
+    import { darFetch } from './fetchs.js';
     import { validarEmail } from './funcoes.js';
 
     let mostrar = document.getElementById("mostrar");
@@ -166,15 +166,8 @@
             erroEmail.style.color = "white";
             emailValidado = false;
         } else {
-            if((await Emailexiste(email)) === false){
-                erroEmail.textContent = "O e-mail já está cadastrado.";
-                erroEmail.style.color = "white";
-                emailValidado = false;
-            }
-            else {
-                erroEmail.textContent = "";
-                emailValidado = true;
-            }
+            erroEmail.textContent = "";
+            emailValidado = true;
         }
 
         const form = document.getElementById('form-cadastro');
