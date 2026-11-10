@@ -148,17 +148,19 @@ export async function Emailexiste(email) {
 
         for (let loop = 0; loop < cliente.length; loop++) {
             if (cliente[loop].email === email) {
-                return true;
+                console.log("este email já existe");
+                return false;
             }
         }
-
-        return "nenhum cliente com esse e-mail";
+        console.log("email tudo certo");
+        return true;
     }
     else {
         console.error("Erro ao buscar clientes: ", resposta.status);
-        return "erro ao buscar clientes";
+        return false;
     }
 }
+
 
 
 export async function Hash(token, senha) {
