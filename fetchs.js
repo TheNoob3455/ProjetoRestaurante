@@ -182,7 +182,7 @@ export async function confirmarES(email, senha, opcao){
 // --------------------------------------------------------------------------------- // ---------------------------------------------------------------------------------
 
 export async function verificarADM(email, senha) {
-  const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/verificacao/admin'
+  const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/verificacao/admin-status'
   const resposta = await fetch(URL, {
         method: "POST",
         credentials: "include",
