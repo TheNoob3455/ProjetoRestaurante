@@ -33,28 +33,12 @@ export async function darFetch(nome, email, senha, token) {
 // --------------------------------------------------
 
 export async function pegarFetch(email, senha, token) {
-    const URLcsrf = 'https://projeto-restaurante-backend-5mhl.onrender.com/csrf';
-    const rCSRF = await fetch(URLcsrf, {
-        method: "GET",
-        credentials: "include"
-    });
-
-    if(!rCSRF.ok) {
-        console.error("Erro ao obter CSRF token: ", rCSRF.status);
-        return false;
-    }
-
-    // CORREÇÃO 1: Extrai o JSON corretamente do rCSRF
-    const CSRF = await rCSRF.json();
-    let tokenCSRF = CSRF.token;
-
     const URLcliente = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
     const respostaCliente = await fetch(URLcliente, {
         method: "GET",
-        credentials: "include", // Obrigatório para enviar a sessão
+        credentials: "include",
         headers: {
             "Content-Type": "application/json",
-            "X-CSRF-TOKEN": tokenCSRF // (Nota: rotas GET puras geralmente não exigem CSRF, mas enviar não faz mal)
         }
     });
 
@@ -90,10 +74,9 @@ export async function pegarFetch(email, senha, token) {
     const URLhash = `https://projeto-restaurante-backend-5mhl.onrender.com/cliente/${clienteAtual.id_Cliente}`;
     const respostaHash = await fetch(URLhash, {
         method: "POST",
-        credentials: "include", // CORREÇÃO 2: Necessário para manter a sessão
+        credentials: "include",
         headers: {
             "Content-Type": "application/json",
-            "X-CSRF-TOKEN": tokenCSRF // CORREÇÃO 3: POST exige o token CSRF de proteção
         },
         body: JSON.stringify({
             token: token,
