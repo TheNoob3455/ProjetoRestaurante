@@ -1,5 +1,5 @@
 
-export async function darFetch(nome, email, cpf, senha, token) {
+export async function darFetch(nome, email, senha, token) {
 
     const URLcsrf = 'https://projeto-restaurante-backend-5mhl.onrender.com/csrf';
     const rCSRF = await fetch(URLcsrf, {
@@ -9,7 +9,7 @@ export async function darFetch(nome, email, cpf, senha, token) {
     
     if(!rCSRF.ok) {
         console.error("Erro ao obter CSRF token: ", rCSRF.status);
-        return false;
+        return "ctoken";
 
     }
     
@@ -28,7 +28,6 @@ export async function darFetch(nome, email, cpf, senha, token) {
         body: JSON.stringify({
             nome: nome,
             email: email,
-            cpf: cpf,
             senha: senha,
             token: token
 
@@ -39,12 +38,12 @@ export async function darFetch(nome, email, cpf, senha, token) {
         const cliente = await resposta.json();
         console.log("Sucesso! Registro salvo no banco:", cliente);
 
-        return "ok";
+        return true;
 
     } else {
 
         console.error("Erro no 'darFetch': ", resposta.status);
-        return "erro";
+        return false;
     }
 }
 // --------------------------------------------------
