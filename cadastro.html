@@ -112,7 +112,6 @@
     botao.addEventListener("click", async function(event){
         event.preventDefault();
     
-        let cpf = "577.084.860-09";
         let nome = document.getElementById("nome").value;
         let senha = document.getElementById("senha").value;
         let email = document.getElementById("email").value;
@@ -122,9 +121,7 @@
         let erroNome = document.getElementById("erronome");
         let senhaIgual = document.getElementById("senhaigual");
         let erroEmail = document.getElementById("erroEmail");
-
-        const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
-    
+        
         let senhaValidada = false;
         let nomeValidado = false;
         let emailValidado = false;
@@ -169,7 +166,7 @@
             erroEmail.style.color = "white";
             emailValidado = false;
         } else {
-            if((await Emailexiste(email)) === "email"){
+            if((await Emailexiste(email)) === false){
                 erroEmail.textContent = "O e-mail já está cadastrado.";
                 erroEmail.style.color = "white";
                 emailValidado = false;
@@ -186,11 +183,15 @@
         
 
         if (nomeValidado && senhaValidada && emailValidado) {
-            let resultado = await darFetch(nome, email, cpf, senha, token);
-            if (resultado === "ok") {
+            let resultado = await darFetch(nome, email, senha, token);
+            if (resultado === true) {
                 console.log("Cadastro realizado com sucesso!");
                 window.location.href = "login.html";
-            } else {
+            } 
+            else if (resultado === "ctoken") {
+                console.log("Erro ao obter CSRF token. Tente novamente mais tarde.");
+            }
+            else {
                 console.log("Erro ao cadastrar. Verifique os dados ou o CAPTCHA.");
             }
         }
