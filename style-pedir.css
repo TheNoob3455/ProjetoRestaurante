@@ -1,0 +1,649 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-image: url("img/Hambúrguer Grelhado com Fritas em Luz Cinematográfica.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: Arial, sans-serif;
+}
+
+.opcoes {
+    position: relative;
+    width: 76%;
+    min-height: 60px;
+    margin-top: 30px;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 20px;
+    background-color: rgba(15, 9, 9, 0.637);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.opcoes img {
+    height: 55px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    justify-self: start;
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.opcoes a {
+    font-size: 100%;
+    white-space: nowrap;
+    text-decoration: none;
+    color: white;
+}
+
+.opcoes a:hover {
+    color: rgb(255, 72, 0);
+}
+
+.contador-carrinho {
+    display: inline-grid;
+    min-width: 20px;
+    height: 20px;
+    margin-left: 4px;
+    padding: 0 5px;
+    place-items: center;
+    border-radius: 20px;
+    background: rgb(240, 75, 32);
+    color: #fff;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.opcoes .pedir {
+    color: rgb(255, 72, 0);
+}
+
+.opcoes .usu {
+    width: 40px;
+    height: 40px;
+    justify-self: end;
+    border: none;
+    background-color: transparent;
+    background-image: url("img/Ícone de Perfil Neon Incandescente.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+}
+
+.acoes-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-self: end;
+    gap: 10px;
+}
+
+.atalho-carrinho {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    place-items: center;
+}
+
+.atalho-carrinho img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.titulo-cardapio {
+    margin-top: 75px;
+    text-align: center;
+    color: white;
+}
+
+.titulo-cardapio h1 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.titulo-cardapio p {
+    font-size: 17px;
+    color: #ddd;
+}
+
+.titulo-cardapio .mensagem-pedido {
+    min-height: 20px;
+    margin-top: 12px;
+    color: #ffd35a;
+    font-size: 14px;
+}
+
+.escolhas {
+    width: 76%;
+    margin-top: 30px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    background-color: rgba(15, 9, 9, 0.637);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.escolhas button {
+    padding: 12px 22px;
+    background-color: transparent;
+    border: 1px solid rgb(255, 72, 0);
+    border-radius: 10px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.escolhas button:hover,
+.escolhas button.ativo {
+    background-color: rgb(255, 72, 0);
+}
+
+.produtos {
+    width: 76%;
+    margin-top: 35px;
+    margin-bottom: 80px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+}
+
+.produto {
+    min-width: 0;
+    background-color: rgba(15, 9, 9, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 15px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.produto img {
+    width: 100%;
+    height: 200px;
+    object-fit: contain;
+    padding: 15px;
+}
+
+.imagem-provisoria {
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 75px;
+}
+
+.complemento {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.complemento h3 {
+    margin: 0 0 10px;
+    font-size: 22px;
+    color: white;
+}
+
+.complemento p {
+    margin: 0 0 20px;
+    color: #ccc;
+    font-size: 14px;
+    line-height: 1.5;
+    flex: 1;
+}
+
+.preco {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.preco h4 {
+    margin: 0;
+    font-size: 20px;
+    color: rgb(255, 115, 0);
+}
+
+.preco button {
+    padding: 10px 14px;
+    background-color: rgb(255, 72, 0);
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.preco button:hover {
+    background-color: rgb(220, 55, 0);
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.modal-conteudo {
+    position: relative;
+    width: 400px;
+    max-width: 100%;
+    padding: 30px;
+    background-color: #201818;
+    border: 1px solid rgb(255, 72, 0);
+    border-radius: 15px;
+    color: white;
+    text-align: center;
+}
+
+.modal-conteudo h2 {
+    color: rgb(255, 115, 0);
+}
+
+.modal-conteudo h3 {
+    margin-top: 20px;
+}
+
+.modal-conteudo input {
+    width: 80px;
+    padding: 10px;
+    margin: 15px;
+    background-color: #333;
+    border: 1px solid #777;
+    border-radius: 5px;
+    color: white;
+    text-align: center;
+}
+
+.fechar {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.botoes-modal {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.botoes-modal button {
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    background-color: rgb(255, 72, 0);
+    color: white;
+    cursor: pointer;
+}
+
+/* RESERVAS */
+
+.reservas-area {
+    width: 76%;
+    margin: 35px 0 80px;
+    color: #fff;
+}
+
+.reservas-area[hidden] {
+    display: none !important;
+}
+
+.reservas-cabecalho {
+    text-align: center;
+    margin: 0 0 28px;
+}
+
+.reservas-etiqueta {
+    color: #ff7434;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.reservas-cabecalho h2 {
+    font-size: 32px;
+    margin: 10px 0;
+}
+
+.reservas-cabecalho p,
+.reserva-subtitulo {
+    color: #cfc8c8;
+    line-height: 1.5;
+}
+
+.reservas-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr);
+    gap: 24px;
+    align-items: start;
+}
+
+.reserva-form,
+.reserva-painel {
+    background: rgba(20, 12, 12, 0.94);
+    border: 1px solid rgba(255, 112, 54, 0.32);
+    border-radius: 18px;
+    padding: 26px;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+}
+
+.reserva-form h3,
+.reserva-painel h3 {
+    margin: 0 0 20px;
+    font-size: 22px;
+}
+
+.reserva-campos {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 17px;
+}
+
+.campo-reserva {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    gap: 7px;
+}
+
+.campo-largo {
+    grid-column: 1 / -1;
+}
+
+.campo-reserva label {
+    font-size: 13px;
+    font-weight: 700;
+    color: #f4eded;
+}
+
+.campo-reserva label span {
+    color: #aaa;
+    font-weight: 400;
+}
+
+.campo-reserva input,
+.campo-reserva select,
+.campo-reserva textarea {
+    width: 100%;
+    min-width: 0;
+    background: #2b2222;
+    border: 1px solid #564545;
+    border-radius: 9px;
+    padding: 12px;
+    color: #fff;
+    font: inherit;
+    outline: none;
+    color-scheme: dark;
+}
+
+.campo-reserva textarea {
+    resize: vertical;
+}
+
+.campo-reserva input:focus,
+.campo-reserva select:focus,
+.campo-reserva textarea:focus {
+    border-color: #ff6b2c;
+    box-shadow: 0 0 0 2px rgba(255, 107, 44, 0.15);
+}
+
+.campo-reserva input::placeholder,
+.campo-reserva textarea::placeholder {
+    color: #a99f9f;
+}
+
+.erro-campo {
+    color: #ffaaa1;
+    min-height: 0;
+    font-size: 12px;
+}
+
+.reserva-aviso {
+    font-size: 12px;
+    color: #bcb2b2;
+    line-height: 1.5;
+    margin: 18px 0;
+}
+
+.reserva-enviar {
+    width: 100%;
+    border: 0;
+    border-radius: 10px;
+    background: #ff4800;
+    color: #fff;
+    padding: 15px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.reserva-enviar:hover {
+    background: #db3e00;
+}
+
+.reserva-feedback {
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 18px;
+    color: #ffcd8e;
+}
+
+.reserva-feedback.sucesso {
+    color: #8ce2b1;
+}
+
+.reserva-legenda {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 13px;
+    font-size: 12px;
+    color: #ded5d5;
+    margin: 20px 0;
+}
+
+.reserva-legenda span {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.ponto {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.ponto.disponivel {
+    background: #36bd7c;
+}
+
+.ponto.reservada {
+    background: #ffb24b;
+}
+
+.ponto.ocupada {
+    background: #f26767;
+}
+
+.reserva-mesas {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.reserva-mesa {
+    border: 1px solid #3c5547;
+    border-radius: 12px;
+    background: #252b27;
+    padding: 15px 8px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.reserva-mesa svg {
+    width: 29px;
+    height: 29px;
+    stroke: #69d19a;
+    fill: none;
+    stroke-width: 1.7;
+}
+
+.reserva-mesa strong {
+    font-size: 14px;
+}
+
+.reserva-mesa small {
+    font-size: 12px;
+    color: #cfcfcf;
+}
+
+.reserva-mesa.reservada {
+    border-color: #765936;
+    background: #32291e;
+}
+
+.reserva-mesa.reservada svg {
+    stroke: #ffb24b;
+}
+
+.reserva-mesa.ocupada {
+    border-color: #7e4141;
+    background: #362323;
+}
+
+.reserva-mesa.ocupada svg {
+    stroke: #f26767;
+}
+
+.reserva-resumo {
+    margin-top: 18px;
+    padding: 15px;
+    border: 1px solid #574236;
+    background: #31231d;
+    border-radius: 10px;
+    color: #f6d5c5;
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 1100px) {
+    .produtos {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .opcoes,
+    .reservas-area {
+        width: 94%;
+    }
+
+    .opcoes {
+        grid-template-columns: auto 1fr auto;
+    }
+
+    .links {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 780px) {
+    .reservas-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 650px) {
+    .opcoes {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 15px;
+    }
+
+    .links {
+        order: 3;
+        width: 100%;
+    }
+
+    .titulo-cardapio {
+        margin-top: 45px;
+    }
+
+    .titulo-cardapio h1 {
+        font-size: 30px;
+    }
+
+    .escolhas,
+    .produtos {
+        width: 94%;
+    }
+
+    .produtos {
+        grid-template-columns: 1fr;
+    }
+
+    .escolhas button {
+        padding: 10px 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .reservas-cabecalho h2 {
+        font-size: 26px;
+    }
+
+    .reserva-form,
+    .reserva-painel {
+        padding: 18px;
+    }
+
+    .reserva-campos {
+        grid-template-columns: 1fr;
+    }
+
+    .campo-reserva {
+        grid-column: 1 / -1;
+    }
+}
