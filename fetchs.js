@@ -3,7 +3,6 @@ export async function darFetch(nome, email, senha, token) {
     const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
     const resposta = await fetch(URL, {
         method: "POST",
-        credentials: "include",
         headers: {
             "Content-Type": "application/json",
         },
@@ -36,7 +35,6 @@ export async function pegarFetch(email, senha, token) {
     const URLcliente = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
     const respostaCliente = await fetch(URLcliente, {
         method: "GET",
-        credentials: "include",
         headers: {
             "Content-Type": "application/json",
         }
@@ -74,7 +72,6 @@ export async function pegarFetch(email, senha, token) {
     const URLhash = `https://projeto-restaurante-backend-5mhl.onrender.com/cliente/${clienteAtual.id_Cliente}`;
     const respostaHash = await fetch(URLhash, {
         method: "POST",
-        credentials: "include",
         headers: {
             "Content-Type": "application/json",
         },
@@ -107,7 +104,6 @@ export async function Emailexiste(email) {
     const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
     const resposta = await fetch(URL, {
         method: "GET",
-        credentials: "include"
     });
 
     if (resposta.ok) {
@@ -128,56 +124,7 @@ export async function Emailexiste(email) {
     }
 }
 
-
-
-export async function Hash(token, senha) {
-    const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente/cliente'
-    const resposta = await fetch(URL, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ 
-                token: token, 
-                senhaDigitada: senha
-            })
-        });
-        
-    if(resposta.ok){
-        console.log("tudo certo")
-        return true;
-    }
-    else{
-        console.log("erro: "+ resposta.status)
-        return false;
-    }
-}
-
 // --------------------------------------------------------------------------------- // ---------------------------------------------------------------------------------
-
-export async function confirmarES(email, senha, opcao){
-    const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
-    const resposta = await fetch(URL);
-
-    if (resposta.ok) {
-        const cliente = await resposta.json();
-        for (let loop = 0; loop < cliente.length; loop++) {
-            if (opcao === 'email' && cliente[loop].email === email) {
-                return true;
-            }
-            else if (opcao === 'senha' && cliente[loop].senha === senha) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        }
-    }
-    else {
-        console.error("Erro ao buscar clientes: ", resposta.status);
-        return "erro";
-    }    
-}
 
 // --------------------------------------------------------------------------------- // ---------------------------------------------------------------------------------
 
@@ -185,7 +132,6 @@ export async function verificarADM(email, senha) {
   const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/verificacao/admin-status'
   const resposta = await fetch(URL, {
         method: "POST",
-        credentials: "include",
         headers: {
             "Content-Type": "application/json"
         },
