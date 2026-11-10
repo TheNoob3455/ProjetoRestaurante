@@ -1,0 +1,263 @@
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+
+    background-image: url("img/Hambúrguer Grelhado com Fritas em Luz Cinematográfica.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+}
+
+
+/* NAVBAR */
+
+.opcoes {
+    position: relative;
+
+    width: 76%;
+    min-height: 60px;
+    margin-top: 30px;
+    padding: 0 20px;
+
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 20px;
+
+    background-color: rgba(15, 9, 9, 0.637);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.opcoes img {
+    height: 55px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    justify-self: start;
+}
+
+.links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.opcoes a {
+    font-size: 100%;
+    white-space: nowrap;
+    text-decoration: none;
+    color: white;
+}
+
+.opcoes a:hover {
+    color: rgb(255, 72, 0);
+}
+
+.opcoes .sobreNos {
+    color: rgb(255, 72, 0);
+}
+
+.contador-carrinho {
+    display: inline-grid;
+    min-width: 20px;
+    height: 20px;
+    margin-left: 4px;
+    padding: 0 5px;
+    place-items: center;
+
+    border-radius: 20px;
+    background: rgb(240, 75, 32);
+
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.feedback-carrinho {
+    position: fixed;
+    z-index: 5;
+    right: 24px;
+    bottom: 24px;
+
+    max-width: min(420px, calc(100% - 32px));
+    margin: 0;
+    padding: 14px 18px;
+
+    border: 1px solid rgba(255, 174, 113, 0.4);
+    border-radius: 12px;
+
+    background: rgba(25, 10, 8, 0.96);
+    color: #fff2e9;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.feedback-carrinho:empty {
+    display: none;
+}
+
+.opcoes .usu {
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    justify-self: end;
+
+    border: none;
+    background-color: transparent;
+    background-image: url("img/Ícone de Perfil Neon Incandescente.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    cursor: pointer;
+}
+
+.acoes-cabecalho {
+    display: flex;
+    align-items: center;
+    justify-self: end;
+    gap: 10px;
+}
+
+.atalho-carrinho {
+    display: grid;
+    width: 40px;
+    height: 40px;
+    place-items: center;
+}
+
+.atalho-carrinho img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.acoes-cabecalho .atalho-carrinho {
+    position: relative;
+    cursor: pointer;
+}
+
+
+/* CONTEÚDO SOBRE NÓS */
+
+.conteudo {
+    width: 76%;
+    margin: 50px auto;
+    flex: 1;
+
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 25px;
+
+    align-items: stretch;
+}
+
+
+/* CARDS */
+
+.card-sobre {
+    padding: 35px;
+
+    background-color: rgba(15, 9, 9, 0.78);
+    border: 1px solid rgba(255, 72, 0, 0.2);
+    border-radius: 18px;
+
+    backdrop-filter: blur(6px);
+}
+
+.card-sobre .titulo {
+    margin: 0 0 25px;
+
+    color: rgb(255, 72, 0);
+    font-size: 1.8rem;
+}
+
+.card-sobre .texto {
+    margin: 0 0 18px;
+
+    color: #f5f5f5;
+    font-size: 1rem;
+    line-height: 1.7;
+    text-align: left;
+}
+
+.card-sobre .texto:last-child {
+    margin-bottom: 0;
+}
+
+.card-sobre strong {
+    color: rgb(255, 140, 80);
+}
+
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 1100px) {
+
+    .opcoes {
+        width: 94%;
+        grid-template-columns: 1fr;
+        justify-items: center;
+        padding: 15px;
+    }
+
+    .opcoes > img,
+    .acoes-cabecalho {
+        justify-self: center;
+    }
+
+    .links {
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .conteudo {
+        width: 90%;
+        gap: 20px;
+    }
+
+    .card-sobre {
+        padding: 25px;
+    }
+
+}
+
+@media (max-width: 700px) {
+
+    .conteudo {
+        width: 94%;
+        grid-template-columns: 1fr;
+        margin: 30px auto;
+    }
+
+    .card-sobre {
+        padding: 25px 20px;
+    }
+
+    .card-sobre .titulo {
+        font-size: 1.6rem;
+    }
+
+    .card-sobre .texto {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    body {
+        background-attachment: scroll;
+    }
+
+}
