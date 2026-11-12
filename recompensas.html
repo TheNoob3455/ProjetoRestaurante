@@ -250,6 +250,7 @@
     let pontosDoUsuario = localStorage.getItem("pontos");
     document.getElementById("quantidade-pontos").textContent = pontosDoUsuario;
 
+    const email = localStorage.getItem("usuarioEmail");
     if(email == null) {
         window.location.href = "index.html";
     }
