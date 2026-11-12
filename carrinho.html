@@ -147,7 +147,8 @@
         </form>
     </dialog>
 <script>
-        if(email == null) {
+    const email = localStorage.getItem("usuarioEmail");
+    if(email == null) {
         window.location.href = "index.html";
     }
 </script>
