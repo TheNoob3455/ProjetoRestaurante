@@ -1,67 +1,44 @@
-(function configurarMenuPerfil() {
-    "use strict";
+document.addEventListener("DOMContentLoaded", () => {
+    const botaoPerfil = document.getElementById("botao-perfil");
+    const dropdownPerfil = document.getElementById("dropdown-perfil");
+    const perfilNome = document.getElementById("perfil-nome");
+    const perfilEmail = document.getElementById("perfil-email");
+    const botaoLogout = document.getElementById("botao-logout");
 
-    const botao = document.getElementById("botaoPerfil");
-    const painel = document.getElementById("painelPerfil");
-    const nomeUsuario = document.getElementById("nomeUsuario");
-    const saldoPontos = document.getElementById("saldoPontos");
-    const botaoSair = document.getElementById("botaoSair");
+    // 1. Puxar os dados do utilizador do localStorage (ajuste as chaves se necessário)
+    const nomeUsuario = localStorage.getItem("usuarioNome") || "Cliente";
+    const emailUsuario = localStorage.getItem("usuarioEmail") || "email@nao-informado.com";
 
-    if (!botao || !painel) return;
+    if (perfilNome) perfilNome.textContent = `Olá, ${nomeUsuario}`;
+    if (perfilEmail) perfilEmail.textContent = emailUsuario;
 
-    const chavesNome = ["nomeUsuario", "nome", "usuario", "clienteNome", "clienteLogado", "usuarioLogado"];
-    let nome = "";
+    // 2. Abrir/Fechar dropdown ao clicar no ícone de perfil
+    if (botaoPerfil && dropdownPerfil) {
+        botaoPerfil.addEventListener("click", (evento) => {
+            evento.stopPropagation(); // Evita fechar imediatamente ao clicar
+            dropdownPerfil.hidden = !dropdownPerfil.hidden;
+        });
 
-    for (const chave of chavesNome) {
-        const valor = localStorage.getItem(chave);
-        if (!valor) continue;
-
-        try {
-            const dados = JSON.parse(valor);
-            const nomeSalvo = typeof dados === "string"
-                ? dados
-                : dados.nome || dados.Nome || dados.nomeUsuario || dados.usuario;
-            if (typeof nomeSalvo === "string" && nomeSalvo.trim()) {
-                nome = nomeSalvo.trim();
-                break;
+        // Fechar ao clicar em qualquer outro lugar fora do menu
+        document.addEventListener("click", (evento) => {
+            if (!dropdownPerfil.contains(evento.target) && !botaoPerfil.contains(evento.target)) {
+                dropdownPerfil.hidden = true;
             }
-        } catch {
-            if (valor.trim()) {
-                nome = valor.trim();
-                break;
-            }
-        }
-    }
-
-    if (nomeUsuario) nomeUsuario.textContent = nome ? `Olá, ${nome}!` : "Olá! Bem-vindo.";
-    if (saldoPontos) {
-        const valorSaldo = localStorage.getItem("saldoPontos");
-        const saldoSalvo = valorSaldo === null ? Number.NaN : Number(valorSaldo);
-        const saldo = Number.isFinite(saldoSalvo) && saldoSalvo >= 0 ? saldoSalvo : 500;
-        saldoPontos.textContent = `Saldo: ${saldo} pontos`;
-    }
-
-    function fecharPainel() {
-        painel.hidden = true;
-        botao.setAttribute("aria-expanded", "false");
-    }
-
-    botao.addEventListener("click", (evento) => {
-        evento.stopPropagation();
-        painel.hidden = !painel.hidden;
-        botao.setAttribute("aria-expanded", String(!painel.hidden));
-    });
-
-    painel.addEventListener("click", (evento) => evento.stopPropagation());
-    document.addEventListener("click", fecharPainel);
-    document.addEventListener("keydown", (evento) => {
-        if (evento.key === "Escape") fecharPainel();
-    });
-
-    if (botaoSair) {
-        botaoSair.addEventListener("click", () => {
-            chavesNome.forEach((chave) => localStorage.removeItem(chave));
-            window.location.href = "login.html";
         });
     }
-})();
+
+    // 3. Ação de Logout
+    if (botaoLogout) {
+        botaoLogout.addEventListener("click", () => {
+            // Remove os dados de sessão do localStorage
+            localStorage.removeItem("usuarioEmail");
+            localStorage.removeItem("usuarioNome");
+            localStorage.removeItem("usuarioId");
+            // Se preferir limpar tudo de uma vez, descomente a linha abaixo:
+            // localStorage.clear();
+
+            // Redireciona para a página principal ou de login
+            window.location.href = "principal.html";
+        });
+    }
+});
