@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#190b09">
+    <title>Meu carrinho | Chapa Quente</title>
+    <link rel="stylesheet" href="style-carrinho.css">
+    <link rel="shortcut icon" href="img/Logo-Circular-Chapa-Quente.ico" type="image/x-icon">
+    <script src="pedido.js" defer></script>
+    <script src="carrinho.js" defer></script>
+</head>
+<body>
+    <header class="opcoes">
+        <img src="img/Logo Chapa Quente em Chamas.png" alt="Logo Chapa Quente">
+        <nav class="links" aria-label="Navegação principal">
+            <a class="inicio" href="principal.html">Início</a>
+            <a class="pedir" href="pedir.html">Peça já</a>
+            <a class="carrinho" href="carrinho.html" aria-current="page">
+                Meus Pedidos <span class="contador-carrinho" data-cart-count>0</span>
+            </a>
+            <a class="recompensas" href="recompensas.html">Recompensas</a>
+            <a class="sobreNos" href="principal.html">Sobre nós</a>
+        </nav>
+        <div class="acoes-cabecalho">
+    <a class="atalho-carrinho" href="carrinho.html" aria-label="Abrir carrinho">
+        <img src="img/Botão Neon Laranja com Carrinho.png" alt="">
+    </a>
+    
+    <!-- Contêiner do Perfil com Dropdown -->
+    <div class="perfil-container">
+        <button class="usu" id="botao-perfil" type="button" aria-label="Perfil"></button>
+        
+        <div class="dropdown-perfil" id="dropdown-perfil" hidden>
+            <p id="perfil-nome" class="perfil-nome">Olá, Utilizador</p>
+            <p id="perfil-email" class="perfil-email">email@exemplo.com</p>
+            <hr class="perfil-divisor">
+            <button id="botao-logout" class="botao-logout" type="button">Sair (Logout)</button>
+        </div>
+    </div>
+</div>
+    </header>
+
+    <main class="pagina-carrinho">
+        <section class="cabecalho-pagina" aria-labelledby="titulo-carrinho">
+            <p class="selo-secao">SEU PEDIDO, DO SEU JEITO</p>
+            <h1 id="titulo-carrinho">Meu carrinho</h1>
+            <p>Confira seus lanches, personalize e escolha como quer pagar.</p>
+        </section>
+
+        <div class="conteudo-carrinho">
+            <section class="lista-pedidos" aria-labelledby="titulo-itens">
+                <div class="titulo-lista">
+                    <div>
+                        <h2 id="titulo-itens">Seus itens</h2>
+                        <p id="resumo-itens">Carregando seu carrinho...</p>
+                    </div>
+                    <a href="pedir.html" class="link-cardapio">+ Adicionar mais</a>
+                </div>
+
+                <div id="itens-carrinho" class="itens-carrinho" aria-live="polite"></div>
+                <div id="carrinho-vazio" class="carrinho-vazio" hidden>
+                    
+                    <h3>Seu carrinho está esperando por você</h3>
+                    <p>Escolha seu lanche favorito e ele vai aparecer aqui.</p>
+                    <a href="pedir.html" class="botao botao-secundario">Explorar cardápio</a>
+                </div>
+                <p id="mensagem-carrinho" class="mensagem-carrinho" role="status" aria-live="polite"></p>
+            </section>
+
+            <aside class="resumo-pedido" aria-labelledby="titulo-resumo">
+                <h2 id="titulo-resumo">Resumo do pedido</h2>
+                <div class="linha-resumo">
+                    <span>Subtotal</span>
+                    <span id="subtotal">R$ 0,00</span>
+                </div>
+                <div class="linha-total">
+                    <span>Total</span>
+                    <strong id="total-pedido">R$ 0,00</strong>
+                </div>
+
+                <fieldset class="formas-pagamento">
+                    <legend>Forma de pagamento</legend>
+                    <div class="opcao-pagamento">
+                        <span class="icone-pagamento" aria-hidden="true">◆</span>
+                        <span>Pix</span>
+                    </div>
+                </fieldset>
+
+                <button id="finalizar-pedido" class="botao botao-finalizar" type="button" disabled>
+                    Continuar com o pagamento
+                </button>
+                <p class="aviso-pagamento">Não é um pagamento real e não envolve nenhuma transação financeira.</p>
+            </aside>
+        </div>
+    </main>
+
+    <dialog class="modal-pix" id="modal-pix" aria-labelledby="titulo-modal-pix">
+        <div class="conteudo-modal-pix">
+            <div class="cabecalho-modal">
+                <div>
+                    <p class="selo-secao">Continuar com pagamento</p>
+                    <h2 id="titulo-modal-pix">QR Code de DOAÇÃO</h2>
+                    <p>Este QR Code é apenas para quem quer nos incentivar a fazer outros projetos, doe apenas se quiser e o valor que quiser, obrigado pela atenção!.</p>
+                </div>
+                <button class="fechar-modal" type="button" data-fechar-pix aria-label="Fechar QR Code">×</button>
+            </div>
+            <canvas id="qr-pix" width="232" height="232" aria-label="QR Code aleatório demonstrativo, não pagável"></canvas>
+            
+
+            <button id="botao-avancar" class="botao botao-finalizar" type="button" style="margin-top: 16px;">
+                Avançar
+            </button>
+
+            <!--<p class="aviso-pagamento">Não escaneie: este QR Code não realiza pagamentos.</p>-->
+        </div>
+    </dialog>
+
+    <dialog class="modal-personalizacao" id="modal-personalizacao-carrinho" aria-labelledby="titulo-personalizacao-carrinho">
+        <form id="form-personalizacao-carrinho">
+            <div class="cabecalho-modal">
+                <div>
+                    <p class="selo-secao">SEU PEDIDO, DO SEU JEITO</p>
+                    <h2 id="titulo-personalizacao-carrinho">Personalize seu lanche</h2>
+                    <p id="descricao-personalizacao-carrinho"></p>
+                </div>
+                <button class="fechar-modal" type="button" data-fechar-personalizacao aria-label="Fechar personalização">×</button>
+            </div>
+
+            <fieldset class="opcoes-personalizacao">
+                <legend>Escolha o tipo de pão</legend>
+                <div class="grade-opcoes" id="opcoes-pao-carrinho"></div>
+            </fieldset>
+            <fieldset class="opcoes-personalizacao">
+                <legend>Ingredientes <span>Selecione os que deseja</span></legend>
+                <div class="grade-opcoes" id="opcoes-ingredientes-carrinho"></div>
+            </fieldset>
+            <fieldset class="opcoes-personalizacao">
+                <legend>Molhos <span>Selecione os que deseja</span></legend>
+                <div class="grade-opcoes" id="opcoes-molhos-carrinho"></div>
+            </fieldset>
+
+            <div class="rodape-modal">
+                <p>Preço do lanche<strong id="preco-personalizado-carrinho"></strong></p>
+                <button class="botao botao-adicionar-personalizado" type="submit">Salvar personalização</button>
+            </div>
+        </form>
+    </dialog>
+<script>
+    const email = localStorage.getItem("usuarioEmail");
+    if(email == null) {
+        window.location.href = "index.html";
+    }
+</script>
+</body>
+</html>
