@@ -370,8 +370,8 @@
 
     const email = localStorage.getItem("usuarioEmail");
 
-    clienteAtual = await pegarInformacao(email);
-    pontos = clienteAtual.pontos;
+    let clienteAtual = await pegarInformacao(email);
+    let pontos = clienteAtual.pontos;
 
     localStorage.setItem("pontos", pontos);
     
