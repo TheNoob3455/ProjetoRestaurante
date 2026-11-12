@@ -34,11 +34,22 @@
         </nav>
 
         <div class="acoes-cabecalho">
-            <a class="atalho-carrinho" href="carrinho.html" aria-label="Abrir carrinho">
-                <img src="img/Botão Neon Laranja com Carrinho.png" alt="">
-            </a>
-            <button class="usu" aria-label="Perfil"></button>
+    <a class="atalho-carrinho" href="carrinho.html" aria-label="Abrir carrinho">
+        <img src="img/Botão Neon Laranja com Carrinho.png" alt="">
+    </a>
+    
+    <!-- Contêiner do Perfil com Dropdown -->
+    <div class="perfil-container">
+        <button class="usu" id="botao-perfil" type="button" aria-label="Perfil"></button>
+        
+        <div class="dropdown-perfil" id="dropdown-perfil" hidden>
+            <p id="perfil-nome" class="perfil-nome">Olá, Utilizador</p>
+            <p id="perfil-email" class="perfil-email">email@exemplo.com</p>
+            <hr class="perfil-divisor">
+            <button id="botao-logout" class="botao-logout" type="button">Sair (Logout)</button>
         </div>
+    </div>
+</div>
 
     </header>
 
