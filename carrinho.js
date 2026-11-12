@@ -377,6 +377,7 @@ botaoFinalizar.addEventListener("click", () => {
                 mensagemAgradecimento.style.display = "flex";
             }
             let pontos = localStorage.getItem("pontos");
+            pontos = pontos + 150;
             // 3. Remove os pedidos do localStorage
             localStorage.removeItem("chapa-quente-carrinho");
             localStorage.setItem("pontos", pontos);
