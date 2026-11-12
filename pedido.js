@@ -16,7 +16,8 @@
             "Bacon",
             "Ovo",
             "Presunto",
-            "Ervilha"
+            "Ervilha",
+            "Hambúrguer"
         ],
         paes: [
             "Pão de hambúrguer tradicional",
@@ -48,7 +49,7 @@
             nome: "Chapa Clássico",
             preco: 29.9,
             imagem: "img/chapa-classico.png",
-            ingredientes: ["Tomate", "Alface", "Queijo", "Queijo cheddar"],
+            ingredientes: ["Tomate", "Alface", "Queijo", "Queijo cheddar", "Hambúrguer"],
             molhos: ["Molho especial da casa"]
         },
         "chapa-duplo": {
@@ -56,7 +57,7 @@
             nome: "Chapa Duplo",
             preco: 39.9,
             imagem: "img/duplo.png",
-            ingredientes: ["Bacon", "Alface", "Queijo cheddar", "Cebola caramelizada"],
+            ingredientes: ["Bacon", "Alface", "Queijo cheddar", "Cebola caramelizada", "Hambúrguer"],
             molhos: ["Molho especial da casa"]
         },
         "chapa-bacon": {
@@ -64,7 +65,7 @@
             nome: "Chapa Bacon",
             preco: 34.9,
             imagem: "img/bacon.png",
-            ingredientes: ["Bacon", "Alface", "Queijo cheddar"],
+            ingredientes: ["Bacon", "Alface", "Queijo cheddar", "Hambúrguer"],
             molhos: ["Molho especial da casa"]
         },
         "chapa-egg": {
@@ -72,7 +73,7 @@
             nome: "Chapa Egg",
             preco: 25.9,
             imagem: "img/chapa egg.png",
-            ingredientes: ["Ovo", "Queijo", "Alface"],
+            ingredientes: ["Ovo", "Queijo", "Alface", "Hambúrguer"],
             molhos: ["Maionese temperada"]
         },
         "frango-crocante": {
@@ -88,7 +89,7 @@
             nome: "Chapa Tudo",
             preco: 34.9,
             imagem: "img/chapa tudo.png",
-            ingredientes: ["Presunto", "Queijo", "Bacon", "Ovo", "Milho", "Alface", "Tomate"],
+            ingredientes: ["Presunto", "Queijo", "Bacon", "Ovo", "Milho", "Alface", "Tomate", "Hambúrguer"],
             molhos: ["Molho especial da casa"]
         },
         "chapa-vegetariano": {
@@ -104,7 +105,7 @@
             nome: "Combo Quente",
             preco: 44.9,
             imagem: "img/combo.png",
-            ingredientes: ["Tomate", "Alface", "Queijo", "Queijo cheddar"],
+            ingredientes: ["Tomate", "Alface", "Queijo", "Queijo cheddar", "Hambúrguer"],
             molhos: ["Molho especial da casa"]
         },
         "dogao-chapa": {
