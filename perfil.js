@@ -1,8 +1,3 @@
-import { pegarInformacao } from './fetchs.js';
-
-const cliente = await pegarInformacao(localStorage.getItem("usuarioEmail"))
-
-const nome = cliente.nome;
 
 document.addEventListener("DOMContentLoaded", () => {
     const botaoPerfil = document.getElementById("botao-perfil");
@@ -15,7 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const nomeUsuario = localStorage.getItem("usuarioNome") || "Cliente";
     const emailUsuario = localStorage.getItem("usuarioEmail") || "email@nao-informado.com";
 
-    if (perfilNome) perfilNome.textContent = `Olá, ${nome}`;
+    if (perfilNome) perfilNome.textContent = `Olá, ${nomeUsuario}`;
     if (perfilEmail) perfilEmail.textContent = emailUsuario;
 
     // 2. Abrir/Fechar dropdown ao clicar no ícone de perfil
