@@ -350,7 +350,6 @@
                 mensagem.textContent = "Adicione pelo menos um produto antes de confirmar.";
                 return;
             }
-            gerarQrAleatorio();
         } catch (erro) {
             console.error("Não foi possível gerar o QR Code:", erro);
             mensagem.textContent = "Não foi possível gerar o QR Code. Tente novamente.";
