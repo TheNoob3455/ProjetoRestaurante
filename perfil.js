@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.removeItem("usuarioNome");
             localStorage.removeItem("usuarioId");
             // Se preferir limpar tudo de uma vez, descomente a linha abaixo:
-            // localStorage.clear();
+            localStorage.clear();
 
             // Redireciona para a página principal ou de login
             window.location.href = "principal.html";
