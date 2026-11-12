@@ -343,17 +343,18 @@
         if (evento.target === modalPix) modalPix.close();
     });
 
-    botaoFinalizar.addEventListener("click", () => {
+botaoFinalizar.addEventListener("click", () => {
         try {
             const itens = window.PedidoChapa.lerCarrinho();
             if (itens.length === 0) {
                 mensagem.textContent = "Adicione pelo menos um produto antes de confirmar.";
                 return;
             }
-            gerarQrAleatorio();
+            modalPix.showModal();
+            mensagem.textContent = "";
         } catch (erro) {
-            console.error("Não foi possível gerar o QR Code:", erro);
-            mensagem.textContent = "Não foi possível gerar o QR Code. Tente novamente.";
+            console.error("Não foi possível abrir o modal de pagamento:", erro);
+            mensagem.textContent = "Não foi possível continuar. Tente novamente.";
         }
     });
 
