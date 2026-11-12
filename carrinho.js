@@ -376,9 +376,10 @@ botaoFinalizar.addEventListener("click", () => {
             if (mensagemAgradecimento) {
                 mensagemAgradecimento.style.display = "flex";
             }
-
+            let pontos = localStorage.getItem("pontos");
             // 3. Remove os pedidos do localStorage
             localStorage.removeItem("chapa-quente-carrinho");
+            localStorage.setItem("pontos", pontos);
 
             // 4. Atualiza a renderização da página (esvaziando o carrinho visualmente)
             renderizar();
