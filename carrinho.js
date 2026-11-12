@@ -335,7 +335,7 @@
         }
 
         modalPix.showModal();
-        mensagem.textContent = "QR Code aleatório gerado para demonstração. Nenhum pagamento foi realizado.";
+        mensagem.textContent = "";
     }
 
     document.querySelector("[data-fechar-pix]").addEventListener("click", () => modalPix.close());
@@ -352,7 +352,7 @@
             }
             gerarQrAleatorio();
         } catch (erro) {
-            console.error("Não foi possível gerar o QR Code demonstrativo:", erro);
+            console.error("Não foi possível gerar o QR Code:", erro);
             mensagem.textContent = "Não foi possível gerar o QR Code. Tente novamente.";
         }
     });
