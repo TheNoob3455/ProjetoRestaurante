@@ -381,6 +381,10 @@
 
     const email = localStorage.getItem("usuarioEmail");
 
+    if(email == null) {
+        window.location.href = "index.html";
+    }
+
     let clienteAtual = await pegarInformacao(email);
     let pontos = clienteAtual.pontos;
 
