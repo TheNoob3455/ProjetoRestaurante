@@ -40,7 +40,7 @@
 
         <div class="pontos-usuario">
             <span>⭐</span>
-            <strong>500 pontos</strong>
+            <strong id="quantidade-pontos">0</strong> pontos
         </div>
 
     </section>
@@ -244,6 +244,14 @@
     <footer class="rodape-pagina">
         <p>Chapa Quente — seus pontos valem sabor!</p>
     </footer>
+
+<script type="module">
+    
+    let pontosDoUsuario = localStorage.getItem("pontos");
+    document.getElementById("quantidade-pontos").textContent = pontosDoUsuario;
+
+</script>
+
 
 </body>
 </html>
