@@ -10,7 +10,6 @@
     const botaoFinalizar = document.getElementById("finalizar-pedido");
     const contadores = document.querySelectorAll("[data-cart-count]");
     const modalPix = document.getElementById("modal-pix");
-    const canvasPix = document.getElementById("qr-pix");
     const modalPersonalizacao = document.getElementById("modal-personalizacao-carrinho");
     const formularioPersonalizacao = document.getElementById("form-personalizacao-carrinho");
     const descricaoPersonalizacao = document.getElementById("descricao-personalizacao-carrinho");
@@ -267,13 +266,6 @@
         }
     });
 
-    function gerarQrAleatorio() {
-        const contexto = canvasPix.getContext("2d");
-        if (!contexto) {
-            mensagem.textContent = "Não foi possível gerar a imagem do QR Code neste navegador.";
-            return;
-        }
-
         const modulos = 29;
         const tamanhoModulo = canvasPix.width / modulos;
         const bits = new Uint8Array(modulos * modulos);
@@ -350,10 +342,6 @@
                 mensagem.textContent = "Adicione pelo menos um produto antes de confirmar.";
                 return;
             }
-        } catch (erro) {
-            console.error("Não foi possível gerar o QR Code:", erro);
-            mensagem.textContent = "Não foi possível gerar o QR Code. Tente novamente.";
-        }
     });
 
     window.addEventListener("storage", (evento) => {
