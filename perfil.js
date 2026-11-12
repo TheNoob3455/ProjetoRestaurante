@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
             localStorage.clear();
 
             // Redireciona para a página principal ou de login
-            window.location.href = "principal.html";
+            window.location.href = "index.html";
         });
     }
 });
