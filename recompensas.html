@@ -262,10 +262,8 @@
         console.error("Erro ao buscar informações do cliente: ", resposta.status);
     }
 }
-    clienteAtual = await pegarInformacao(localStorage.getItem("usuarioEmail"));
-    
-    let pontosDoUsuario = clienteAtual.pontos;
-    document.getElementById("quantidade-pontos").textContent = pontosDoUsuario;
+
+    document.getElementById("quantidade-pontos").textContent = localStorage.getItem("pontos");
 
     const email = localStorage.getItem("usuarioEmail");
     if(email == null) {
