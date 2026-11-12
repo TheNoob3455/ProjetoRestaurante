@@ -179,6 +179,8 @@
             let resultado = await darFetch(nome, email, senha, token);
             if (resultado === true) {
                 console.log("Cadastro realizado com sucesso!");
+                await localStorage.setItem("usuarioNome", nome);
+
                 window.location.href = "login.html";
             } 
             else if (resultado === "ctoken") {
