@@ -365,8 +365,15 @@
         </form>
     </dialog>
 
-<script>
+<script type="module">
+    import { pegarInformacao } from './fetchs.js';
+
     const email = localStorage.getItem("usuarioEmail");
+
+    clienteAtual = await pegarInformacao(email);
+    pontos = clienteAtual.pontos;
+
+    localStorage.setItem("pontos", pontos);
     
 </script>
 </body>
