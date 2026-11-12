@@ -194,6 +194,17 @@
         };
     }
 
+    function calcularPreco(produto, personalizacao) {
+        if (!personalizacao || !produto.ingredientes) {
+            return produto.preco;
+        }
+        const ingredientesBase = produto.ingredientes || [];
+        const extras = personalizacao.ingredientes.filter(
+            (ing) => !ingredientesBase.includes(ing)
+        );
+        return Math.round((produto.preco + extras.length * 2.5) * 100) / 100;
+    }
+
     function criarVarianteId(id, personalizacao) {
         return `${id}:${JSON.stringify(personalizacao)}`;
     }
@@ -215,8 +226,10 @@
             }
 
             const personalizacao = normalizarPersonalizacao(produto, item.personalizacao);
+            const preco = calcularPreco(produto, personalizacao);
             return {
                 ...produto,
+                preco,
                 quantidade,
                 personalizacao,
                 varianteId: criarVarianteId(produto.id, personalizacao)
@@ -235,8 +248,10 @@
                 throw new Error("Não foi possível salvar um item inválido no carrinho.");
             }
             const personalizacao = normalizarPersonalizacao(produto, item.personalizacao);
+            const preco = calcularPreco(produto, personalizacao);
             return {
                 ...produto,
+                preco,
                 quantidade: item.quantidade,
                 personalizacao
             };
@@ -255,13 +270,14 @@
         }
 
         const personalizacao = normalizarPersonalizacao(produto, escolha);
+        const preco = calcularPreco(produto, personalizacao);
         const varianteId = criarVarianteId(id, personalizacao);
         const itens = lerCarrinho();
         const existente = itens.find((item) => item.varianteId === varianteId);
         if (existente) {
             existente.quantidade += quantidade;
         } else {
-            itens.push({ ...produto, quantidade, personalizacao });
+            itens.push({ ...produto, preco, quantidade, personalizacao });
         }
         salvarCarrinho(itens);
         return lerCarrinho();
@@ -277,6 +293,7 @@
         const item = itens[indice];
         const produto = produtos[item.id];
         const personalizacao = normalizarPersonalizacao(produto, escolha);
+        const preco = calcularPreco(produto, personalizacao);
         const novaVarianteId = criarVarianteId(item.id, personalizacao);
         const itemExistente = itens.find(
             (outroItem, outroIndice) => outroIndice !== indice && outroItem.varianteId === novaVarianteId
@@ -286,7 +303,7 @@
             itemExistente.quantidade += item.quantidade;
             itens.splice(indice, 1);
         } else {
-            itens[indice] = { ...item, personalizacao };
+            itens[indice] = { ...item, preco, personalizacao };
         }
 
         salvarCarrinho(itens);
@@ -310,7 +327,9 @@
         obterProduto: (id) => {
             const produto = produtos[id];
             if (!produto) throw new Error("Este produto não está disponível para compra.");
-            return { ...produto, personalizacao: normalizarPersonalizacao(produto) };
+            const personalizacao = normalizarPersonalizacao(produto);
+            const preco = calcularPreco(produto, personalizacao);
+            return { ...produto, preco, personalizacao };
         }
     });
 
