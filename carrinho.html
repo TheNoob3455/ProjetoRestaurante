@@ -77,9 +77,9 @@
                 </fieldset>
 
                 <button id="finalizar-pedido" class="botao botao-finalizar" type="button" disabled>
-                    Gerar QR Code Pix
+                    Continuar com o pagamento
                 </button>
-                <p class="aviso-pagamento">QR aleatório para demonstração. Não é um pagamento real e não pode ser usado para pagar.</p>
+                <p class="aviso-pagamento">Não é um pagamento real e não envolve nenhuma transação financeira.</p>
             </aside>
         </div>
     </main>
@@ -88,14 +88,14 @@
         <div class="conteudo-modal-pix">
             <div class="cabecalho-modal">
                 <div>
-                    <p class="selo-secao">PIX DEMONSTRATIVO</p>
-                    <h2 id="titulo-modal-pix">QR Code aleatório</h2>
-                    <p>Este código é apenas visual e não representa uma cobrança.</p>
+                    <p class="selo-secao">Continuar com pagamento</p>
+                    <h2 id="titulo-modal-pix">QR Code de DOAÇÃO</h2>
+                    <p>Este QR Code é apenas para quem quer nos incentivar a fazer outros projetos, doe apenas se quiser e o valor que quiser, obrigado pela atenção!.</p>
                 </div>
                 <button class="fechar-modal" type="button" data-fechar-pix aria-label="Fechar QR Code">×</button>
             </div>
             <canvas id="qr-pix" width="232" height="232" aria-label="QR Code aleatório demonstrativo, não pagável"></canvas>
-            <p class="aviso-pagamento">Não escaneie: este QR Code não realiza pagamentos.</p>
+            <!--<p class="aviso-pagamento">Não escaneie: este QR Code não realiza pagamentos.</p>-->
         </div>
     </dialog>
 
