@@ -390,34 +390,6 @@ botaoFinalizar.addEventListener("click", () => {
         botaoFecharAgradecimento.addEventListener("click", () => {
             mensagemAgradecimento.style.display = "none";
         });
-    }// Ação do Botão Avançar: exibe agradecimento, limpa o carrinho e atualiza
-    const botaoAvancar = document.getElementById("botao-avancar");
-    const mensagemAgradecimento = document.getElementById("mensagem-agradecimento");
-    const botaoFecharAgradecimento = document.getElementById("fechar-agradecimento");
-
-    if (botaoAvancar) {
-        botaoAvancar.addEventListener("click", () => {
-            // 1. Fecha o modal do Pix
-            modalPix.close();
-
-            // 2. Mostra a mensagem de agradecimento
-            if (mensagemAgradecimento) {
-                mensagemAgradecimento.style.display = "flex";
-            }
-
-            // 3. Remove os pedidos do localStorage
-            localStorage.removeItem("chapa-quente-carrinho");
-
-            // 4. Atualiza a renderização da página (esvaziando o carrinho visualmente)
-            renderizar();
-        });
-    }
-
-    // Botão para fechar a tela de agradecimento
-    if (botaoFecharAgradecimento) {
-        botaoFecharAgradecimento.addEventListener("click", () => {
-            mensagemAgradecimento.style.display = "none";
-        });
     }
     renderizar();
 })();
