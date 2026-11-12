@@ -246,8 +246,25 @@
     </footer>
 
 <script type="module">
+    async function pegarInformacao(email) {
+    const URL = 'https://projeto-restaurante-backend-5mhl.onrender.com/cliente';
+    const resposta = await fetch(URL);
+
+    if (resposta.ok) {
+        const cliente = await resposta.json();
+        for (let loop = 0; loop < cliente.length; loop++) {
+            if (cliente[loop].email == email) {
+                return cliente[loop];
+            }
+        }
+    }
+    else {
+        console.error("Erro ao buscar informações do cliente: ", resposta.status);
+    }
+}
+    clienteAtual = await pegarInformacao(localStorage.getItem("usuarioEmail"));
     
-    let pontosDoUsuario = localStorage.getItem("pontos");
+    let pontosDoUsuario = clienteAtual.pontos;
     document.getElementById("quantidade-pontos").textContent = pontosDoUsuario;
 
     const email = localStorage.getItem("usuarioEmail");
